@@ -461,7 +461,147 @@ function filterUMKM(cat) {
 
 
 /* ================================================
-   7. INISIALISASI
+   8. DATA PENCARIAN GLOBAL
+   Data Agenda & Inventaris disalin manual di sini
+   supaya bisa dicari di kotak Search header.
+   (UMKM tidak perlu disalin — sudah ada di array UMKM)
+
+   CATATAN UNTUK MAINTENANCE:
+   Kalau menambah/ubah item Agenda atau Inventaris di
+   index.html, samakan juga datanya di sini supaya
+   search tetap akurat.
+   ================================================ */
+const AGENDA_SEARCH = [
+  { title: 'Kerja Bakti RT 01 & 02', meta: '8 Jun · Pertigaan Utama', tag: 'Kerja Bakti' },
+  { title: 'Posyandu Balita', meta: '12 Jun · Balai Dusun', tag: 'Posyandu' },
+  { title: 'Hajatan Anak Pak Sunar', meta: '15 Jun · Rumah Pak Sunar RT 02', tag: 'Hajatan' },
+  { title: 'Pengajian Kliwonan', meta: '20 Jun · Mushola Al-Ikhlas', tag: 'Kliwonan' },
+  { title: 'Musyawarah Dusun', meta: '28 Jun · Balai Dusun', tag: 'Rapat' },
+  { title: 'Posyandu Balita', meta: '10 Jul · Balai Dusun', tag: 'Posyandu' },
+  { title: 'Pengajian Kliwonan', meta: '18 Jul · Mushola Al-Ikhlas', tag: 'Kliwonan' },
+];
+
+const INVENTARIS_SEARCH = [
+  { title: 'Sound System', meta: '2 unit · Pengelola: Pak Suroto' },
+  { title: 'Genset 5000W', meta: '1 unit · Pengelola: Pak Suroto' },
+  { title: 'Tenda Tarup', meta: '4 unit · Pengelola: Pak Kamijan' },
+  { title: 'Kursi Plastik', meta: '100 unit · Pengelola: Pak Kamijan' },
+  { title: 'Meja Lipat', meta: '20 unit · Pengelola: Pak Kamijan' },
+];
+
+
+/* ================================================
+   9. SEARCH GLOBAL
+   Kotak pencarian di header, muncul saat ikon kaca
+   pembesar diklik. Mencari di UMKM + Agenda +
+   Inventaris sekaligus.
+   ================================================ */
+
+/**
+ * Buka/tutup kotak search di bawah header
+ */
+function toggleSearch() {
+  const box = document.getElementById('search-box');
+  const isOpen = box.classList.contains('open');
+  if (isOpen) {
+    closeSearch();
+  } else {
+    box.classList.add('open');
+    document.getElementById('search-input').focus();
+  }
+}
+
+function closeSearch() {
+  const box = document.getElementById('search-box');
+  box.classList.remove('open');
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').innerHTML = '';
+}
+
+/**
+ * Jalankan pencarian setiap kali user mengetik
+ * Mencari di 3 sumber: UMKM, Agenda, Inventaris
+ */
+function runSearch(query) {
+  const resultsEl = document.getElementById('search-results');
+  const q = query.trim().toLowerCase();
+
+  if (!q) {
+    resultsEl.innerHTML = '';
+    return;
+  }
+
+  let html = '';
+
+  /* --- Cari di UMKM --- */
+  const umkmHasil = UMKM.filter(function(u) {
+    return u.name.toLowerCase().includes(q) ||
+           (u.cat && u.cat.toLowerCase().includes(q)) ||
+           (u.desc && u.desc.toLowerCase().includes(q));
+  });
+  umkmHasil.forEach(function(u) {
+    html += `
+      <button class="src-item" onclick="goToUMKM(${u.id})">
+        <span class="src-ico">${u.emoji || '🏪'}</span>
+        <span class="src-body">
+          <span class="src-ttl">${u.name}</span>
+          <span class="src-meta">UMKM · ${u.cat || ''}</span>
+        </span>
+      </button>`;
+  });
+
+  /* --- Cari di Agenda --- */
+  const agendaHasil = AGENDA_SEARCH.filter(function(a) {
+    return a.title.toLowerCase().includes(q) || a.tag.toLowerCase().includes(q);
+  });
+  agendaHasil.forEach(function(a) {
+    html += `
+      <button class="src-item" onclick="nav('agenda')">
+        <span class="src-ico">📅</span>
+        <span class="src-body">
+          <span class="src-ttl">${a.title}</span>
+          <span class="src-meta">Agenda · ${a.meta}</span>
+        </span>
+      </button>`;
+  });
+
+  /* --- Cari di Inventaris --- */
+  const invHasil = INVENTARIS_SEARCH.filter(function(i) {
+    return i.title.toLowerCase().includes(q);
+  });
+  invHasil.forEach(function(i) {
+    html += `
+      <button class="src-item" onclick="nav('inventaris')">
+        <span class="src-ico">📦</span>
+        <span class="src-body">
+          <span class="src-ttl">${i.title}</span>
+          <span class="src-meta">Inventaris · ${i.meta}</span>
+        </span>
+      </button>`;
+  });
+
+  /* --- Tidak ada hasil --- */
+  if (!html) {
+    html = `<div class="src-empty">Tidak ditemukan hasil untuk "${query}"</div>`;
+  }
+
+  resultsEl.innerHTML = html;
+}
+
+/**
+ * Pindah ke halaman UMKM lalu buka detail UMKM tertentu
+ * Dipakai saat item hasil search UMKM diklik
+ */
+function goToUMKM(id) {
+  closeSearch();
+  nav('umkm');
+  /* beri waktu sedikit supaya halaman UMKM aktif dulu sebelum detail dibuka */
+  setTimeout(function() { showUMKM(id); }, 50);
+}
+
+
+/* ================================================
+   10. INISIALISASI
    Kode yang dijalankan saat halaman pertama dimuat
    ================================================ */
 
@@ -470,7 +610,10 @@ function filterUMKM(cat) {
    fungsi ini setelah data selesai dimuat. */
 muatDataUMKM();
 
-/* Pasang event listener ke semua tombol filter */
+/* Pasang event listener ke kotak pencarian */
+document.getElementById('search-input')?.addEventListener('input', function(e) {
+  runSearch(e.target.value);
+});
 document.querySelectorAll('.fchip').forEach(function(chip) {
   chip.addEventListener('click', function() {
 

@@ -89,7 +89,7 @@ body {
    ================================================ */
 .phone {
   width: 100%;
-  max-width: 480px;     /* tetap dibatasi biar nyaman dibaca di tablet/desktop */
+  max-width: 480px;     /* lebar app-style di mobile/tablet kecil */
   margin: 0 auto;
   background: var(--iv);
   display: flex;
@@ -175,6 +175,116 @@ body {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+
+/* ================================================
+   4B. SEARCH BOX — Kotak pencarian global
+   Dropdown yang muncul di bawah header
+   ================================================ */
+.search-box {
+  max-height: 0;
+  overflow: hidden;
+  background: var(--wh);
+  border-bottom: 1px solid var(--iv3);
+  transition: max-height .25s ease;
+  flex-shrink: 0;
+}
+.search-box.open {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.search-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  background: var(--wh);
+  border-bottom: 1px solid var(--iv3);
+}
+.search-ico {
+  width: 18px;
+  height: 18px;
+  stroke: var(--tx3);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.search-inner input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--tx);
+  background: transparent;
+}
+.search-inner input::placeholder { color: var(--tx3); }
+.search-close {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: var(--iv2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.search-close svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--tx2);
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.search-results { padding: 4px 0 8px; }
+.src-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.src-item:active { background: var(--iv2); }
+.src-ico {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  background: var(--grl);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.src-body { display: flex; flex-direction: column; min-width: 0; }
+.src-ttl {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tx);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.src-meta { font-size: 10.5px; color: var(--tx3); margin-top: 1px; }
+.src-empty {
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 12px;
+  color: var(--tx3);
 }
 
 
@@ -1552,7 +1662,6 @@ body {
 }
 .ft-soc:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .65); }
 .ft-soc svg { width: 16px; height: 16px; display: block; }
-.ft-soc svg path, .ft-soc svg circle, .ft-soc svg rect { fill: #fff !important; stroke: #fff !important; }
 
 .ft-managed { font-size: 10px; color: rgba(255, 255, 255, .4); margin-bottom: 4px; }
 .ft-copy {
@@ -1608,6 +1717,11 @@ body {
    "override" tambahan, supaya mobile tetap aman.
    ================================================ */
 @media (min-width: 1024px) {
+
+  /* ---- Container utama lepas dari batas app-style 480px ---- */
+  .phone {
+    max-width: none;
+  }
 
   /* ---- Sembunyikan elemen khusus mobile ---- */
   .bnav,                /* bottom nav */
@@ -1692,7 +1806,7 @@ body {
   .ud-cover { height: 220px; font-size: 90px; }
 
   /* ---- Footer — sedikit lebih lega ---- */
-  .footer { padding: 32px 40px; border-radius: 24px 24px 0 0; }
+  .footer { padding: 32px 40px; }
 }
 
 
