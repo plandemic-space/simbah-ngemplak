@@ -1464,72 +1464,71 @@ body {
    ================================================ */
 .footer {
   background: var(--gr);
-  padding: 20px 16px;
+  padding: 24px 18px;
   flex-shrink: 0;
 }
 .ft-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
-.ft-logo { width: 36px; height: 36px; object-fit: contain; }
+.ft-logo { width: 34px; height: 34px; object-fit: contain; }
 .ft-name { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: #fff; }
 .ft-sub  { font-size: 9px; color: rgba(255, 255, 255, .55); }
 
 .ft-desc {
-  font-size: 11px;
-  color: rgba(255, 255, 255, .65);
-  line-height: 1.65;
-  margin-bottom: 14px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, .6);
+  line-height: 1.7;
+  margin-bottom: 18px;
 }
 
 .ft-addr {
-  font-size: 11px;
-  color: rgba(255, 255, 255, .65);
-  line-height: 1.65;
-  margin-bottom: 14px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, .6);
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-.ft-contact    { margin-bottom: 14px; }
+.ft-contact    { margin-bottom: 4px; }
 .ft-citem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 9px;
+  margin-bottom: 10px;
   text-decoration: none;
 }
 .ft-cico {
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, .12);
-  border-radius: 7px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
   flex-shrink: 0;
+  opacity: .85;
 }
-.ft-cval { font-size: 11px; color: rgba(255, 255, 255, .8); font-weight: 500; }
+.ft-cico svg { width: 16px; height: 16px; }
+.ft-cval { font-size: 11.5px; color: rgba(255, 255, 255, .75); font-weight: 500; }
 
-.ft-social-ttl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: rgba(255, 255, 255, .45); margin-bottom: 8px; }
-.ft-socials    { display: flex; gap: 9px; margin-bottom: 14px; }
+.ft-social-ttl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: rgba(255, 255, 255, .4); margin-bottom: 10px; }
+.ft-socials    { display: flex; gap: 10px; margin-bottom: 20px; }
 .ft-soc {
   width: 34px;
   height: 34px;
-  background: rgba(255, 255, 255, .95);
+  background: transparent;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  border: none;
-  transition: transform .15s ease, box-shadow .15s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  border: 1.4px solid rgba(255, 255, 255, .4);
+  transition: background .15s ease, border-color .15s ease;
 }
-.ft-soc:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,.18); }
-.ft-soc svg { width: 18px; height: 18px; display: block; }
+.ft-soc:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .65); }
+.ft-soc svg { width: 16px; height: 16px; display: block; }
+.ft-soc svg path, .ft-soc svg circle, .ft-soc svg rect { fill: #fff !important; stroke: #fff !important; }
 
 .ft-managed { font-size: 10px; color: rgba(255, 255, 255, .4); margin-bottom: 4px; }
 .ft-copy {
