@@ -1,0 +1,131 @@
+{
+  "_petunjuk": "Untuk menambah UMKM baru, copy salah satu blok { ... } di bawah, paste di akhir sebelum tanda ] penutup, lalu ganti semua isinya. JANGAN lupa koma (,) setelah tanda } kecuali itu blok PALING TERAKHIR.",
+
+  "umkm": [
+    {
+      "id": 0,
+      "name": "Kue Bu Sari",
+      "cat": "Produk Lokal",
+      "emoji": "🍪",
+      "desc": "Usaha kue tradisional Jawa yang sudah berdiri sejak 2010. Menyediakan berbagai kue basah dan kering untuk hajatan, arisan, dan pesanan harian. Bahan-bahan dipilih segar langsung dari pasar setiap pagi.",
+      "phone": "6281234567890",
+      "rating": "4.8",
+      "alamat": "RT 01, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
+      "jam": "Setiap hari 06.00–20.00 WIB",
+      "maps": "https://maps.google.com",
+      "ig": "https://instagram.com",
+      "fb": "https://facebook.com",
+      "tt": "https://tiktok.com",
+      "yt": "https://youtube.com",
+      "sp": "https://shopee.co.id",
+      "tp": "https://tokopedia.com",
+      "galeri": ["🍪", "🥮", "🍡", "🎂", "🧁"],
+      "products": [
+        { "e": "🥮", "n": "Klepon",    "p": "Rp 2.000/biji" },
+        { "e": "🍡", "n": "Lupis",     "p": "Rp 3.000/biji" },
+        { "e": "🎂", "n": "Kue Lapis", "p": "Rp 25.000"     },
+        { "e": "🧁", "n": "Cupcake",   "p": "Rp 5.000"      }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Mebel Pak Harto",
+      "cat": "Pertukangan",
+      "emoji": "🪑",
+      "desc": "Pengrajin mebel kayu jati dan mahoni berpengalaman 20 tahun. Menerima pesanan meja, kursi, lemari, dan perabot rumah tangga custom. Kualitas terjamin dengan harga langsung dari pengrajin.",
+      "phone": "6281234567891",
+      "rating": "4.9",
+      "alamat": "RT 02, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
+      "jam": "Senin–Sabtu 07.00–17.00 WIB",
+      "maps": "https://maps.google.com",
+      "ig": "#", "fb": "#", "tt": "#", "yt": "#", "sp": "#", "tp": "#",
+      "galeri": ["🪑", "🛏️", "🚪", "🗄️", "🪞"],
+      "products": [
+        { "e": "🪑", "n": "Kursi Jati",  "p": "Rp 350.000"   },
+        { "e": "🛏️", "n": "Dipan Kayu",  "p": "Rp 800.000"   },
+        { "e": "🚪", "n": "Pintu Ukir",  "p": "Rp 1.200.000" },
+        { "e": "🗄️", "n": "Lemari",      "p": "Rp 950.000"   }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jamu Bu Wati",
+      "cat": "Produk Lokal",
+      "emoji": "🌿",
+      "desc": "Produsen jamu tradisional Jawa berbahan rempah segar pilihan dari kebun sendiri. Tersedia jamu kunyit asam, beras kencur, jahe merah, dan berbagai racikan sehat lainnya. Tanpa pengawet, murni alami.",
+      "phone": "6281234567892",
+      "rating": "4.7",
+      "alamat": "RT 01, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
+      "jam": "Setiap hari 05.00–12.00 WIB",
+      "maps": "https://maps.google.com",
+      "ig": "#", "fb": "#", "tt": "#", "yt": "#", "sp": "#", "tp": "#",
+      "galeri": ["🌿", "🫚", "🔴", "🌱", "🫙"],
+      "products": [
+        { "e": "🌿", "n": "Kunyit Asam",  "p": "Rp 5.000/btl" },
+        { "e": "🫚", "n": "Beras Kencur", "p": "Rp 5.000/btl" },
+        { "e": "🔴", "n": "Jahe Merah",   "p": "Rp 7.000/btl" },
+        { "e": "🌱", "n": "Temulawak",    "p": "Rp 6.000/btl" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Catering Mbok Rum",
+      "cat": "Warung",
+      "emoji": "🍱",
+      "desc": "Catering masakan Jawa untuk hajatan, arisan, dan pertemuan. Berpengalaman lebih dari 15 tahun melayani warga dusun dan sekitarnya. Kapasitas hingga 500 porsi dengan menu yang bisa disesuaikan.",
+      "phone": "6281234567893",
+      "rating": "5.0",
+      "alamat": "RT 02, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
+      "jam": "Pesan min. 2 hari sebelumnya",
+      "maps": "https://maps.google.com",
+      "ig": "#", "fb": "#", "tt": "#", "yt": "#", "sp": "#", "tp": "#",
+      "galeri": ["🍱", "🍛", "🥗", "🍢", "🥘"],
+      "products": [
+        { "e": "🍛", "n": "Nasi Kotak",    "p": "Rp 15.000/pcs" },
+        { "e": "🥗", "n": "Tumpeng Mini",  "p": "Rp 200.000"    },
+        { "e": "🍢", "n": "Sate Komplit",  "p": "Rp 35.000/prs" },
+        { "e": "🥘", "n": "Gudeg Kenduri", "p": "Rp 25.000/prs" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bengkel Las Pak Agus",
+      "cat": "Jasa",
+      "emoji": "🔧",
+      "desc": "Jasa pengelasan dan fabrikasi besi untuk kebutuhan rumah tangga dan bangunan. Melayani pembuatan pagar, teralis, kanopi, dan reparasi peralatan besi.",
+      "phone": "6285800000005",
+      "rating": "4.6",
+      "alamat": "RT 01, Dusun Ngemplak, Desa Samping",
+      "jam": "Senin–Sabtu 08.00–17.00 WIB",
+      "maps": "https://maps.google.com",
+      "ig": "#", "fb": "#", "tt": "#", "yt": "#", "sp": "#", "tp": "#",
+      "galeri": ["🔧", "🚧", "🪟", "🏗️", "🔩"],
+      "products": [
+        { "e": "🚧", "n": "Pagar Besi", "p": "Rp 180.000/m"  },
+        { "e": "🪟", "n": "Teralis",    "p": "Rp 150.000/m"  },
+        { "e": "🏗️", "n": "Kanopi",     "p": "Rp 200.000/m²" },
+        { "e": "🔩", "n": "Reparasi",   "p": "Hubungi WA"    }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sawah Pak Karto",
+      "cat": "Pertanian",
+      "emoji": "🌾",
+      "desc": "Petani padi organik lokal. Menjual beras putih dan ketan hasil panen sendiri langsung dari sawah ke konsumen tanpa perantara. Segar, bersih, harga petani.",
+      "phone": "6281500000012",
+      "rating": "4.8",
+      "alamat": "RT 01, Dusun Ngemplak",
+      "jam": "Musim panen: Jan & Jul",
+      "maps": "https://maps.google.com",
+      "ig": "#", "fb": "#", "tt": "#", "yt": "#", "sp": "#", "tp": "#",
+      "galeri": ["🌾", "🍚", "🌿", "🌾", "📦"],
+      "products": [
+        { "e": "🍚", "n": "Beras Putih",  "p": "Rp 12.000/kg" },
+        { "e": "🌾", "n": "Ketan Putih",  "p": "Rp 14.000/kg" },
+        { "e": "🟤", "n": "Ketan Hitam",  "p": "Rp 15.000/kg" },
+        { "e": "📦", "n": "Gabah",        "p": "Rp 5.000/kg"  }
+      ]
+    }
+  ]
+}

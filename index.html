@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIMBAH — Dusun Ngemplak</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS DIPISAH ke file terpisah -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- ===== STATUS BAR ===== -->
+  <div class="sb">
+    <span>09:41</span>
+    <span>📶 🔋 88%</span>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <div class="hdr">
+    <button class="hlogo" onclick="goHome()">
+      <img src="img/logo.png" alt="Logo Ngemplak">
+      <div>
+        <div class="hbrand">SIMBAH</div>
+        <div class="hsub">Dusun Ngemplak</div>
+      </div>
+    </button>
+
+    <!-- Menu navigasi — HANYA tampil di desktop (lihat css/style.css @media) -->
+    <nav class="dnav">
+      <button class="dn-item active" id="dn-beranda" onclick="nav('beranda')">Beranda</button>
+      <button class="dn-item" id="dn-umkm" onclick="nav('umkm')">UMKM</button>
+      <button class="dn-item" id="dn-agenda" onclick="nav('agenda')">Agenda</button>
+      <button class="dn-item" id="dn-kas" onclick="nav('kas')">Kas</button>
+      <button class="dn-item" id="dn-inventaris" onclick="nav('inventaris')">Inventaris</button>
+      <button class="dn-item" id="dn-nyuwun" onclick="nav('nyuwun')">Nyuwun Tulung</button>
+      <button class="dn-item" id="dn-tentang" onclick="nav('tentang')">Tentang</button>
+    </nav>
+
+    <button class="hbtn">
+      <svg viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ===== HALAMAN-HALAMAN ===== -->
+  <div class="pages">
+
+
+    <!-- ========================================
+         BERANDA
+         ======================================== -->
+    <div class="page active" id="p-beranda">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-ey">Desa Samping · Kemiri · Purworejo</div>
+        <div class="hero-ttl">Balai Dusun<br><span>Digital</span> Ngemplak</div>
+        <div class="hero-tag">Informasi & layanan warga dalam satu genggaman.</div>
+        <div class="hero-stats">
+          <div class="hstat"><div class="num">~500</div><div class="lbl">Warga</div></div>
+          <div class="hstat"><div class="num">~40</div><div class="lbl">UMKM</div></div>
+          <div class="hstat"><div class="num">2</div><div class="lbl">RT</div></div>
+        </div>
+      </div>
+
+      <!-- Ticker pengumuman -->
+      <div class="ticker">
+        <div class="tick-ico">📢</div>
+        <div class="tick-txt">
+          Kerja Bakti Minggu 8 Jun 07.00 WIB &nbsp;·&nbsp;
+          Posyandu Balita Kamis 12 Jun &nbsp;·&nbsp;
+          Kliwonan Jum'at 20 Jun Ba'da Isya &nbsp;·&nbsp;
+          Musyawarah Dusun Sabtu 28 Jun 19.30 WIB
+        </div>
+      </div>
+
+      <!-- Grid Layanan -->
+      <div class="sec">
+        <div class="sec-hdr">
+          <div class="sec-ttl">Layanan Warga</div>
+        </div>
+        <div class="bline"></div>
+        <div class="g23">
+          <div class="srv" onclick="nav('umkm')">
+            <div class="sico ib">🏪</div>
+            <span>Lapak Warga</span>
+          </div>
+          <div class="srv" onclick="nav('agenda')">
+            <div class="sico ig">📅</div>
+            <span>Agenda</span>
+          </div>
+          <div class="srv" onclick="nav('kas')">
+            <div class="sico ig">💰</div>
+            <span>Kas Dusun</span>
+          </div>
+          <div class="srv" onclick="nav('inventaris')">
+            <div class="sico ib">📦</div>
+            <span>Inventaris</span>
+          </div>
+          <div class="srv" onclick="nav('nyuwun')">
+            <div class="sico ig">📞</div>
+            <span>Nyuwun Tulung</span>
+          </div>
+          <div class="srv" onclick="nav('tentang')">
+            <div class="sico ib">🏡</div>
+            <span>Tentang</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="div8"></div>
+
+      <!-- Agenda Terdekat -->
+      <div class="sec">
+        <div class="sec-hdr">
+          <div class="sec-ttl">Agenda Terdekat</div>
+          <button class="sec-lnk" onclick="nav('agenda')">Semua →</button>
+        </div>
+        <div class="bline"></div>
+        <div class="ag">
+          <div class="ag-dt"><div class="ag-d">08</div><div class="ag-m">Jun</div></div>
+          <div class="ag-info">
+            <div class="ag-ttl">Kerja Bakti RT 01 & 02</div>
+            <div class="ag-meta">📍 Pertigaan Utama · 07.00 WIB</div>
+          </div>
+          <span class="ag-tag tg">Kerja Bakti</span>
+        </div>
+        <div class="ag">
+          <div class="ag-dt"><div class="ag-d">12</div><div class="ag-m">Jun</div></div>
+          <div class="ag-info">
+            <div class="ag-ttl">Posyandu Balita</div>
+            <div class="ag-meta">📍 Balai Dusun · 08.00 WIB</div>
+          </div>
+          <span class="ag-tag tb">Posyandu</span>
+        </div>
+        <div class="ag">
+          <div class="ag-dt"><div class="ag-d">20</div><div class="ag-m">Jun</div></div>
+          <div class="ag-info">
+            <div class="ag-ttl">Pengajian Kliwonan</div>
+            <div class="ag-meta">📍 Mushola Al-Ikhlas · Ba'da Isya</div>
+          </div>
+          <span class="ag-tag tg">Kliwonan</span>
+        </div>
+      </div>
+
+      <div class="div8"></div>
+
+      <!-- UMKM Unggulan -->
+      <div class="sec" style="padding-bottom:0">
+        <div class="sec-hdr">
+          <div class="sec-ttl">Lapak Warga</div>
+          <button class="sec-lnk" onclick="nav('umkm')">Semua →</button>
+        </div>
+        <div class="bline"></div>
+      </div>
+      <div style="padding:0 16px 16px">
+        <div class="urow">
+          <div class="ucard" onclick="showUMKM(0)">
+            <div class="uimg">🍪<div class="uwa">💬</div></div>
+            <div class="uinfo"><div class="uname">Kue Bu Sari</div><div class="ucat">Produk Lokal</div></div>
+          </div>
+          <div class="ucard" onclick="showUMKM(1)">
+            <div class="uimg">🪑<div class="uwa">💬</div></div>
+            <div class="uinfo"><div class="uname">Mebel Pak Harto</div><div class="ucat">Pertukangan</div></div>
+          </div>
+          <div class="ucard" onclick="showUMKM(2)">
+            <div class="uimg">🌿<div class="uwa">💬</div></div>
+            <div class="uinfo"><div class="uname">Jamu Bu Wati</div><div class="ucat">Produk Lokal</div></div>
+          </div>
+          <div class="ucard" onclick="showUMKM(3)">
+            <div class="uimg">🍱<div class="uwa">💬</div></div>
+            <div class="uinfo"><div class="uname">Catering Mbok Rum</div><div class="ucat">Warung</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="div8"></div>
+
+      <!-- Kas Ringkasan -->
+      <div class="sec">
+        <div class="sec-hdr">
+          <div class="sec-ttl">Transparansi Kas</div>
+          <button class="sec-lnk" onclick="nav('kas')">Detail →</button>
+        </div>
+        <div class="bline"></div>
+        <div class="kas">
+          <div class="kas-lbl">Saldo Kas Dusun</div>
+          <div class="kas-sal">Rp 4.750.000</div>
+          <div class="kas-row">
+            <div class="kas-box">
+              <div class="kb-lbl">↑ Pemasukan</div>
+              <div class="kb-val">Rp 1.200.000</div>
+            </div>
+            <div class="kas-box">
+              <div class="kb-lbl">↓ Pengeluaran</div>
+              <div class="kb-val">Rp 850.000</div>
+            </div>
+          </div>
+          <div class="kas-upd">Diperbarui: 1 Juni 2025</div>
+          <a class="kas-detail" href="https://docs.google.com/spreadsheets" target="_blank">
+            📊 Lihat Detail di Google Sheet →
+          </a>
+        </div>
+      </div>
+
+      <div class="div8"></div>
+
+      <!-- Inventaris Ringkasan -->
+      <div class="sec">
+        <div class="sec-hdr">
+          <div class="sec-ttl">Inventaris Dusun</div>
+          <button class="sec-lnk" onclick="nav('inventaris')">Semua →</button>
+        </div>
+        <div class="bline"></div>
+        <div class="inv">
+          <div class="iico">🔊</div>
+          <div style="flex:1"><div class="inm">Sound System</div><div class="idet">2 unit · Pak Suroto</div></div>
+          <span class="ibadge ibg">Baik</span>
+        </div>
+        <div class="inv">
+          <div class="iico">⛺</div>
+          <div style="flex:1"><div class="inm">Tenda Tarup</div><div class="idet">4 unit · Pak Kamijan</div></div>
+          <span class="ibadge ibg">Baik</span>
+        </div>
+        <div class="inv">
+          <div class="iico">💡</div>
+          <div style="flex:1"><div class="inm">Genset 5000W</div><div class="idet">1 unit · Pak Suroto</div></div>
+          <span class="ibadge ibb">Perlu Cek</span>
+        </div>
+      </div>
+
+      <div class="div8"></div>
+
+      <!-- Nyuwun Tulung Ringkasan -->
+      <div class="sec">
+        <div class="sec-hdr">
+          <div class="sec-ttl">Nyuwun Tulung 📞</div>
+          <button class="sec-lnk" onclick="nav('nyuwun')">Semua →</button>
+        </div>
+        <div class="bline"></div>
+        <div class="nt-card">
+          <div class="nt-av av-g">👨‍💼</div>
+          <div>
+            <div class="nt-role">Kepala Dusun</div>
+            <div class="nt-name">Bpk. Rudi Santoso</div>
+            <div class="nt-num">0812-xxxx-xxxx</div>
+          </div>
+          <a class="nt-wa" href="https://wa.me/6281200000001" target="_blank">💬 WA</a>
+        </div>
+        <div class="nt-card">
+          <div class="nt-av av-b">👩‍⚕️</div>
+          <div>
+            <div class="nt-role">Bidan Desa</div>
+            <div class="nt-name">Bu Siti Rahayu</div>
+            <div class="nt-num">0813-xxxx-xxxx</div>
+          </div>
+          <a class="nt-wa" href="https://wa.me/6281300000002" target="_blank">💬 WA</a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="ft-brand">
+          <img class="ft-logo" src="img/logo.png" alt="Logo">
+          <div>
+            <div class="ft-name">Dusun Ngemplak</div>
+            <div class="ft-sub">Tumbuh Bersama, Maju Berkelanjutan</div>
+          </div>
+        </div>
+        <div class="ft-desc">
+          SIMBAH adalah balai dusun digital Dusun Ngemplak — tempat warga mengakses
+          informasi, layanan, dan direktori komunitas dalam satu platform yang mudah digunakan.
+        </div>
+        <div class="ft-contact">
+          <a class="ft-citem" href="mailto:samxngemplak@gmail.com">
+            <div class="ft-cico">✉️</div>
+            <span class="ft-cval">samxngemplak@gmail.com</span>
+          </a>
+          <a class="ft-citem" href="https://wa.me/6282241439784" target="_blank">
+            <div class="ft-cico">💬</div>
+            <span class="ft-cval">0822-4143-9784</span>
+          </a>
+        </div>
+        <div class="ft-copy">© 2025 Dusun Ngemplak · SIMBAH v1.0</div>
+      </div>
+
+    </div><!-- /p-beranda -->
+
+
+    <!-- ========================================
+         AGENDA
+         ======================================== -->
+    <div class="page" id="p-agenda">
+
+      <!-- Header halaman -->
+      <div class="phdr">
+        <button class="pback" onclick="goBack()">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          <span>Kembali</span>
+        </button>
+        <div class="pttl">Agenda Dusun</div>
+        <div class="psub">Jadwal kegiatan & pengumuman warga</div>
+      </div>
+
+      <!-- Isi agenda -->
+      <div style="flex:1; overflow-y:auto; padding-bottom:20px">
+        <div class="ag-month-lbl">Juni 2025</div>
+
+        <div style="padding:0 16px">
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">08</div><div class="ag-m">Jun</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Kerja Bakti RT 01 & 02</div>
+              <div class="ag-meta">📍 Pertigaan Utama · ⏰ 07.00 WIB</div>
+            </div>
+            <span class="ag-tag tg">Kerja Bakti</span>
+          </div>
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">12</div><div class="ag-m">Jun</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Posyandu Balita</div>
+              <div class="ag-meta">📍 Balai Dusun · ⏰ 08.00 WIB</div>
+            </div>
+            <span class="ag-tag tb">Posyandu</span>
+          </div>
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">15</div><div class="ag-m">Jun</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Hajatan Anak Pak Sunar</div>
+              <div class="ag-meta">📍 Rumah Pak Sunar RT 02 · ⏰ 09.00 WIB</div>
+            </div>
+            <span class="ag-tag tb">Hajatan</span>
+          </div>
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">20</div><div class="ag-m">Jun</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Pengajian Kliwonan</div>
+              <div class="ag-meta">📍 Mushola Al-Ikhlas · ⏰ Ba'da Isya</div>
+            </div>
+            <span class="ag-tag tg">Kliwonan</span>
+          </div>
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">28</div><div class="ag-m">Jun</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Musyawarah Dusun</div>
+              <div class="ag-meta">📍 Balai Dusun · ⏰ 19.30 WIB</div>
+            </div>
+            <span class="ag-tag tg">Rapat</span>
+          </div>
+        </div>
+
+        <div class="ag-month-lbl">Juli 2025</div>
+        <div style="padding:0 16px">
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">10</div><div class="ag-m">Jul</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Posyandu Balita</div>
+              <div class="ag-meta">📍 Balai Dusun · ⏰ 08.00 WIB</div>
+            </div>
+            <span class="ag-tag tb">Posyandu</span>
+          </div>
+          <div class="ag">
+            <div class="ag-dt"><div class="ag-d">18</div><div class="ag-m">Jul</div></div>
+            <div class="ag-info">
+              <div class="ag-ttl">Pengajian Kliwonan</div>
+              <div class="ag-meta">📍 Mushola Al-Ikhlas · ⏰ Ba'da Isya</div>
+            </div>
+            <span class="ag-tag tg">Kliwonan</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /p-agenda -->
+
+
+    <!-- ========================================
+         UMKM - DAFTAR
+         ======================================== -->
+    <div class="page" id="p-umkm">
+
+      <!-- Header halaman -->
+      <div class="phdr">
+        <button class="pback" onclick="goBack()">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          <span>Kembali</span>
+        </button>
+        <div class="pttl">Lapak Warga</div>
+        <div class="psub">UMKM & usaha warga Dusun Ngemplak</div>
+      </div>
+
+      <!-- Filter chip -->
+      <div class="filter-row">
+        <button class="fchip active">Semua</button>
+        <button class="fchip">Produk Lokal</button>
+        <button class="fchip">Warung</button>
+        <button class="fchip">Pertukangan</button>
+        <button class="fchip">Jasa</button>
+        <button class="fchip">Pertanian</button>
+      </div>
+
+      <!-- Grid UMKM — diisi oleh JavaScript -->
+      <div class="ugrid" id="umkm-grid"></div>
+
+    </div><!-- /p-umkm -->
+
+
+    <!-- ========================================
+         UMKM - DETAIL (Landing Page)
+         ======================================== -->
+    <div class="page" id="p-umkm-detail">
+
+      <!-- Foto cover + tombol navigasi -->
+      <div class="ud-cover" id="ud-cover">
+        🍪
+        <button class="ud-back" onclick="goBack()">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="ud-share">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+        </button>
+      </div>
+
+      <!-- Strip logo + nama -->
+      <div class="ud-logo-strip">
+        <div class="ud-logo-box" id="ud-logo">🍪</div>
+        <div>
+          <div class="ud-bname" id="ud-name">Nama Usaha</div>
+          <div class="ud-bcat" id="ud-cat">Kategori</div>
+        </div>
+        <div class="rating-pill">
+          <span>⭐</span>
+          <span class="rn" id="ud-rating">5.0</span>
+        </div>
+      </div>
+
+      <!-- Konten detail — scrollable -->
+      <div style="flex:1; overflow-y:auto">
+        <div class="ud-body">
+
+          <!-- Deskripsi -->
+          <div class="ud-desc" id="ud-desc">Deskripsi usaha...</div>
+
+          <!-- Tombol WA & Maps -->
+          <div class="cta-grp">
+            <a class="cta-wa" id="ud-wa-btn" href="#" target="_blank">💬 Chat WhatsApp</a>
+            <a class="cta-map" id="ud-map-btn" href="#" target="_blank">📍 Buka Maps</a>
+          </div>
+
+          <!-- Info operasional -->
+          <div class="ud-sec">
+            <div class="ud-sec-ttl">Informasi</div>
+            <div class="irow">
+              <div class="irico">📍</div>
+              <div><div class="irlbl">Alamat</div><div class="irval" id="ud-alamat">-</div></div>
+            </div>
+            <div class="irow">
+              <div class="irico">🕐</div>
+              <div><div class="irlbl">Jam Buka</div><div class="irval" id="ud-jam">-</div></div>
+            </div>
+            <div class="irow">
+              <div class="irico">📞</div>
+              <div><div class="irlbl">Telepon</div><div class="irval" id="ud-phone">-</div></div>
+            </div>
+          </div>
+
+          <!-- Peta lokasi -->
+          <a class="mapsbox" id="ud-maps-link" href="#" target="_blank">
+            <div class="mico">🗺️</div>
+            <div class="mlbl">Buka di Google Maps</div>
+            <div class="maddr" id="ud-maps-addr">-</div>
+          </a>
+
+          <!-- Galeri -->
+          <div class="ud-sec">
+            <div class="ud-sec-ttl">Galeri Foto</div>
+            <div class="galeri" id="ud-galeri"></div>
+          </div>
+
+          <!-- Produk/Jasa -->
+          <div class="ud-sec">
+            <div class="ud-sec-ttl">Produk & Jasa</div>
+            <div class="prow" id="ud-products"></div>
+          </div>
+
+          <!-- Sosmed & Marketplace -->
+          <div class="ud-sec">
+            <div class="ud-sec-ttl">Media Sosial & Marketplace</div>
+            <div class="sosmed-g">
+              <a class="sb-btn" id="ud-ig" href="#" target="_blank">
+                <div class="sb-ico">📸</div>
+                <div class="sb-lbl">Instagram</div>
+              </a>
+              <a class="sb-btn" id="ud-fb" href="#" target="_blank">
+                <div class="sb-ico">👥</div>
+                <div class="sb-lbl">Facebook</div>
+              </a>
+              <a class="sb-btn" id="ud-tt" href="#" target="_blank">
+                <div class="sb-ico">🎵</div>
+                <div class="sb-lbl">TikTok</div>
+              </a>
+              <a class="sb-btn" id="ud-yt" href="#" target="_blank">
+                <div class="sb-ico">▶️</div>
+                <div class="sb-lbl">YouTube</div>
+              </a>
+              <a class="sb-btn" id="ud-sp" href="#" target="_blank">
+                <div class="sb-ico">🛍️</div>
+                <div class="sb-lbl">Shopee</div>
+              </a>
+              <a class="sb-btn" id="ud-tp" href="#" target="_blank">
+                <div class="sb-ico">🟢</div>
+                <div class="sb-lbl">Tokopedia</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tombol WA bawah -->
+          <a class="cta-wa" id="ud-wa2" href="#" target="_blank"
+             style="display:flex; margin-top:8px; border-radius:10px; padding:13px">
+            💬 Hubungi via WhatsApp
+          </a>
+
+        </div>
+      </div>
+
+    </div><!-- /p-umkm-detail -->
+
+
+    <!-- ========================================
+         KAS
+         ======================================== -->
+    <div class="page" id="p-kas">
+
+      <div class="phdr">
+        <button class="pback" onclick="goBack()">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          <span>Kembali</span>
+        </button>
+        <div class="pttl">Transparansi Kas</div>
+        <div class="psub">Keuangan Dusun Ngemplak · Juni 2025</div>
+      </div>
+
+      <div style="flex:1; overflow-y:auto">
+        <div class="sec">
+          <div class="kas">
+            <div class="kas-lbl">Saldo Kas Dusun</div>
+            <div class="kas-sal">Rp 4.750.000</div>
+            <div class="kas-row">
+              <div class="kas-box">
+                <div class="kb-lbl">↑ Pemasukan</div>
+                <div class="kb-val">Rp 1.200.000</div>
+              </div>
+              <div class="kas-box">
+                <div class="kb-lbl">↓ Pengeluaran</div>
+                <div class="kb-val">Rp 850.000</div>
+              </div>
+            </div>
+            <div class="kas-upd">Diperbarui: 1 Juni 2025</div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Riwayat Transaksi</div></div>
+          <div class="bline"></div>
+
+          <div class="trx">
+            <div class="trx-ico trx-in">💰</div>
+            <div class="trx-desc">
+              <div class="trx-nm">Iuran Warga Bulan Juni</div>
+              <div class="trx-dt">1 Jun 2025 · RT 01 & 02</div>
+            </div>
+            <div class="trx-val tv-in">+Rp 600.000</div>
+          </div>
+          <div class="trx">
+            <div class="trx-ico trx-in">💰</div>
+            <div class="trx-desc">
+              <div class="trx-nm">Donasi Perangkat Dusun</div>
+              <div class="trx-dt">3 Jun 2025</div>
+            </div>
+            <div class="trx-val tv-in">+Rp 600.000</div>
+          </div>
+          <div class="trx">
+            <div class="trx-ico trx-out">🧾</div>
+            <div class="trx-desc">
+              <div class="trx-nm">Perlengkapan Kerja Bakti</div>
+              <div class="trx-dt">7 Jun 2025</div>
+            </div>
+            <div class="trx-val tv-out">-Rp 250.000</div>
+          </div>
+          <div class="trx">
+            <div class="trx-ico trx-out">🧾</div>
+            <div class="trx-desc">
+              <div class="trx-nm">Konsumsi Posyandu</div>
+              <div class="trx-dt">12 Jun 2025</div>
+            </div>
+            <div class="trx-val tv-out">-Rp 350.000</div>
+          </div>
+          <div class="trx">
+            <div class="trx-ico trx-out">🧾</div>
+            <div class="trx-desc">
+              <div class="trx-nm">Alat Tulis Rapat RT</div>
+              <div class="trx-dt">15 Jun 2025</div>
+            </div>
+            <div class="trx-val tv-out">-Rp 100.000</div>
+          </div>
+          <div class="trx">
+            <div class="trx-ico trx-in">💰</div>
+            <div class="trx-desc">
+              <div class="trx-nm">Hasil Parkir Hajatan</div>
+              <div class="trx-dt">15 Jun 2025</div>
+            </div>
+            <div class="trx-val tv-in">+Rp 150.000</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /p-kas -->
+
+
+    <!-- ========================================
+         INVENTARIS
+         ======================================== -->
+    <div class="page" id="p-inventaris">
+
+      <div class="phdr">
+        <button class="pback" onclick="goBack()">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          <span>Kembali</span>
+        </button>
+        <div class="pttl">Inventaris Dusun</div>
+        <div class="psub">Daftar aset & barang milik dusun</div>
+      </div>
+
+      <div style="flex:1; overflow-y:auto">
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Aset Elektronik</div></div>
+          <div class="bline"></div>
+          <div class="inv">
+            <div class="iico">🔊</div>
+            <div style="flex:1"><div class="inm">Sound System</div><div class="idet">2 unit · Pengelola: Pak Suroto</div></div>
+            <span class="ibadge ibg">Baik</span>
+          </div>
+          <a class="pj-wa" href="https://wa.me/6281200000010" target="_blank">💬 Hubungi Pengelola</a>
+
+          <div class="inv">
+            <div class="iico">💡</div>
+            <div style="flex:1"><div class="inm">Genset 5000W</div><div class="idet">1 unit · Pengelola: Pak Suroto</div></div>
+            <span class="ibadge ibb">Perlu Cek</span>
+          </div>
+          <a class="pj-wa" href="https://wa.me/6281200000010" target="_blank">💬 Hubungi Pengelola</a>
+        </div>
+
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Perlengkapan Hajatan</div></div>
+          <div class="bline"></div>
+          <div class="inv">
+            <div class="iico">⛺</div>
+            <div style="flex:1"><div class="inm">Tenda Tarup</div><div class="idet">4 unit · Pengelola: Pak Kamijan</div></div>
+            <span class="ibadge ibg">Baik</span>
+          </div>
+          <a class="pj-wa" href="https://wa.me/6281200000011" target="_blank">💬 Hubungi Pengelola</a>
+
+          <div class="inv">
+            <div class="iico">🪑</div>
+            <div style="flex:1"><div class="inm">Kursi Plastik</div><div class="idet">100 unit · Pengelola: Pak Kamijan</div></div>
+            <span class="ibadge ibg">Baik</span>
+          </div>
+          <a class="pj-wa" href="https://wa.me/6281200000011" target="_blank">💬 Hubungi Pengelola</a>
+
+          <div class="inv">
+            <div class="iico">🍽️</div>
+            <div style="flex:1"><div class="inm">Meja Lipat</div><div class="idet">20 unit · Pengelola: Pak Kamijan</div></div>
+            <span class="ibadge ibr">Rusak 2</span>
+          </div>
+          <a class="pj-wa" href="https://wa.me/6281200000011" target="_blank">💬 Hubungi Pengelola</a>
+        </div>
+      </div>
+
+    </div><!-- /p-inventaris -->
+
+
+    <!-- ========================================
+         NYUWUN TULUNG
+         ======================================== -->
+    <div class="page" id="p-nyuwun">
+
+      <div class="phdr">
+        <button class="pback" onclick="goBack()">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          <span>Kembali</span>
+        </button>
+        <div class="pttl">Nyuwun Tulung</div>
+        <div class="psub">Kontak penting warga Dusun Ngemplak</div>
+      </div>
+
+      <div style="flex:1; overflow-y:auto">
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Perangkat Dusun</div></div>
+          <div class="bline"></div>
+          <div class="nt-card">
+            <div class="nt-av av-g">👨‍💼</div>
+            <div><div class="nt-role">Kepala Dusun</div><div class="nt-name">Bpk. Rudi Santoso</div><div class="nt-num">0812-xxxx-xxxx</div></div>
+            <a class="nt-wa" href="https://wa.me/6281200000001" target="_blank">💬 WA</a>
+          </div>
+          <div class="nt-card">
+            <div class="nt-av av-b">👨‍💼</div>
+            <div><div class="nt-role">Ketua RW</div><div class="nt-name">Bpk. Hendra Wijaya</div><div class="nt-num">0813-xxxx-xxxx</div></div>
+            <a class="nt-wa" href="https://wa.me/6281300000002" target="_blank">💬 WA</a>
+          </div>
+          <div class="nt-card">
+            <div class="nt-av av-g">👨‍💼</div>
+            <div><div class="nt-role">Ketua RT 01</div><div class="nt-name">Bpk. Suparman</div><div class="nt-num">0856-xxxx-xxxx</div></div>
+            <a class="nt-wa" href="https://wa.me/6285600000003" target="_blank">💬 WA</a>
+          </div>
+          <div class="nt-card">
+            <div class="nt-av av-g">👨‍💼</div>
+            <div><div class="nt-role">Ketua RT 02</div><div class="nt-name">Bpk. Widodo</div><div class="nt-num">0857-xxxx-xxxx</div></div>
+            <a class="nt-wa" href="https://wa.me/6285700000004" target="_blank">💬 WA</a>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Layanan Kesehatan</div></div>
+          <div class="bline"></div>
+          <div class="nt-card">
+            <div class="nt-av av-b">👩‍⚕️</div>
+            <div><div class="nt-role">Bidan Desa</div><div class="nt-name">Bu Siti Rahayu</div><div class="nt-num">0813-xxxx-xxxx</div></div>
+            <a class="nt-wa" href="https://wa.me/6281300000005" target="_blank">💬 WA</a>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Keamanan & Darurat</div></div>
+          <div class="bline"></div>
+          <div class="nt-card">
+            <div class="nt-av av-g">👮</div>
+            <div><div class="nt-role">Babinsa</div><div class="nt-name">Sertu Teguh</div><div class="nt-num">0811-xxxx-xxxx</div></div>
+            <a class="nt-wa" href="https://wa.me/6281100000006" target="_blank">💬 WA</a>
+          </div>
+          <div class="nt-card">
+            <div class="nt-av av-b">🚑</div>
+            <div><div class="nt-role">Ambulans Desa</div><div class="nt-name">IGD Puskesmas Kemiri</div><div class="nt-num">0274-xxx-xxx</div></div>
+            <a class="nt-wa" href="tel:0274000000" style="background:#2563eb">📞 Telp</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /p-nyuwun -->
+
+
+    <!-- ========================================
+         TENTANG DUSUN
+         ======================================== -->
+    <div class="page" id="p-tentang">
+
+      <div style="flex:1; overflow-y:auto">
+
+        <!-- Hero Tentang -->
+        <div class="tentang-hero">
+          <button class="pback" onclick="goBack()" style="margin-bottom:12px">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            <span>Kembali</span>
+          </button>
+          <img class="tentang-logo" src="img/logo.png" alt="Logo Ngemplak">
+          <div class="tentang-name">Dusun Ngemplak</div>
+          <div class="tentang-loc">📍 Desa Samping, Kemiri, Purworejo, Jawa Tengah</div>
+        </div>
+
+        <!-- Profil -->
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Profil Dusun</div></div>
+          <div class="bline"></div>
+          <p style="font-size:13px; color:#4A5E52; line-height:1.7">
+            Dusun Ngemplak adalah salah satu dusun di Desa Samping, Kecamatan Kemiri,
+            Kabupaten Purworejo, Jawa Tengah. Dusun ini dihuni oleh sekitar 500 warga
+            yang tersebar di 2 RT dengan mata pencaharian utama di bidang pertanian,
+            perdagangan, dan kerajinan.
+          </p>
+        </div>
+
+        <!-- Pengurus -->
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Struktur Pengurus</div></div>
+          <div class="bline"></div>
+          <div class="org-card">
+            <div class="org-av av-g">👨‍💼</div>
+            <div><div class="org-role">Kepala Dusun</div><div class="org-name">Bpk. Rudi Santoso</div></div>
+          </div>
+          <div class="org-card">
+            <div class="org-av av-b">👨‍💼</div>
+            <div><div class="org-role">Ketua RW</div><div class="org-name">Bpk. Hendra Wijaya</div></div>
+          </div>
+          <div class="org-card">
+            <div class="org-av av-g">👨‍💼</div>
+            <div><div class="org-role">Ketua RT 01</div><div class="org-name">Bpk. Suparman</div></div>
+          </div>
+          <div class="org-card">
+            <div class="org-av av-g">👨‍💼</div>
+            <div><div class="org-role">Ketua RT 02</div><div class="org-name">Bpk. Widodo</div></div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <div class="ft-brand">
+            <img class="ft-logo" src="img/logo.png" alt="Logo">
+            <div>
+              <div class="ft-name">Dusun Ngemplak</div>
+              <div class="ft-sub">Tumbuh Bersama, Maju Berkelanjutan</div>
+            </div>
+          </div>
+          <div class="ft-managed">Dikelola oleh Tim SIMBAH Dusun Ngemplak</div>
+          <div class="ft-copy">© 2025 Dusun Ngemplak · SIMBAH v1.0</div>
+        </div>
+
+      </div>
+
+    </div><!-- /p-tentang -->
+
+
+  </div><!-- /pages -->
+
+
+  <!-- ===== BOTTOM NAVIGATION ===== -->
+  <nav class="bnav">
+    <button class="ni active" id="bn-beranda" onclick="nav('beranda')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Beranda</span>
+    </button>
+    <button class="ni" id="bn-umkm" onclick="nav('umkm')">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span>UMKM</span>
+    </button>
+
+    <!-- Tombol menu tengah -->
+    <button class="ni-menu" id="bn-menu" onclick="toggleMenu()">
+      <div class="bubble">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </div>
+      <span>Menu</span>
+    </button>
+
+    <button class="ni" id="bn-nyuwun" onclick="nav('nyuwun')">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.57 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.72 6.72l1.27-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Tulung</span>
+    </button>
+    <button class="ni" id="bn-agenda" onclick="nav('agenda')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Agenda</span>
+    </button>
+  </nav>
+
+
+  <!-- ===== BOTTOM SHEET MENU ===== -->
+  <div class="sheet-overlay" id="overlay" onclick="closeMenu()"></div>
+  <div class="sheet" id="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">📋 Menu SIMBAH</div>
+
+    <button class="sheet-item" onclick="menuNav('kas')">
+      <div class="si-ico si-g">💰</div>
+      <div><div class="si-ttl">Transparansi Kas</div><div class="si-sub">Lihat keuangan dusun</div></div>
+      <span class="si-arrow">›</span>
+    </button>
+    <button class="sheet-item" onclick="menuNav('inventaris')">
+      <div class="si-ico si-b">📦</div>
+      <div><div class="si-ttl">Inventaris Dusun</div><div class="si-sub">Daftar aset & barang</div></div>
+      <span class="si-arrow">›</span>
+    </button>
+    <button class="sheet-item" onclick="menuNav('tentang')">
+      <div class="si-ico si-g">🏡</div>
+      <div><div class="si-ttl">Tentang Dusun</div><div class="si-sub">Profil & struktur pengurus</div></div>
+      <span class="si-arrow">›</span>
+    </button>
+  </div>
+
+
+</div><!-- /phone -->
+
+
+<!-- ===== JAVASCRIPT DIPISAH ke file terpisah ===== -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
