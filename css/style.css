@@ -1484,6 +1484,13 @@ body {
   margin-bottom: 14px;
 }
 
+.ft-addr {
+  font-size: 11px;
+  color: rgba(255, 255, 255, .65);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
 .ft-contact    { margin-bottom: 14px; }
 .ft-citem {
   display: flex;
@@ -1506,20 +1513,23 @@ body {
 .ft-cval { font-size: 11px; color: rgba(255, 255, 255, .8); font-weight: 500; }
 
 .ft-social-ttl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: rgba(255, 255, 255, .45); margin-bottom: 8px; }
-.ft-socials    { display: flex; gap: 7px; margin-bottom: 14px; }
+.ft-socials    { display: flex; gap: 9px; margin-bottom: 14px; }
 .ft-soc {
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, .12);
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, .95);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
   cursor: pointer;
   text-decoration: none;
   border: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
+.ft-soc:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,.18); }
+.ft-soc svg { width: 18px; height: 18px; display: block; }
 
 .ft-managed { font-size: 10px; color: rgba(255, 255, 255, .4); margin-bottom: 4px; }
 .ft-copy {
