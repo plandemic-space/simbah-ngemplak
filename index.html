@@ -739,12 +739,185 @@
         <div class="sec">
           <div class="sec-hdr"><div class="sec-ttl">Profil Dusun</div></div>
           <div class="bline"></div>
-          <p style="font-size:13px; color:#4A5E52; line-height:1.7">
-            Dusun Ngemplak adalah salah satu dusun di Desa Samping, Kecamatan Kemiri,
-            Kabupaten Purworejo, Jawa Tengah. Dusun ini dihuni oleh sekitar 500 warga
-            yang tersebar di 2 RT dengan mata pencaharian utama di bidang pertanian,
-            perdagangan, dan kerajinan.
+          <p style="font-size:13px; color:var(--tx2); line-height:1.7">
+            Dusun Ngemplak merupakan salah satu wilayah pedukuhan yang berada di Desa Samping,
+            Kecamatan Kemiri, Kabupaten Purworejo, Provinsi Jawa Tengah. Dusun ini dikenal sebagai
+            lingkungan masyarakat yang menjunjung tinggi nilai gotong royong, kerukunan, serta
+            kehidupan sosial yang harmonis.
           </p>
+          <p style="font-size:13px; color:var(--tx2); line-height:1.7; margin-top:10px">
+            Dalam bidang ekonomi, masyarakat memiliki mata pencaharian yang beragam — selain
+            pertanian, perkebunan, dan peternakan, warga juga mengembangkan usaha perdagangan,
+            jasa, industri rumahan, serta berbagai kegiatan ekonomi produktif lainnya.
+          </p>
+          <div class="motto-box">
+            <div class="motto-label">Motto Dusun</div>
+            <div class="motto-text">"Guyub Rukun, Maju Bebarengan."</div>
+          </div>
+        </div>
+
+        <!-- Visi & Misi -->
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Visi & Misi</div></div>
+          <div class="bline"></div>
+          <div class="visi-box">
+            <div class="visi-label">Visi</div>
+            <div class="visi-text">"Terwujudnya Dusun Ngemplak yang Aman, Rukun, Mandiri, Berbudaya, dan Sejahtera melalui Semangat Gotong Royong serta Partisipasi Masyarakat."</div>
+          </div>
+          <div class="misi-label">Misi</div>
+          <ul class="misi-list">
+            <li>Meningkatkan kualitas pelayanan kepada masyarakat secara transparan, cepat, dan responsif.</li>
+            <li>Mendorong pembangunan sarana dan prasarana yang bermanfaat bagi seluruh warga.</li>
+            <li>Mengembangkan potensi ekonomi masyarakat berbasis sumber daya lokal.</li>
+            <li>Menjaga keamanan, ketertiban, dan kerukunan antarwarga.</li>
+            <li>Melestarikan budaya, tradisi, dan kearifan lokal sebagai identitas dusun.</li>
+            <li>Mendorong keterlibatan generasi muda dalam pembangunan dan kegiatan sosial kemasyarakatan.</li>
+          </ul>
+        </div>
+
+        <!-- Data Wilayah — PLACEHOLDER, menunggu data asli dari pengelola -->
+        <div class="sec">
+          <div class="sec-hdr"><div class="sec-ttl">Data Wilayah</div></div>
+          <div class="bline"></div>
+          <div class="datawilayah-grid">
+            <div class="dw-item"><div class="dw-lbl">Jumlah RT</div><div class="dw-val dw-pending">Akan diperbarui</div></div>
+            <div class="dw-item"><div class="dw-lbl">Jumlah RW</div><div class="dw-val dw-pending">Akan diperbarui</div></div>
+            <div class="dw-item"><div class="dw-lbl">Kepala Keluarga</div><div class="dw-val dw-pending">Akan diperbarui</div></div>
+            <div class="dw-item"><div class="dw-lbl">Jumlah Penduduk</div><div class="dw-val dw-pending">Akan diperbarui</div></div>
+            <div class="dw-item"><div class="dw-lbl">Luas Wilayah</div><div class="dw-val dw-pending">Akan diperbarui</div></div>
+          </div>
+          <div style="font-size:10px; color:var(--tx3); margin-top:8px; line-height:1.5">
+            Data kependudukan & batas wilayah sedang dilengkapi oleh pengelola. Halaman ini akan diperbarui begitu data resmi tersedia.
+          </div>
+        </div>
+
+        <!-- Sejarah — collapsible, default tertutup supaya halaman utama tetap ringkas.
+             Isi LENGKAP sesuai dokumen sejarah asli, hanya presentasinya yang disembunyikan
+             di balik tombol expand — kontennya TIDAK diringkas/dipotong. -->
+        <div class="sec">
+          <button class="sejarah-toggle" id="sejarah-toggle-btn" onclick="toggleSejarah()">
+            <div class="sec-hdr" style="margin-bottom:0; flex:1">
+              <div class="sec-ttl">Sejarah Dusun</div>
+            </div>
+            <svg class="sejarah-chevron" id="sejarah-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="bline"></div>
+          <div class="sejarah-preview">
+            Sebagian besar sejarah Dusun Ngemplak diwariskan secara lisan oleh para sesepuh —
+            mulai dari asal-usul nama, para perintis dusun, masa Perang Jawa, hingga asal Masjid Al-Iman.
+          </div>
+
+          <div class="sejarah-content" id="sejarah-content">
+
+            <div class="sejarah-h">Asal-Usul Nama</div>
+            <p class="sejarah-p">
+              Hingga saat ini belum ditemukan catatan tertulis yang secara pasti menjelaskan
+              asal-usul nama Dusun Ngemplak maupun Desa Samping. Dalam penuturan masyarakat
+              setempat, nama "Samping" sering dikaitkan dengan posisi wilayah yang berada di
+              sisi atau bagian tertentu dari kawasan penting pada masa lampau. Sementara itu,
+              nama "Ngemplak" oleh sebagian masyarakat dihubungkan dengan kondisi lahan yang
+              relatif terbuka dan lapang.
+            </p>
+            <p class="sejarah-p">
+              Penafsiran tersebut merupakan bagian dari sejarah lokal yang masih memerlukan
+              penelitian lebih lanjut dan terbuka untuk penyempurnaan apabila ditemukan sumber
+              yang lebih lengkap di masa mendatang.
+            </p>
+
+            <div class="sejarah-h">Para Perintis dan Sesepuh Dusun</div>
+            <p class="sejarah-p">
+              Perkembangan awal Dusun Ngemplak tidak dapat dilepaskan dari peran para tokoh
+              agama, sesepuh masyarakat, serta para perintis yang membangun kehidupan sosial
+              dan keagamaan di wilayah ini. Tokoh-tokoh yang dikenal dan dihormati antara lain:
+            </p>
+            <ul class="sejarah-list">
+              <li>Mbah KH Abdul Jamal</li>
+              <li>Mbah KH Abdul Rosyid</li>
+              <li>Mbah KH Asy'ari (Jetak, Kroyo Lor)</li>
+              <li>Mbah KH Bunyamin</li>
+              <li>Mbah KH Daiman</li>
+              <li>Mbah Kyai Ahmad Khondili (Jetak, Kroyo Lor)</li>
+              <li>Mbah Kyai Mahmudi</li>
+              <li>Mbah Kyai Rusman</li>
+              <li>Mbah Kyai Sudiyono</li>
+            </ul>
+            <p class="sejarah-p">
+              Para tokoh tersebut memiliki kontribusi penting dalam membangun kehidupan
+              keagamaan, pendidikan masyarakat, serta nilai-nilai sosial yang masih diwariskan
+              hingga sekarang.
+            </p>
+
+            <div class="sejarah-h">Dusun Ngemplak pada Masa Perang Jawa (1825–1830)</div>
+            <p class="sejarah-p">
+              Menurut tradisi lisan yang berkembang di masyarakat, wilayah Kemiri yang pada masa
+              lampau dikenal sebagai bagian dari Karangduwur memiliki keterkaitan dengan berbagai
+              peristiwa yang terjadi selama Perang Jawa atau Perang Diponegoro pada tahun
+              1825–1830. Kondisi geografis wilayah yang berupa perbukitan, lembah, serta kawasan
+              berhutan menjadikan daerah ini strategis sebagai jalur pergerakan dan pertahanan
+              kelompok-kelompok pejuang pada masa itu.
+            </p>
+            <p class="sejarah-p">
+              Dalam berbagai cerita yang diwariskan secara turun-temurun, nama Kyai Abdul Jamal
+              disebut sebagai tokoh yang berperan dalam perjuangan di wilayah Karangduwur dan
+              sekitarnya. Beliau dikenang sebagai ulama sekaligus pemimpin masyarakat yang
+              memiliki pengaruh besar pada zamannya. Masyarakat meyakini bahwa Dusun Ngemplak
+              pernah menjadi salah satu titik pertahanan dan tempat berkumpulnya para pejuang.
+            </p>
+            <p class="sejarah-p">
+              Cerita mengenai "kebal terhadap bom" yang sering dikaitkan dengan Kyai Abdul Jamal
+              dipahami oleh masyarakat sebagai simbol keberhasilan beliau dalam memanfaatkan
+              kondisi alam dan strategi pertahanan untuk melindungi warga dari ancaman peperangan
+              pada masa itu.
+            </p>
+            <div class="sejarah-disclaimer">
+              ℹ️ Sebagian besar kisah ini berasal dari tradisi lisan masyarakat dan belum
+              seluruhnya dapat diverifikasi melalui sumber tertulis. Cerita-cerita tersebut
+              tetap menjadi bagian penting dari identitas budaya masyarakat Dusun Ngemplak.
+            </div>
+
+            <div class="sejarah-h">Masjid Al-Iman dan Warisan Sejarah Dusun</div>
+            <p class="sejarah-p">
+              Salah satu bangunan bersejarah bagi masyarakat Dusun Ngemplak adalah Masjid
+              Al-Iman. Menurut penuturan para sesepuh, keberadaan masjid ini memiliki
+              keterkaitan dengan sebuah pohon jati tua yang dahulu berada di kawasan pemakaman
+              dusun, yang dipercaya menjadi penanda kawasan makam para tokoh terdahulu.
+            </p>
+            <p class="sejarah-p">
+              Ketika pohon tersebut telah mencapai usia yang sangat tua, kayunya dimanfaatkan
+              untuk pembangunan Masjid Al-Iman. Batang utama pohon jati tersebut digunakan
+              sebagai empat saka guru atau tiang utama masjid yang hingga kini masih berdiri
+              kokoh — menjadi simbol persatuan, kebersamaan, dan kesinambungan sejarah
+              masyarakat Dusun Ngemplak dari generasi ke generasi.
+            </p>
+
+            <div class="sejarah-h">Tradisi dan Budaya Masyarakat</div>
+            <p class="sejarah-p"><strong>Resik Kubur</strong> — Tradisi membersihkan area makam leluhur secara gotong royong sebagai bentuk penghormatan kepada para pendahulu sekaligus mempererat hubungan antarwarga.</p>
+            <p class="sejarah-p"><strong>Selikuran</strong> — Tradisi pada malam-malam akhir bulan Ramadan. Warga berkumpul untuk berdoa bersama dan membawa makanan menggunakan tenggok (wadah anyaman bambu) sebagai simbol kebersamaan dan rasa syukur.</p>
+            <p class="sejarah-p"><strong>Gotong Royong</strong> — Semangat yang masih menjadi bagian penting dalam kehidupan masyarakat, baik dalam kegiatan sosial, keagamaan, maupun pembangunan lingkungan.</p>
+
+            <div class="sejarah-h">Organisasi Kepemudaan</div>
+            <p class="sejarah-p">
+              Para pemuda Dusun Ngemplak berhimpun dalam organisasi Karang Taruna
+              <strong>Oppen Lestari</strong>. Nama "Oppen" merupakan singkatan dari
+              <em>Organisasi Pemuda Pemudi Ngemplak</em>, sedangkan "Lestari" mengandung harapan
+              agar semangat kebersamaan, kepedulian sosial, dan nilai-nilai luhur dari para
+              pendahulu tetap terjaga sepanjang masa. Melalui kegiatan sosial, olahraga,
+              keagamaan, dan pemberdayaan masyarakat, Karang Taruna Oppen Lestari menjadi salah
+              satu penggerak utama partisipasi generasi muda dalam pembangunan dusun.
+            </p>
+
+            <div class="sejarah-h">Warisan Nilai</div>
+            <p class="sejarah-p">Masyarakat Dusun Ngemplak mewarisi nilai-nilai luhur yang tetap dijaga hingga saat ini: gotong royong, kerukunan, kepedulian sosial, keagamaan, keteladanan para sesepuh, serta semangat menjaga tradisi dan budaya.</p>
+
+            <div class="sejarah-catatan">
+              Dokumentasi ini disusun berdasarkan tradisi lisan masyarakat, penuturan para
+              sesepuh, dan catatan sejarah lokal yang tersedia saat ini. Arsip ini bersifat
+              terbuka dan akan terus disempurnakan apabila ditemukan sumber tambahan di masa
+              mendatang. Punya informasi atau arsip sejarah Dusun Ngemplak? Hubungi pengelola
+              website untuk membantu melengkapi dokumentasi ini.
+            </div>
+
+          </div>
         </div>
 
         <!-- Pengurus -->

@@ -957,6 +957,26 @@ function goToUMKM(id) {
 
 
 /* ================================================
+   9B. TOGGLE SEJARAH DUSUN
+   Buka/tutup section Sejarah di halaman Tentang Dusun.
+   Default tertutup (lihat CSS .sejarah-content) supaya
+   halaman utama tetap ringkas — kontennya tetap LENGKAP,
+   cuma disembunyikan sampai tombol ini diklik.
+   ================================================ */
+function toggleSejarah() {
+  const content = document.getElementById('sejarah-content');
+  const chevron = document.getElementById('sejarah-chevron');
+  const btn = document.getElementById('sejarah-toggle-btn');
+  if (!content || !chevron || !btn) return;
+
+  const sedangTerbuka = content.classList.contains('open');
+  content.classList.toggle('open');
+  chevron.classList.toggle('rotated');
+  btn.setAttribute('aria-expanded', String(!sedangTerbuka));
+}
+
+
+/* ================================================
    10. INISIALISASI
    Kode yang dijalankan saat halaman pertama dimuat
    ================================================ */

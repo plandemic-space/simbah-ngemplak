@@ -1226,6 +1226,10 @@ body {
   margin-bottom: 8px;
   border: 1px solid rgba(0, 0, 0, .05);
 }
+.nt-card > div:not(.nt-av) {
+  flex: 1;
+  min-width: 0; /* supaya teks di dalamnya bisa truncate, bukan dorong layout jadi wrap berantakan di kolom sempit */
+}
 .nt-av {
   width: 42px;
   height: 42px;
@@ -1247,8 +1251,16 @@ body {
   color: var(--br2);
   margin-bottom: 1px;
 }
-.nt-name { font-size: 13px; font-weight: 700; color: var(--tx); margin-bottom: 1px; }
-.nt-num  { font-size: 11px; color: var(--tx3); }
+.nt-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tx);
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* nama panjang dipotong "..." daripada wrap 3 baris di kolom sempit */
+}
+.nt-num  { font-size: 11px; color: var(--tx3); white-space: nowrap; }
 
 /* Tombol WA di kanan kartu */
 .nt-wa {
@@ -1621,6 +1633,184 @@ body {
 .org-role { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--br2); margin-bottom: 1px; }
 .org-name { font-size: 13px; font-weight: 700; color: var(--tx); }
 
+/* Motto Dusun — kotak kutipan kecil di bawah paragraf Profil */
+.motto-box {
+  margin-top: 14px;
+  background: var(--brl);
+  border-left: 3px solid var(--br);
+  border-radius: var(--rs);
+  padding: 10px 13px;
+}
+.motto-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--br);
+  margin-bottom: 3px;
+}
+.motto-text {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tx);
+  font-style: italic;
+}
+
+/* Visi & Misi */
+.visi-box {
+  background: var(--grl);
+  border-left: 3px solid var(--gr);
+  border-radius: var(--rs);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.visi-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gr);
+  margin-bottom: 4px;
+}
+.visi-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx);
+  line-height: 1.6;
+  font-style: italic;
+}
+.misi-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--tx);
+  margin-bottom: 8px;
+}
+.misi-list {
+  margin: 0;
+  padding-left: 18px;
+}
+.misi-list li {
+  font-size: 12.5px;
+  color: var(--tx2);
+  line-height: 1.6;
+  margin-bottom: 7px;
+}
+
+/* Data Wilayah — grid placeholder, menunggu data resmi */
+.datawilayah-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.dw-item {
+  background: var(--iv2);
+  border-radius: var(--rs);
+  padding: 10px 12px;
+}
+.dw-lbl {
+  font-size: 10px;
+  color: var(--tx3);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.dw-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tx);
+}
+.dw-pending {
+  color: var(--br2);
+  font-size: 11px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Sejarah Dusun — collapsible. Default tertutup, isi LENGKAP
+   tetap ada di DOM (bukan dipotong), cuma disembunyikan secara
+   visual sampai tombol toggle diklik. */
+.sejarah-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+.sejarah-chevron {
+  width: 18px;
+  height: 18px;
+  stroke: var(--tx3);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+.sejarah-chevron.rotated {
+  transform: rotate(180deg);
+}
+.sejarah-preview {
+  font-size: 12px;
+  color: var(--tx3);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.sejarah-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+.sejarah-content.open {
+  max-height: 6000px; /* cukup besar untuk menampung seluruh konten sejarah */
+}
+.sejarah-h {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gr);
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+.sejarah-p {
+  font-size: 12.5px;
+  color: var(--tx2);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.sejarah-list {
+  margin: 0 0 10px;
+  padding-left: 18px;
+}
+.sejarah-list li {
+  font-size: 12.5px;
+  color: var(--tx2);
+  line-height: 1.7;
+  margin-bottom: 3px;
+}
+.sejarah-disclaimer {
+  background: var(--brl);
+  border-radius: var(--rs);
+  padding: 10px 12px;
+  font-size: 11px;
+  color: var(--br);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.sejarah-catatan {
+  font-size: 10.5px;
+  color: var(--tx3);
+  line-height: 1.6;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--iv2);
+}
+
 
 /* ================================================
    19. FOOTER
@@ -1854,7 +2044,8 @@ body {
      ==================================================== */
   .beranda-grid-desktop {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr; /* dulu 2fr:1fr (67:33) — terlalu sempit untuk sidebar kanan,
+                                        card kontak sampai wrap 3 baris. Sekarang 60:40. */
     grid-template-areas:
       "umkm       nyuwun"
       "inventaris agenda"
