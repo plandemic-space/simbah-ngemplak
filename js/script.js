@@ -449,7 +449,11 @@ function renderUMKMBeranda() {
   const el = document.getElementById('umkm-beranda-list');
   if (!el) return;
 
-  const JUMLAH_TAMPIL = 4; /* berapa card yang muncul di Beranda — ubah di sini kalau mau lebih/kurang */
+  /* Mobile: 4 card (scroll horizontal, cukup 4 supaya tidak terlalu
+     panjang digeser). Desktop: 8 card ditampilkan dalam 2 baris grid
+     (diatur CSS — lihat .urow-desktop di style.css).
+     Ambil 8 item tapi di mobile tetap kelihatan 4 dulu via overflow scroll. */
+  const JUMLAH_TAMPIL = 8;
   const list = UMKM.slice(0, JUMLAH_TAMPIL);
 
   if (!list.length) {

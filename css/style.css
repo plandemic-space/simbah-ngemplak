@@ -705,43 +705,17 @@ body {
   flex-shrink: 0;
   color: #fff;
   font-weight: 700;
-  /* z-index supaya ikon toa tetap terlihat di atas teks yang melintas */
-  position: relative;
-  z-index: 1;
-}
-/* Wrapper area scroll — teks hanya bergerak di dalam sini,
-   mask gradient fade kiri & kanan supaya teks hilang mulus
-   sebelum menyentuh ikon toa maupun tepi kanan layar */
-.tick-scroll {
-  flex: 1;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 88%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 88%,
-    transparent 100%
-  );
 }
 .tick-txt {
   font-size: 10px;
   color: var(--br);
   font-weight: 600;
   white-space: nowrap;
-  display: inline-block;
-  animation: tick 32s linear infinite;
+  animation: tick 28s linear infinite;
 }
 @keyframes tick {
-  /* mulai dari luar kanan .tick-scroll, selesai di luar kiri */
   0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-200%); }
 }
 
 
@@ -1852,25 +1826,28 @@ body {
   margin-bottom: 3px;
 }
 .sejarah-disclaimer {
-  background: var(--brl);
-  border: 1.5px solid var(--br);
+  background: #FFFBEB;           /* kuning amber sangat muda — lebih mencolok dari --brl biasa */
+  border: 2px solid #D97706;     /* amber-600, lebih gelap dan tebal supaya jelas */
+  border-left: 5px solid #D97706; /* aksen kiri ekstra tebal, pola visual "peringatan" */
   border-radius: var(--rs);
-  padding: 12px 14px;
-  margin-bottom: 14px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
 }
 .sd-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--br);
-  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 800;              /* extra bold supaya label peringatan lebih terlihat */
+  color: #92400E;                /* amber-800, kontras kuat di atas kuning muda */
+  margin-bottom: 7px;
+  letter-spacing: .01em;
 }
 .sd-text {
   font-size: 12px;
-  color: var(--tx);
-  line-height: 1.65;
+  color: #451A03;                /* amber-950, hampir coklat gelap — mudah dibaca */
+  line-height: 1.7;
 }
 .sd-text strong {
-  color: var(--br);
+  color: #92400E;                /* amber-800, sama dengan label */
+  font-weight: 700;
 }
 .sejarah-catatan {
   font-size: 11px;
@@ -1995,6 +1972,79 @@ body {
 
 
 /* ================================================
+   19B. SECTION POTENSI / KENALI NGEMPLAK
+   Hook untuk orang luar — ringkasan apa yang
+   dusun ini tawarkan, sebelum mereka baca profil
+   ================================================ */
+.potensi-hook {
+  font-size: 13px;
+  color: var(--tx2);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-style: italic;
+  border-left: 3px solid var(--gr);
+  padding-left: 12px;
+}
+
+.potensi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.pot-item {
+  background: var(--wh);
+  border-radius: var(--rs);
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid var(--iv3);
+}
+.pot-ico { font-size: 22px; margin-bottom: 4px; }
+.pot-num {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gr);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.pot-lbl { font-size: 9px; color: var(--tx3); font-weight: 600; }
+
+.potensi-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.ptag {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--grl);
+  color: var(--gr);
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(45, 90, 61, .15);
+}
+
+.potensi-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: 1.5px solid var(--gr);
+  border-radius: var(--rs);
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gr);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s, color .15s;
+}
+.potensi-cta:hover { background: var(--gr); color: #fff; }
+
+
+/* ================================================
    20. MENU NAVIGASI DESKTOP
    ------------------------------------------------
    Menu mendatar di header — defaultnya TERSEMBUNYI.
@@ -2114,10 +2164,8 @@ body {
     display: none !important;
   }
 
-  /* ---- Hapus padding bawah mobile (ruang untuk bnav fixed) ----
-     Di desktop bnav sudah hidden, jadi padding-bottom 76px
-     tidak diperlukan lagi — kalau dibiarkan jadi space putih
-     kosong di bawah footer. */
+  /* ---- Hapus padding-bottom mobile (ruang bnav fixed) ----
+     Di desktop bnav hidden → padding 76px jadi space putih kosong. */
   .pages {
     padding-bottom: 0;
   }
@@ -2193,7 +2241,7 @@ body {
 
   /* ---- Grid Layanan — 6 kolom sejajar (1 baris) ---- */
   /* .g23 ada di dalam .sec yang sudah punya padding: 28px var(--side).
-     Cukup ubah kolom — tidak perlu max-width/margin lagi. */
+     Tidak perlu max-width+margin lagi — sudah rapi dari padding .sec. */
   .g23 {
     grid-template-columns: repeat(6, 1fr);
   }
@@ -2257,24 +2305,37 @@ body {
     grid-template-columns: 3fr 2fr;
     grid-template-areas:
       "umkm       nyuwun"
-      "inventaris agenda"
+      "potensi    agenda"
       "inventaris kas";
     column-gap: 24px;
     align-items: start;
     /* Rata dengan hero/ticker/layanan-warga di atasnya.
-       Pakai padding var(--side) kiri-kanan — IDENTIK dengan .sec global.
-       Hapus max-width+margin:auto karena kalau dipakai BERSAMA padding
-       var(--side), konten jadi dobel-indent dan menjorok ke kanan. */
+       Pakai padding var(--side) — identik dengan .sec global.
+       Tidak pakai max-width+margin:auto sekaligus karena dobel-indent. */
     width: 100%;
     box-sizing: border-box;
     padding: 0 var(--side);
   }
 
   .bg-area-umkm       { grid-area: umkm; }
+  .bg-area-potensi    { grid-area: potensi; }
   .bg-area-inventaris { grid-area: inventaris; }
   .bg-area-nyuwun     { grid-area: nyuwun; }
   .bg-area-agenda     { grid-area: agenda; }
   .bg-area-kas        { grid-area: kas; }
+
+  /* Desktop: urow berubah dari scroll horizontal jadi grid 4 kolom 2 baris.
+     8 card langsung kelihatan semua, tidak perlu digeser. */
+  #umkm-beranda-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+  #umkm-beranda-list .ucard {
+    min-width: 0;
+  }
 
   /* Section di dalam grid 2-kolom: lebar penuh kolom,
      tanpa max-width/margin sendiri (beda dari .sec biasa
