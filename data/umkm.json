@@ -1,5 +1,5 @@
 {
-  "_petunjuk": "Untuk menambah UMKM baru, copy salah satu blok { ... } di bawah, paste di akhir sebelum tanda ] penutup, lalu ganti semua isinya. JANGAN lupa koma (,) setelah tanda } kecuali itu blok PALING TERAKHIR. CATATAN field 'maps': isi dengan link Google Maps ASLI lokasi usaha (bukan link generik) — link ini juga dipakai sebagai tombol 'Lihat Review di Google Maps' di halaman detail. CATATAN field 'testimoni': array opsional testimoni warga asli (bukan dari Google), format [{nama, teks, tanggal}]. Boleh dikosongkan [] kalau belum ada.",
+  "_petunjuk": "Untuk menambah UMKM baru, copy salah satu blok { ... } di bawah, paste di akhir sebelum tanda ] penutup, lalu ganti semua isinya. JANGAN lupa koma (,) setelah tanda } kecuali itu blok PALING TERAKHIR. CATATAN field 'maps': isi dengan link Google Maps ASLI lokasi usaha — link ini juga dipakai sebagai tombol 'Lihat Review di Google Maps' di halaman detail. CATATAN field 'phone': format internasional tanpa + (contoh: 6281234567890). Kosongkan string ('') kalau nomor belum ada — tombol WA otomatis disembunyikan. CATATAN field 'ulasan': jumlah ulasan Google (angka integer).",
   "umkm": [
     {
       "id": 0,
@@ -9,6 +9,7 @@
       "desc": "Layanan jasa teknologi & kebutuhan harian warga: servis HP, komputer, laptop, dan printer; jual-beli HP & laptop second; print, fotokopi, dan scan dokumen; penggilingan tepung beras; parut kelapa dan umbi; serta obras dan jahit ringan. Berawal dari inisiatif membantu warga mengakses internet saat pandemi, kini berkembang jadi pusat layanan digital dusun.",
       "phone": "6282241439784",
       "rating": "4.9",
+      "ulasan": 28,
       "alamat": "Ngemplak 02/02, Dusun III, Samping, Kec. Kemiri, Kab. Purworejo, Jawa Tengah 54262",
       "jam": "Buka 24 jam",
       "maps": "https://maps.app.goo.gl/W6FxkN82ArRKb5NT9",
@@ -51,69 +52,535 @@
     },
     {
       "id": 1,
-      "name": "Kue Bu Sari",
-      "cat": "Produk Lokal",
-      "emoji": "🍪",
-      "desc": "Usaha kue tradisional Jawa yang sudah berdiri sejak 2010. Menyediakan berbagai kue basah dan kering untuk hajatan, arisan, dan pesanan harian. Bahan-bahan dipilih segar langsung dari pasar setiap pagi.",
-      "phone": "6281234567890",
-      "rating": "4.8",
-      "alamat": "RT 01, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
-      "jam": "Setiap hari 06.00–20.00 WIB",
-      "maps": "https://maps.google.com",
-      "ig": "https://instagram.com",
-      "fb": "https://facebook.com",
-      "tt": "https://tiktok.com",
-      "yt": "https://youtube.com",
-      "sp": "https://shopee.co.id",
-      "tp": "https://tokopedia.com",
+      "name": "Heri Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🌱",
+      "desc": "Penyedia bibit tanaman unggul pilihan. Menyediakan berbagai bibit buah, sayur, dan tanaman produktif berkualitas untuk kebutuhan petani dan pekarangan rumah. Melayani pembelian eceran maupun partai besar.",
+      "phone": "6281229917285",
+      "rating": "5.0",
+      "ulasan": 10,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Heri+Bibit/data=!4m7!3m6!1s0x2e7ac10a6561f88f:0x3141f5ebbecb281c!8m2!3d-7.6617485!4d109.8765112!16s%2Fg%2F11stwmvs47",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
       "galeri": [
-        "🍪",
-        "🥮",
-        "🍡",
-        "🎂",
-        "🧁"
+        "🌱",
+        "🌿",
+        "🌳",
+        "🪴",
+        "🌾"
       ],
       "products": [
         {
-          "e": "🥮",
-          "n": "Klepon",
-          "p": "Rp 2.000/biji"
+          "e": "🌱",
+          "n": "Bibit Sayuran",
+          "p": "Hubungi WA"
         },
         {
-          "e": "🍡",
-          "n": "Lupis",
-          "p": "Rp 3.000/biji"
+          "e": "🌳",
+          "n": "Bibit Buah",
+          "p": "Hubungi WA"
         },
         {
-          "e": "🎂",
-          "n": "Kue Lapis",
-          "p": "Rp 25.000"
-        },
-        {
-          "e": "🧁",
-          "n": "Cupcake",
-          "p": "Rp 5.000"
+          "e": "🪴",
+          "n": "Tanaman Hias",
+          "p": "Hubungi WA"
         }
       ],
-      "testimoni": [
-        {
-          "nama": "Bu Endang",
-          "teks": "Kue-nya selalu fresh, langganan tiap ada acara di RT.",
-          "tanggal": "Mei 2026"
-        }
-      ]
+      "testimoni": []
     },
     {
       "id": 2,
-      "name": "Mebel Pak Harto",
+      "name": "Bibit Tanaman Buah Terdekat",
+      "cat": "Perkebunan",
+      "emoji": "🍎",
+      "desc": "Penyedia bibit tanaman buah pilihan dengan harga terjangkau. Tersedia berbagai jenis bibit buah unggul, cocok untuk pekarangan maupun kebun produktif.",
+      "phone": "6281328087110",
+      "rating": "4.8",
+      "ulasan": 6,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Bibit+Tanaman+Buah+Terdekat/data=!4m7!3m6!1s0x2e7ac10d18d991b9:0xa0897b5e43e0f619!8m2!3d-7.6591952!4d109.8745125!16s%2Fg%2F11s9jm358s",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🍎",
+        "🍊",
+        "🍋",
+        "🍇",
+        "🌳"
+      ],
+      "products": [
+        {
+          "e": "🍎",
+          "n": "Bibit Buah Unggul",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌳",
+          "n": "Tanaman Buah",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 3,
+      "name": "Gembong Bibit Murah",
+      "cat": "Perkebunan",
+      "emoji": "🌿",
+      "desc": "Bibit tanaman dengan harga terjangkau langsung dari petani. Tersedia berbagai jenis bibit sayuran, buah, dan tanaman produktif untuk kebutuhan rumah tangga maupun usaha.",
+      "phone": "6285328014388",
+      "rating": "4.5",
+      "ulasan": 2,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Gembong+bibit+murah/data=!4m7!3m6!1s0x2e7ac179f4944ce1:0xd442ff5126a3892e!8m2!3d-7.6651032!4d109.8782988!16s%2Fg%2F11tjw4_n34",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌿",
+        "🌱",
+        "🪴",
+        "🌾",
+        "🍀"
+      ],
+      "products": [
+        {
+          "e": "🌿",
+          "n": "Bibit Sayur",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌱",
+          "n": "Bibit Buah",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 4,
+      "name": "Jamil Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🌾",
+      "desc": "Penyedia bibit unggul untuk petani dan masyarakat umum. Melayani pembelian bibit berbagai jenis tanaman produktif dengan harga petani langsung.",
+      "phone": "6285292889734",
+      "rating": "5.0",
+      "ulasan": 1,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Jamil+Bibit/data=!4m7!3m6!1s0x2e7ac1db24837307:0xa932bcb0b876f7a7!8m2!3d-7.6634869!4d109.8778167!16s%2Fg%2F11vt8xs13z",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌾",
+        "🌱",
+        "🌿",
+        "🪴",
+        "🍀"
+      ],
+      "products": [
+        {
+          "e": "🌾",
+          "n": "Bibit Unggul",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 5,
+      "name": "Jamil Arya Tani",
+      "cat": "Perkebunan",
+      "emoji": "🚜",
+      "desc": "Usaha pertanian dan penyedia bibit tanaman produktif. Melayani kebutuhan bibit dan produk pertanian untuk petani lokal maupun pembeli umum.",
+      "phone": "6285292889734",
+      "rating": "5.0",
+      "ulasan": 2,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Jamil+Arya+Tani/data=!4m7!3m6!1s0x2e7ac15e2c5cb465:0x161d817a8182ce6f!8m2!3d-7.6904045!4d109.8678155!16s%2Fg%2F11vt8w2s35",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🚜",
+        "🌾",
+        "🌱",
+        "🌿",
+        "🪴"
+      ],
+      "products": [
+        {
+          "e": "🌾",
+          "n": "Bibit Tanaman",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🚜",
+          "n": "Produk Pertanian",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 6,
+      "name": "Naza Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🌴",
+      "desc": "Penyedia bibit tanaman pilihan untuk kebutuhan pertanian dan pekarangan. Melayani pembelian eceran dan partai dengan harga kompetitif.",
+      "phone": "6281327009228",
+      "rating": "5.0",
+      "ulasan": 1,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Naza+Bibit/data=!4m7!3m6!1s0x2e7ac1d68d8fba9d:0x6798167febec69cb!8m2!3d-7.6655691!4d109.8773151!16s%2Fg%2F11y4zwkj62",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌴",
+        "🌱",
+        "🌿",
+        "🪴",
+        "🌾"
+      ],
+      "products": [
+        {
+          "e": "🌴",
+          "n": "Bibit Pilihan",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 7,
+      "name": "Alfarizie Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🌱",
+      "desc": "Toko bibit tanaman untuk kebutuhan pertanian dan pekarangan warga. Menyediakan berbagai jenis bibit berkualitas dengan harga terjangkau.",
+      "phone": "6281281227901",
+      "rating": "0",
+      "ulasan": 0,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Alfarizie+bibit/data=!4m7!3m6!1s0x2e7ac103ee1f1229:0xf6abaf727b8689ae!8m2!3d-7.6638296!4d109.8790047!16s%2Fg%2F11y48t4zcn",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌱",
+        "🌿",
+        "🪴"
+      ],
+      "products": [
+        {
+          "e": "🌱",
+          "n": "Bibit Tanaman",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 8,
+      "name": "Ardelia Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🪴",
+      "desc": "Penyedia bibit tanaman untuk kebutuhan pertanian dan pekarangan. Pilihan lengkap bibit sayur dan buah dengan harga terjangkau.",
+      "phone": "6282221085354",
+      "rating": "0",
+      "ulasan": 0,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Ardelia+Bibit/data=!4m7!3m6!1s0x2e7ac1ed7ea51af1:0xdef8d8ab50ed9286!8m2!3d-7.6634876!4d109.8774283!16s%2Fg%2F11vksk5rr2",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🪴",
+        "🌱",
+        "🌿"
+      ],
+      "products": [
+        {
+          "e": "🪴",
+          "n": "Bibit Tanaman",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 9,
+      "name": "Martin Bibit Jaya",
+      "cat": "Perkebunan",
+      "emoji": "🌳",
+      "desc": "Pembibitan tanaman (plant nursery) di Desa Samping Ngemplak RT 01/02. Menyediakan bibit tanaman pilihan untuk kebutuhan pertanian dan penghijauan.",
+      "phone": "",
+      "rating": "0",
+      "ulasan": 0,
+      "alamat": "Ngemplak RT 01/02, Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Martin+Bibit+Jaya/data=!4m7!3m6!1s0x2e7ac1006a715fdd:0x6e0d9471947d8d75!8m2!3d-7.66497!4d109.878425!16s%2Fg%2F11ypd0x_cn",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌳",
+        "🌱",
+        "🌿"
+      ],
+      "products": [
+        {
+          "e": "🌳",
+          "n": "Bibit Tanaman",
+          "p": "Lihat di Maps"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 10,
+      "name": "Trijaya Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🌿",
+      "desc": "Penyedia bibit tanaman unggul untuk kebutuhan pertanian dan perkebunan. Melayani pembelian eceran maupun dalam jumlah besar.",
+      "phone": "6288221128059",
+      "rating": "5.0",
+      "ulasan": 1,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Trijaya+Bibit/data=!4m7!3m6!1s0x2e7ac15b4bdab8bf:0x96c1515d759251c0!8m2!3d-7.6636461!4d109.8774219!16s%2Fg%2F11w8vr7k3j",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌿",
+        "🌱",
+        "🪴"
+      ],
+      "products": [
+        {
+          "e": "🌿",
+          "n": "Bibit Unggul",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 11,
+      "name": "Samuji Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🌾",
+      "desc": "Penyedia bibit tanaman untuk petani dan masyarakat umum. Tersedia berbagai jenis bibit dengan harga langsung dari petani.",
+      "phone": "",
+      "rating": "5.0",
+      "ulasan": 6,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Samuji+Bit/data=!4m7!3m6!1s0x2e7ac117b69a58dd:0xcc9eb8d4a56a2785!8m2!3d-7.6629883!4d109.8773471!16s%2Fg%2F11ld6zd95r",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌾",
+        "🌱",
+        "🌿"
+      ],
+      "products": [
+        {
+          "e": "🌾",
+          "n": "Bibit Tanaman",
+          "p": "Lihat di Maps"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 12,
+      "name": "Bibit Cabai Alip Sihmanto",
+      "cat": "Perkebunan",
+      "emoji": "🌶️",
+      "desc": "Spesialis bibit cabai dan tanaman hortikultura. Menyediakan bibit cabai unggul berkualitas untuk petani dan penghobi berkebun.",
+      "phone": "",
+      "rating": "4.1",
+      "ulasan": 7,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 05.30 WIB",
+      "maps": "https://www.google.com/maps/place/Bibit+Cabai+Alip+Sihmanto/data=!4m7!3m6!1s0x2e7ac1bb6e30fc1b:0x7c883d856d8a46fe!8m2!3d-7.6653939!4d109.878553!16s%2Fg%2F11g4h7n8rq",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌶️",
+        "🌱",
+        "🌿",
+        "🪴"
+      ],
+      "products": [
+        {
+          "e": "🌶️",
+          "n": "Bibit Cabai",
+          "p": "Hubungi via Maps"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 13,
+      "name": "muhtarbibitunggul",
+      "cat": "Perkebunan",
+      "emoji": "🌱",
+      "desc": "Penyedia bibit tanaman unggul pilihan. Tersedia berbagai jenis bibit berkualitas untuk kebutuhan pertanian dan perkebunan.",
+      "phone": "6288201688120",
+      "rating": "0",
+      "ulasan": 0,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/muhtarbibitunggul/data=!4m7!3m6!1s0x2e7ac1acee7e15ab:0xe418e16a3181e80e!8m2!3d-7.6638554!4d109.877276!16s%2Fg%2F11ytn4hrb7",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌱",
+        "🌿",
+        "🪴"
+      ],
+      "products": [
+        {
+          "e": "🌱",
+          "n": "Bibit Unggul",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 14,
+      "name": "PRIMATANI BIBIT",
+      "cat": "Perkebunan",
+      "emoji": "🌿",
+      "desc": "Penyedia bibit tanaman unggul pilihan untuk kebutuhan pertanian, perkebunan, dan penghijauan. Melayani pembelian langsung maupun dalam jumlah besar.",
+      "phone": "6281227002633",
+      "rating": "5.0",
+      "ulasan": 4,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/PRIMATANI+BIBIT/@-7.6605722,109.869706,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e7ac153e3314703:0x4e408be3c608e5ef!8m2!3d-7.6605775!4d109.8722809!16s%2Fg%2F11sp95v7w2",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🌿",
+        "🌱",
+        "🌾",
+        "🪴"
+      ],
+      "products": [
+        {
+          "e": "🌿",
+          "n": "Bibit Unggul",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 15,
+      "name": "Khanza Bibit",
+      "cat": "Perkebunan",
+      "emoji": "🪴",
+      "desc": "Toko bibit tanaman untuk kebutuhan pertanian dan pekarangan. Menyediakan berbagai jenis bibit dengan kualitas terjamin.",
+      "phone": "6282224415565",
+      "rating": "0",
+      "ulasan": 0,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka 24 jam",
+      "maps": "https://www.google.com/maps/place/Khanza+Bibit/@-7.6594985,109.873957,179m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e7ac1230393de29:0xa055280d95e792db!8m2!3d-7.6594998!4d109.8746007!16s%2Fg%2F11npxh_c_7",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "#",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🪴",
+        "🌱",
+        "🌿"
+      ],
+      "products": [
+        {
+          "e": "🪴",
+          "n": "Bibit Tanaman",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 16,
+      "name": "Isron Furniture",
       "cat": "Pertukangan",
       "emoji": "🪑",
-      "desc": "Pengrajin mebel kayu jati dan mahoni berpengalaman 20 tahun. Menerima pesanan meja, kursi, lemari, dan perabot rumah tangga custom. Kualitas terjamin dengan harga langsung dari pengrajin.",
-      "phone": "6281234567891",
-      "rating": "4.9",
-      "alamat": "RT 02, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
-      "jam": "Senin–Sabtu 07.00–17.00 WIB",
-      "maps": "https://maps.google.com",
+      "desc": "Pengrajin furniture dan meubel kayu untuk kebutuhan rumah tangga. Menerima pesanan berbagai jenis perabotan kayu dengan kualitas terjamin dan harga langsung dari pengrajin.",
+      "phone": "6281328432214",
+      "rating": "0",
+      "ulasan": 0,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Senin–Sabtu, hubungi WA",
+      "maps": "https://www.google.com/maps/place/Isron+furniture/data=!4m7!3m6!1s0x2e7ac1a6592216f9:0xbd64bbad514e1f08!8m2!3d-7.6593346!4d109.8750624!16s%2Fg%2F11sbczw219",
       "ig": "#",
       "fb": "#",
       "tt": "#",
@@ -130,194 +597,39 @@
       "products": [
         {
           "e": "🪑",
-          "n": "Kursi Jati",
-          "p": "Rp 350.000"
+          "n": "Kursi & Meja",
+          "p": "Hubungi WA"
         },
         {
           "e": "🛏️",
-          "n": "Dipan Kayu",
-          "p": "Rp 800.000"
+          "n": "Dipan & Tempat Tidur",
+          "p": "Hubungi WA"
         },
         {
           "e": "🚪",
-          "n": "Pintu Ukir",
-          "p": "Rp 1.200.000"
+          "n": "Pintu & Kusen",
+          "p": "Hubungi WA"
         },
         {
           "e": "🗄️",
           "n": "Lemari",
-          "p": "Rp 950.000"
-        }
-      ],
-      "testimoni": [
-        {
-          "nama": "Pak Joko",
-          "teks": "Lemari pesanan saya rapi banget, sesuai ukuran yang diminta.",
-          "tanggal": "April 2026"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Jamu Bu Wati",
-      "cat": "Produk Lokal",
-      "emoji": "🌿",
-      "desc": "Produsen jamu tradisional Jawa berbahan rempah segar pilihan dari kebun sendiri. Tersedia jamu kunyit asam, beras kencur, jahe merah, dan berbagai racikan sehat lainnya. Tanpa pengawet, murni alami.",
-      "phone": "6281234567892",
-      "rating": "4.7",
-      "alamat": "RT 01, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
-      "jam": "Setiap hari 05.00–12.00 WIB",
-      "maps": "https://maps.google.com",
-      "ig": "#",
-      "fb": "#",
-      "tt": "#",
-      "yt": "#",
-      "sp": "#",
-      "tp": "#",
-      "galeri": [
-        "🌿",
-        "🫚",
-        "🔴",
-        "🌱",
-        "🫙"
-      ],
-      "products": [
-        {
-          "e": "🌿",
-          "n": "Kunyit Asam",
-          "p": "Rp 5.000/btl"
-        },
-        {
-          "e": "🫚",
-          "n": "Beras Kencur",
-          "p": "Rp 5.000/btl"
-        },
-        {
-          "e": "🔴",
-          "n": "Jahe Merah",
-          "p": "Rp 7.000/btl"
-        },
-        {
-          "e": "🌱",
-          "n": "Temulawak",
-          "p": "Rp 6.000/btl"
-        }
-      ],
-      "testimoni": []
-    },
-    {
-      "id": 4,
-      "name": "Catering Mbok Rum",
-      "cat": "Warung",
-      "emoji": "🍱",
-      "desc": "Catering masakan Jawa untuk hajatan, arisan, dan pertemuan. Berpengalaman lebih dari 15 tahun melayani warga dusun dan sekitarnya. Kapasitas hingga 500 porsi dengan menu yang bisa disesuaikan.",
-      "phone": "6281234567893",
-      "rating": "5.0",
-      "alamat": "RT 02, Dusun Ngemplak, Desa Samping, Kemiri, Purworejo",
-      "jam": "Pesan min. 2 hari sebelumnya",
-      "maps": "https://maps.google.com",
-      "ig": "#",
-      "fb": "#",
-      "tt": "#",
-      "yt": "#",
-      "sp": "#",
-      "tp": "#",
-      "galeri": [
-        "🍱",
-        "🍛",
-        "🥗",
-        "🍢",
-        "🥘"
-      ],
-      "products": [
-        {
-          "e": "🍛",
-          "n": "Nasi Kotak",
-          "p": "Rp 15.000/pcs"
-        },
-        {
-          "e": "🥗",
-          "n": "Tumpeng Mini",
-          "p": "Rp 200.000"
-        },
-        {
-          "e": "🍢",
-          "n": "Sate Komplit",
-          "p": "Rp 35.000/prs"
-        },
-        {
-          "e": "🥘",
-          "n": "Gudeg Kenduri",
-          "p": "Rp 25.000/prs"
-        }
-      ],
-      "testimoni": [
-        {
-          "nama": "Bu Wati",
-          "teks": "Catering buat hajatan anak saya enak, porsi pas, tepat waktu.",
-          "tanggal": "Maret 2026"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Bengkel Las Pak Agus",
-      "cat": "Jasa",
-      "emoji": "🔧",
-      "desc": "Jasa pengelasan dan fabrikasi besi untuk kebutuhan rumah tangga dan bangunan. Melayani pembuatan pagar, teralis, kanopi, dan reparasi peralatan besi.",
-      "phone": "6285800000005",
-      "rating": "4.6",
-      "alamat": "RT 01, Dusun Ngemplak, Desa Samping",
-      "jam": "Senin–Sabtu 08.00–17.00 WIB",
-      "maps": "https://maps.google.com",
-      "ig": "#",
-      "fb": "#",
-      "tt": "#",
-      "yt": "#",
-      "sp": "#",
-      "tp": "#",
-      "galeri": [
-        "🔧",
-        "🚧",
-        "🪟",
-        "🏗️",
-        "🔩"
-      ],
-      "products": [
-        {
-          "e": "🚧",
-          "n": "Pagar Besi",
-          "p": "Rp 180.000/m"
-        },
-        {
-          "e": "🪟",
-          "n": "Teralis",
-          "p": "Rp 150.000/m"
-        },
-        {
-          "e": "🏗️",
-          "n": "Kanopi",
-          "p": "Rp 200.000/m²"
-        },
-        {
-          "e": "🔩",
-          "n": "Reparasi",
           "p": "Hubungi WA"
         }
       ],
       "testimoni": []
     },
     {
-      "id": 6,
-      "name": "Sawah Pak Karto",
+      "id": 17,
+      "name": "Dombaku",
       "cat": "Pertanian",
-      "emoji": "🌾",
-      "desc": "Petani padi organik lokal. Menjual beras putih dan ketan hasil panen sendiri langsung dari sawah ke konsumen tanpa perantara. Segar, bersih, harga petani.",
-      "phone": "6281500000012",
-      "rating": "4.8",
-      "alamat": "RT 01, Dusun Ngemplak",
-      "jam": "Musim panen: Jan & Jul",
-      "maps": "https://maps.google.com",
+      "emoji": "🐑",
+      "desc": "Usaha peternakan domba lokal. Menyediakan domba untuk kebutuhan aqiqah, kurban, maupun konsumsi langsung. Domba dipelihara secara alami dengan pakan berkualitas.",
+      "phone": "6285292966722",
+      "rating": "5.0",
+      "ulasan": 1,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "07.00–22.00 WIB",
+      "maps": "https://www.google.com/maps/place/Dombaku/@-7.6646556,109.8683042,2871m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e7ac17cc2dcb83b:0x1c51ae84a7d952f4!8m2!3d-7.664677!4d109.878604!16s%2Fg%2F11rhsvk0kz",
       "ig": "#",
       "fb": "#",
       "tt": "#",
@@ -325,32 +637,65 @@
       "sp": "#",
       "tp": "#",
       "galeri": [
-        "🌾",
-        "🍚",
+        "🐑",
+        "🐏",
         "🌿",
-        "🌾",
-        "📦"
+        "🏡"
       ],
       "products": [
         {
-          "e": "🍚",
-          "n": "Beras Putih",
-          "p": "Rp 12.000/kg"
+          "e": "🐑",
+          "n": "Domba Aqiqah",
+          "p": "Hubungi WA"
         },
         {
-          "e": "🌾",
-          "n": "Ketan Putih",
-          "p": "Rp 14.000/kg"
+          "e": "🐏",
+          "n": "Domba Kurban",
+          "p": "Hubungi WA"
         },
         {
-          "e": "🟤",
-          "n": "Ketan Hitam",
-          "p": "Rp 15.000/kg"
+          "e": "🥩",
+          "n": "Domba Konsumsi",
+          "p": "Hubungi WA"
+        }
+      ],
+      "testimoni": []
+    },
+    {
+      "id": 18,
+      "name": "Sapu Jagad Fruits",
+      "cat": "Produk Lokal",
+      "emoji": "🍉",
+      "desc": "Usaha buah-buahan segar pilihan dari kebun lokal. Menyediakan berbagai jenis buah segar berkualitas untuk kebutuhan rumah tangga maupun usaha.",
+      "phone": "6281299049513",
+      "rating": "5.0",
+      "ulasan": 1,
+      "alamat": "Desa Samping, Kec. Kemiri, Kab. Purworejo",
+      "jam": "Buka, tutup 00.00 WIB",
+      "maps": "https://www.google.com/maps/place/sapu+jagad+fruits/@-7.6648241,109.8782661,179m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e7ac1b5023a914b:0xc44f25bd79a2b04b!8m2!3d-7.6648254!4d109.8789098!16s%2Fg%2F11rfb5czr6",
+      "ig": "#",
+      "fb": "#",
+      "tt": "#",
+      "yt": "https://www.youtube.com/@fajarsodiq2709",
+      "sp": "#",
+      "tp": "#",
+      "galeri": [
+        "🍉",
+        "🍇",
+        "🍊",
+        "🍋",
+        "🍎"
+      ],
+      "products": [
+        {
+          "e": "🍉",
+          "n": "Buah Segar",
+          "p": "Hubungi WA"
         },
         {
-          "e": "📦",
-          "n": "Gabah",
-          "p": "Rp 5.000/kg"
+          "e": "🍇",
+          "n": "Buah Pilihan",
+          "p": "Hubungi WA"
         }
       ],
       "testimoni": []

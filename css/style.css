@@ -976,6 +976,47 @@ body {
   text-decoration: none;
 }
 
+/* Badge "Baru" di grid UMKM — untuk UMKM yang belum punya rating Google */
+.ug-new {
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--brl);
+  color: var(--br);
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+/* Tombol alternatif "Lihat Maps" di grid — untuk UMKM tanpa nomor WA */
+.ug-wa-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--iv2);
+  color: var(--tx2);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Jumlah ulasan Google di rating pill detail UMKM */
+.rn-ulasan {
+  font-size: 10px;
+  color: var(--br);
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+/* Badge "Baru" di rating pill detail UMKM */
+.rn-new {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--br);
+  background: var(--brl);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
 
 /* ================================================
    14. KAS — Ringkasan & Transaksi
@@ -1936,7 +1977,6 @@ body {
    ================================================ */
 .dnav {
   display: none; /* sembunyi di mobile — diaktifkan lewat @media */
-  align-items: center;
   gap: 4px;
 }
 .dn-item {
@@ -1954,68 +1994,6 @@ body {
 }
 .dn-item:hover  { background: rgba(255, 255, 255, .1); color: #fff; }
 .dn-item.active { background: rgba(255, 255, 255, .16); color: #fff; }
-
-/* Dropdown "Lainnya" — wadah Kas & Inventaris yang turun prioritas */
-.dn-dropdown-wrap {
-  position: relative;
-}
-.dn-dropdown-btn {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.dn-chevron {
-  width: 13px;
-  height: 13px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform .15s ease;
-}
-.dn-dropdown-btn.open .dn-chevron {
-  transform: rotate(180deg);
-}
-.dn-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  min-width: 200px;
-  background: var(--wh);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity .15s ease, transform .15s ease, visibility .15s;
-  z-index: 150;
-}
-.dn-dropdown-menu.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.dn-dropdown-item {
-  background: none;
-  border: none;
-  color: var(--tx);
-  font-size: 13px;
-  font-weight: 600;
-  font-family: inherit;
-  text-align: left;
-  padding: 9px 12px;
-  border-radius: 7px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background .12s;
-}
-.dn-dropdown-item:hover  { background: var(--iv2); }
-.dn-dropdown-item.active { background: var(--grl); color: var(--gr); }
 
 
 /* ================================================
@@ -2145,15 +2123,6 @@ body {
   /* ---- Kartu agenda, kas, dll — sedikit lebih lega ---- */
   .ag, .trx, .inv, .nt-card, .org-card {
     padding: 14px 18px;
-  }
-
-  /* ---- Halaman Agenda penuh — dibatasi lebar juga ----
-     #agenda-page-list tidak punya background sendiri (transparan),
-     jadi cukup max-width+margin:auto biasa, tidak perlu var(--side). */
-  #agenda-page-list {
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   /* ---- Halaman detail UMKM — dibatasi lebar juga ---- */
