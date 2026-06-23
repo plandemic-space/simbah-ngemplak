@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halaman Tidak Ditemukan — SIMBAH Ngemplak</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Lora:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #F5F0E8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .wrap {
+      max-width: 360px;
+      width: 100%;
+    }
+    .logo-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .logo-strip img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+    .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 700; color: #2D5A3D; }
+    .sub   { font-size: 10px; color: #7A8E82; margin-top: 1px; }
+
+    .code {
+      font-family: 'Lora', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #2D5A3D;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .emoji { font-size: 40px; margin-bottom: 16px; }
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1A2E23;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 13px;
+      color: #4A5E52;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #2D5A3D;
+      color: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .btn:hover { background: #3A7050; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo-strip">
+      <img src="/img/logo.png" alt="Logo SIMBAH">
+      <div>
+        <div class="brand">SIMBAH</div>
+        <div class="sub">Dusun Ngemplak</div>
+      </div>
+    </div>
+
+    <div class="code">404</div>
+    <div class="emoji">🏡</div>
+    <h1>Halaman Tidak Ditemukan</h1>
+    <p>
+      Sepertinya link yang kamu buka sudah tidak ada<br>
+      atau alamatnya salah ketik.<br>
+      Kembali ke beranda dan coba lagi dari sana.
+    </p>
+    <a class="btn" href="/">← Kembali ke Beranda</a>
+  </div>
+
+  <script>
+    /* GitHub Pages akan render 404.html ini, tapi URL-nya tetap
+       path yang salah. Redirect otomatis ke beranda setelah 5 detik
+       supaya pengunjung yang bingung tidak nyangkut. */
+    setTimeout(function () {
+      window.location.href = '/';
+    }, 5000);
+  </script>
+</body>
+</html>

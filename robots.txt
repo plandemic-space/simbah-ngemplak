@@ -1,0 +1,7 @@
+# robots.txt — SIMBAH Ngemplak
+# https://samxngemplak-arch.github.io/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://samxngemplak-arch.github.io/sitemap.xml
