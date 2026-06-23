@@ -1,5 +1,5 @@
 {
-  "_petunjuk": "Untuk menambah UMKM baru, copy salah satu blok { ... } di bawah, paste di akhir sebelum tanda ] penutup, lalu ganti semua isinya. JANGAN lupa koma (,) setelah tanda } kecuali itu blok PALING TERAKHIR. CATATAN field 'maps': isi dengan link Google Maps ASLI lokasi usaha — link ini juga dipakai sebagai tombol 'Lihat Review di Google Maps' di halaman detail. CATATAN field 'phone': format internasional tanpa + (contoh: 6281234567890). Kosongkan string ('') kalau nomor belum ada — tombol WA otomatis disembunyikan. CATATAN field 'ulasan': jumlah ulasan Google (angka integer).",
+  "_petunjuk": "Untuk menambah UMKM baru, copy salah satu blok { ... } di bawah, paste di akhir sebelum tanda ] penutup, lalu ganti semua isinya. JANGAN lupa koma (,) setelah tanda } kecuali itu blok PALING TERAKHIR. CATATAN field 'maps': isi dengan link Google Maps ASLI lokasi usaha — link ini juga dipakai sebagai tombol 'Lihat Review di Google Maps' di halaman detail. CATATAN field 'phone': format internasional tanpa + (contoh: 6281234567890). Kosongkan string ('') kalau nomor belum ada — tombol WA otomatis disembunyikan. CATATAN field 'ulasan': jumlah ulasan Google (angka integer). CATATAN field 'testimoni': array opsional testimoni warga asli, format [{nama, teks, tanggal}].",
   "umkm": [
     {
       "id": 0,
@@ -348,7 +348,7 @@
       "name": "Martin Bibit Jaya",
       "cat": "Perkebunan",
       "emoji": "🌳",
-      "desc": "Pembibitan tanaman (plant nursery) di Desa Samping Ngemplak RT 01/02. Menyediakan bibit tanaman pilihan untuk kebutuhan pertanian dan penghijauan.",
+      "desc": "Pembibitan tanaman di Dusun Ngemplak RT 01/02. Menyediakan bibit tanaman pilihan untuk kebutuhan pertanian dan penghijauan.",
       "phone": "",
       "rating": "0",
       "ulasan": 0,
@@ -474,7 +474,7 @@
     },
     {
       "id": 13,
-      "name": "muhtarbibitunggul",
+      "name": "Muhtar Bibit Unggul",
       "cat": "Perkebunan",
       "emoji": "🌱",
       "desc": "Penyedia bibit tanaman unggul pilihan. Tersedia berbagai jenis bibit berkualitas untuk kebutuhan pertanian dan perkebunan.",

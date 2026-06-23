@@ -223,6 +223,11 @@ function nav(key) {
     renderAgendaPage();
   }
 
+  /* Kalau pindah ke halaman Inventaris, render daftar lengkap dulu */
+  if (key === 'inventaris') {
+    renderInventarisPage();
+  }
+
   /* Kalau pindah ke halaman Tentang, reset ke tab Profil —
      supaya konsisten, tidak nyangkut di tab terakhir yang
      pernah dibuka sebelumnya. */
@@ -276,6 +281,11 @@ function goBack() {
     renderAgendaPage();
   }
 
+  /* Kalau kembali ke halaman Inventaris, render daftar lengkap lagi */
+  if (currentPage === 'inventaris') {
+    renderInventarisPage();
+  }
+
   /* Bersihkan parameter ?umkm=... dari URL kalau yang dituju
      bukan halaman detail UMKM (sama seperti di nav() di atas) */
   if (currentPage !== 'umkm-detail' && window.location.search) {
@@ -291,6 +301,46 @@ function goHome() {
   history = []; /* kosongkan history */
   nav('beranda');
 }
+
+
+/* ================================================
+   3B. DROPDOWN "LAINNYA" — Nav Desktop
+   ------------------------------------------------
+   Kas & Inventaris tidak lagi sejajar di menu desktop
+   utama (sesuai Product Roadmap SIMBAH: fokus utama
+   UMKM+Agenda+Identitas) — dipindah ke dropdown ini.
+   Klik tombol "Lainnya" untuk buka/tutup, klik di luar
+   dropdown untuk menutup otomatis.
+   ================================================ */
+
+/** Buka/tutup dropdown "Lainnya" */
+function toggleDnDropdown(e) {
+  e.stopPropagation(); /* supaya tidak langsung ke-trigger listener "klik di luar" di bawah */
+  const menu = document.getElementById('dn-dropdown-menu');
+  const btn = document.getElementById('dn-lainnya-btn');
+  menu?.classList.toggle('open');
+  btn?.classList.toggle('open');
+}
+
+/** Tutup dropdown "Lainnya" (dipakai listener klik di luar & setelah pilih item) */
+function closeDnDropdown() {
+  document.getElementById('dn-dropdown-menu')?.classList.remove('open');
+  document.getElementById('dn-lainnya-btn')?.classList.remove('open');
+}
+
+/** Navigasi dari dalam dropdown "Lainnya" — tutup dropdown dulu, baru pindah halaman */
+function navFromDropdown(key) {
+  closeDnDropdown();
+  nav(key);
+}
+
+/* Klik di mana saja di luar dropdown akan menutupnya otomatis */
+document.addEventListener('click', function(e) {
+  const wrap = document.querySelector('.dn-dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    closeDnDropdown();
+  }
+});
 
 
 /* ================================================
@@ -378,12 +428,7 @@ function renderGrid(filter) {
         <div class="ug-info">
           <div class="ug-name">${u.name}</div>
           <div class="ug-cat">${u.rating && u.rating !== '0' ? '⭐ ' + u.rating : '<span class="ug-new">Baru</span>'}</div>
-          ${u.phone ? `<a class="ug-wa"
-             href="https://wa.me/${u.phone}"
-             target="_blank"
-             onclick="event.stopPropagation()">
-            💬 Chat WA
-          </a>` : `<span class="ug-wa-empty">📍 Lihat Maps</span>`}
+          ${u.phone ? `<a class="ug-wa" href="https://wa.me/${u.phone}" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>` : `<span class="ug-wa-empty">📍 Lihat Maps</span>`}
         </div>
       </div>`;
   }).join('');
@@ -549,7 +594,7 @@ function showUMKM(id, updateUrl) {
   isiTeks('ud-logo', u.emoji);
   isiTeks('ud-name', u.name);
   isiTeks('ud-cat', u.cat);
-  /* Rating pill — kalau 0 atau kosong, ganti konten pill jadi "Baru" */
+  /* Rating pill — kalau 0 atau kosong tampilkan badge "Baru", kalau ada tampilkan bintang + jumlah ulasan */
   const ratingEl = document.getElementById('ud-rating');
   const ratingPill = ratingEl ? ratingEl.closest('.rating-pill') : null;
   if (ratingPill) {
@@ -565,7 +610,8 @@ function showUMKM(id, updateUrl) {
   /* ── Isi deskripsi ── */
   isiTeks('ud-desc', u.desc);
 
-  /* ── Tombol WA (dengan pesan otomatis) — sembunyikan kalau phone kosong ── */
+  /* ── Tombol WA (dengan pesan otomatis) ── */
+  /* Tombol WA — sembunyikan otomatis kalau phone kosong */
   const waBtn = document.getElementById('ud-wa-btn');
   const waBtn2 = document.getElementById('ud-wa2');
   if (u.phone) {
@@ -746,32 +792,159 @@ function filterUMKM(cat) {
    sebelum tanda ] penutup, ganti isinya. Urutan
    tidak harus kronologis — JS otomatis mengurutkan.
 
+   ------------------------------------------------
+   PENTING — Sesuai arah Product Roadmap SIMBAH:
+   Agenda di sini KHUSUS untuk EVENT PUBLIK BESAR yang
+   layak diketahui orang luar dusun (festival, sedekah
+   bumi, jalan sehat, HUT dusun, kirab budaya, dll) —
+   BUKAN agenda internal RT/rutin (kerja bakti, posyandu,
+   pengajian rutin, rapat RT). Agenda rutin RT cukup
+   diumumkan lewat grup WA warga seperti biasa, tidak
+   perlu masuk web supaya halaman Agenda tetap ringkas
+   dan benar-benar jadi etalase ke orang luar.
+   Frekuensi realistis: ±1 event besar per bulan.
+   ------------------------------------------------
+
    tag yang dikenali (untuk warna badge):
-   'Kerja Bakti', 'Kliwonan', 'Rapat' → badge hijau
-   'Posyandu', 'Hajatan'              → badge emas
+   'Festival', 'HUT Dusun', 'Kirab' → badge hijau
+   'Sedekah Bumi', 'Jalan Sehat'    → badge emas
    (lihat fungsi tagClass() di bawah kalau mau nambah)
    ================================================ */
 const AGENDA = [
-  { title: 'Kerja Bakti RT 01 & 02', date: '2026-06-08', time: '07.00 WIB', lokasi: 'Pertigaan Utama', tag: 'Kerja Bakti' },
-  { title: 'Posyandu Balita',        date: '2026-06-12', time: '08.00 WIB', lokasi: 'Balai Dusun', tag: 'Posyandu' },
-  { title: 'Hajatan Anak Pak Sunar', date: '2026-06-15', time: '09.00 WIB', lokasi: 'Rumah Pak Sunar RT 02', tag: 'Hajatan' },
-  { title: 'Pengajian Kliwonan',     date: '2026-06-20', time: "Ba'da Isya", lokasi: 'Mushola Al-Ikhlas', tag: 'Kliwonan' },
-  { title: 'Musyawarah Dusun',       date: '2026-06-28', time: '19.30 WIB', lokasi: 'Balai Dusun', tag: 'Rapat' },
-  { title: 'Posyandu Balita',        date: '2026-07-10', time: '08.00 WIB', lokasi: 'Balai Dusun', tag: 'Posyandu' },
-  { title: 'Pengajian Kliwonan',     date: '2026-07-18', time: "Ba'da Isya", lokasi: 'Mushola Al-Ikhlas', tag: 'Kliwonan' },
+  { title: 'Jalan Sehat & Bazar UMKM',     date: '2026-07-12', time: '06.30 WIB', lokasi: 'Lapangan Dusun Ngemplak', tag: 'Jalan Sehat' },
+  { title: 'Sedekah Bumi Dusun Ngemplak',  date: '2026-08-09', time: '08.00 WIB', lokasi: 'Balai Dusun & Punden Desa', tag: 'Sedekah Bumi' },
+  { title: 'HUT Kemerdekaan & Kirab Budaya', date: '2026-08-17', time: '07.00 WIB', lokasi: 'Lapangan Dusun Ngemplak', tag: 'HUT Dusun' },
+  { title: 'Festival Panen Raya',          date: '2026-09-13', time: '09.00 WIB', lokasi: 'Lapangan Dusun Ngemplak', tag: 'Festival' },
 ];
 
-const INVENTARIS_SEARCH = [
-  { title: 'Sound System', meta: '2 unit · Pengelola: Pak Suroto' },
-  { title: 'Genset 5000W', meta: '1 unit · Pengelola: Pak Suroto' },
-  { title: 'Tenda Tarup', meta: '4 unit · Pengelola: Pak Kamijan' },
-  { title: 'Kursi Plastik', meta: '100 unit · Pengelola: Pak Kamijan' },
-  { title: 'Meja Lipat', meta: '20 unit · Pengelola: Pak Kamijan' },
+/* ================================================
+   8B. DATA INVENTARIS — Sumber Tunggal
+   ------------------------------------------------
+   Sama seperti AGENDA, data inventaris HANYA ditulis
+   di sini (bukan di index.html lagi). Halaman Inventaris
+   penuh dan Search global render dari array yang sama.
+
+   Field per item:
+   - nama     : nama barang
+   - jumlah   : jumlah + satuan (contoh: "150 Buah")
+   - kondisi  : "Baik" / "Perlu Cek" / "Rusak" (menentukan warna badge)
+   - lokasi   : lokasi penyimpanan
+   - pj       : penanggung jawab/pengelola (RW 02, PKK, dst)
+   - kelompok : nama kelompok/kategori (jadi judul section)
+   - emoji    : ikon kelompok (1 ikon dipakai untuk semua barang di kelompok itu)
+
+   CARA TAMBAH BARANG BARU:
+   Copy salah satu blok { ... }, paste sebelum tanda ]
+   penutup, ganti isinya. Barang otomatis dikelompokkan
+   berdasarkan field "kelompok" — tidak perlu bikin
+   section HTML baru secara manual.
+   ================================================ */
+const INVENTARIS = [
+  { nama: 'Tratag Besi', jumlah: '1 Set', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+  { nama: 'Tiang Utama Tratag', jumlah: '32 Batang', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+  { nama: 'Palang Atas Tratag', jumlah: '48 Batang', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+  { nama: 'Palang Samping Tratag', jumlah: '32 Batang', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+  { nama: 'Seng Atap Tratag', jumlah: '120 Lembar', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+  { nama: 'Terpal Plastik Besar', jumlah: '8 Lembar', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+  { nama: 'Kipas Gantung Tratag', jumlah: '8 Unit', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🌀' },
+  { nama: 'Lampu Penerangan', jumlah: '12 Unit', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '💡' },
+  { nama: 'Kabel Roll', jumlah: '5 Unit', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🔌' },
+  { nama: 'Panggung Bongkar Pasang', jumlah: '1 Set', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'RW 02', kelompok: 'Sarana Hajatan', emoji: '🏗️' },
+
+  { nama: 'Kursi Plastik', jumlah: '150 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Perlengkapan Acara', emoji: '🪑' },
+  { nama: 'Meja Plastik', jumlah: '20 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Perlengkapan Acara', emoji: '🍽️' },
+  { nama: 'Meja Prasmanan', jumlah: '10 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Perlengkapan Acara', emoji: '🍽️' },
+  { nama: 'Taplak Meja Seragam', jumlah: '20 Lembar', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Perlengkapan Acara', emoji: '🧵' },
+  { nama: 'Kain Penutup Dekorasi', jumlah: '15 Lembar', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Perlengkapan Acara', emoji: '🎀' },
+  { nama: 'Kotak Sumbangan', jumlah: '2 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Perlengkapan Acara', emoji: '📦' },
+
+  { nama: 'Soblok / Dandang Air', jumlah: '4 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Dapur', emoji: '🍲' },
+  { nama: 'Wajan Besar', jumlah: '4 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Dapur', emoji: '🍳' },
+  { nama: 'Tempat Nasi', jumlah: '8 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Dapur', emoji: '🍚' },
+  { nama: 'Tempat Sayur', jumlah: '8 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Dapur', emoji: '🥘' },
+  { nama: 'Tempat Krupuk', jumlah: '6 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Dapur', emoji: '🥣' },
+  { nama: 'Centong', jumlah: '10 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Dapur', emoji: '🥄' },
+
+  { nama: 'Piring', jumlah: '300 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Makan Minum', emoji: '🍽️' },
+  { nama: 'Sendok', jumlah: '300 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Makan Minum', emoji: '🥄' },
+  { nama: 'Gelas', jumlah: '10 Krat', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Makan Minum', emoji: '🥤' },
+  { nama: 'Bak Air Besar', jumlah: '2 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Makan Minum', emoji: '🪣' },
+  { nama: 'Tong Air', jumlah: '6 Buah', kondisi: 'Baik', lokasi: 'Gudang Dusun', pj: 'PKK', kelompok: 'Peralatan Makan Minum', emoji: '🛢️' },
 ];
+
+/** Map kondisi barang → kelas badge warna (lihat .ibg/.ibb/.ibr di style.css) */
+function kondisiClass(kondisi) {
+  if (kondisi === 'Baik') return 'ibg';
+  if (kondisi === 'Rusak') return 'ibr';
+  return 'ibb'; /* default: Perlu Cek / Butuh Perhatian */
+}
+
+/** Render 1 card inventaris (dipakai halaman Inventaris) */
+function renderCardInventaris(item) {
+  return `
+    <div class="inv">
+      <div class="iico">${item.emoji}</div>
+      <div style="flex:1"><div class="inm">${item.nama}</div><div class="idet">${item.jumlah} · ${item.lokasi}</div></div>
+      <span class="ibadge ${kondisiClass(item.kondisi)}">${item.kondisi}</span>
+    </div>`;
+}
+
+/**
+ * Render halaman Inventaris penuh, dikelompokkan otomatis per
+ * field "kelompok" — 1 tombol WA per kelompok (bukan per barang,
+ * supaya tidak ada 26 tombol WA berulang di halaman yang sama).
+ */
+function renderInventarisPage() {
+  const el = document.getElementById('inventaris-page-list');
+  if (!el) return;
+
+  /* Kelompokkan berdasarkan field "kelompok", urut sesuai urutan
+     kemunculan pertama di array (bukan alfabet) */
+  const kelompokOrder = [];
+  const kelompokMap = {};
+  INVENTARIS.forEach(function(item) {
+    if (!kelompokMap[item.kelompok]) {
+      kelompokMap[item.kelompok] = [];
+      kelompokOrder.push(item.kelompok);
+    }
+    kelompokMap[item.kelompok].push(item);
+  });
+
+  el.innerHTML = kelompokOrder.map(function(kelompok) {
+    const items = kelompokMap[kelompok];
+    const pj = items[0].pj; /* PJ diasumsikan sama untuk 1 kelompok */
+    return `
+      <div class="sec">
+        <div class="sec-hdr"><div class="sec-ttl">${kelompok}</div></div>
+        <div class="bline"></div>
+        ${items.map(renderCardInventaris).join('')}
+        <a class="pj-wa" href="https://wa.me/6282241439784" target="_blank">💬 Hubungi Pengelola (${pj})</a>
+      </div>`;
+  }).join('');
+}
+
+/**
+ * Render versi MINOR Inventaris di Beranda — cuma 2 item teratas
+ * (lebih sedikit dari sebelumnya yang 3), sesuai keputusan product
+ * roadmap bahwa Inventaris bukan fokus utama, jadi porsinya di
+ * Beranda dikecilkan, tapi tetap ada (tidak dihapus total).
+ */
+function renderInventarisBeranda() {
+  const el = document.getElementById('inventaris-beranda-list');
+  if (!el) return;
+
+  const JUMLAH_TAMPIL = 2;
+  const list = INVENTARIS.slice(0, JUMLAH_TAMPIL);
+  el.innerHTML = list.map(renderCardInventaris).join('');
+}
+
+const INVENTARIS_SEARCH = INVENTARIS.map(function(item) {
+  return { title: item.nama, meta: item.jumlah + ' · Pengelola: ' + item.pj };
+});
 
 /** Map tag agenda → kelas badge warna (lihat .tg/.tb di style.css) */
 function tagClass(tag) {
-  const hijau = ['Kerja Bakti', 'Kliwonan', 'Rapat'];
+  const hijau = ['Festival', 'HUT Dusun', 'Kirab'];
   return hijau.indexOf(tag) !== -1 ? 'tg' : 'tb';
 }
 
@@ -824,6 +997,31 @@ function renderAgendaBeranda() {
     return;
   }
   el.innerHTML = mendatang.map(renderCardAgenda).join('');
+}
+
+/**
+ * Render teks ticker pengumuman di Hero Beranda, diambil dari array
+ * AGENDA yang sama (bukan ditulis manual lagi) — supaya kalau Zen
+ * update agenda, ticker otomatis ikut berubah, tidak perlu sentuh
+ * index.html sama sekali.
+ */
+function renderTicker() {
+  const el = document.getElementById('ticker-text');
+  if (!el) return;
+
+  const mendatang = getAgendaMendatang();
+
+  if (!mendatang.length) {
+    el.textContent = 'Belum ada agenda mendatang.';
+    return;
+  }
+
+  el.innerHTML = mendatang.map(function(a) {
+    const tgl = new Date(a.date + 'T00:00:00');
+    const hari = String(tgl.getDate()).padStart(2, '0');
+    const bulan = NAMA_BULAN_SINGKAT[tgl.getMonth()];
+    return `${a.title} &middot; ${hari} ${bulan} ${a.time}`;
+  }).join(' &nbsp;&middot;&nbsp; ');
 }
 
 /**
@@ -1023,6 +1221,8 @@ muatDataUMKM();
    (Halaman Agenda penuh di-render saat nav('agenda') dipanggil,
    tidak perlu di-render di sini karena belum aktif/terlihat.) */
 renderAgendaBeranda();
+renderTicker();
+renderInventarisBeranda();
 
 /* Pasang event listener ke kotak pencarian */
 document.getElementById('search-input')?.addEventListener('input', function(e) {
