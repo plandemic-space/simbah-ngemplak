@@ -1269,6 +1269,20 @@ body {
   font-size: 10px;
   color: var(--tx3);
 }
+.kaskom-bar-wrap {
+  margin-top: 6px;
+  height: 4px;
+  background: var(--iv3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.kaskom-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gr), var(--gr2));
+  border-radius: 2px;
+  min-width: 4px; /* supaya bar Karang Taruna (5%) tetap keliatan */
+  transition: width .4s ease;
+}
 .kaskom-right { text-align: right; flex-shrink: 0; }
 .kaskom-saldo {
   font-size: 13px;
