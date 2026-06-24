@@ -603,34 +603,25 @@ body {
    Banner utama halaman beranda
    ================================================ */
 .hero {
-  background: linear-gradient(155deg, #1E4230, var(--gr) 55%, #355C40);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(20, 40, 25, 0.82) 0%,
+      rgba(20, 40, 25, 0.60) 45%,
+      rgba(20, 40, 25, 0.22) 100%
+    ),
+    url('../img/hero-bg.jpg') center 20% / cover no-repeat;
   padding: 20px 16px 24px;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  min-height: 240px;
 }
 
-/* Lingkaran dekoratif di hero */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .03);
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -30px;
-  left: -30px;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: rgba(139, 105, 20, .12);
-}
+/* Dekoratif dihapus — foto sudah cukup sebagai background,
+   lingkaran abstrak justru mengganggu foto nyata */
+.hero::before { display: none; }
+.hero::after  { display: none; }
 
 .hero-ey {
   font-size: 10px;
@@ -2286,10 +2277,12 @@ body {
   }
   .ugrid { display: grid; } /* pastikan grid tetap grid setelah max-width */
 
-  /* ---- HERO — lebih besar & lega di desktop ---- */
+  /* ---- HERO — lebih besar & lega di desktop, foto keliatan lebih luas ---- */
   .hero {
-    padding: 56px var(--side) 64px;
+    padding: 72px var(--side) 80px;
     border-radius: 0;
+    min-height: 420px;
+    background-position: center 25%;
   }
   .hero-ttl  { font-size: 38px; }
   .hero-tag  { font-size: 14px; max-width: 420px; }

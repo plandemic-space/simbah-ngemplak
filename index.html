@@ -166,7 +166,7 @@
         <div class="hero-ttl">Ngemplak —<br>Dusun yang Tumbuh<br>dari <span>Akarnya Sendiri</span></div>
         <div class="hero-tag">Sejarah panjang, tradisi terjaga, dan puluhan UMKM yang terus bergerak maju bersama.</div>
         <div class="hero-stats">
-          <div class="hstat"><div class="num">18</div><div class="lbl">UMKM Aktif</div></div>
+          <div class="hstat"><div class="num" id="stat-umkm-hero">18</div><div class="lbl">UMKM Aktif</div></div>
           <div class="hstat"><div class="num">±200</div><div class="lbl">KK</div></div>
           <div class="hstat"><div class="num">2</div><div class="lbl">RT</div></div>
         </div>
@@ -268,7 +268,7 @@
         <div class="potensi-grid">
           <div class="pot-item">
             <div class="pot-ico">🏪</div>
-            <div class="pot-num">18+</div>
+            <div class="pot-num" id="stat-umkm-potensi">18+</div>
             <div class="pot-lbl">UMKM Aktif</div>
           </div>
           <div class="pot-item">
@@ -416,59 +416,10 @@
 
       </div><!-- /beranda-grid-desktop -->
 
-      <!-- Footer -->
-      <div class="footer">
-        <div class="ft-grid">
-
-          <div class="ft-col">
-            <div class="ft-brand">
-              <img class="ft-logo" src="img/logo.png" alt="Logo">
-              <div>
-                <div class="ft-name">SIMBAH Ngemplak</div>
-                <div class="ft-sub">Sistem Informasi Masyarakat Bale Harian</div>
-              </div>
-            </div>
-            <div class="ft-desc">
-              Balai dusun digital untuk warga Ngemplak — informasi, layanan, dan direktori komunitas dalam satu tempat.
-            </div>
-            <div class="ft-tagline">"Tumbuh Bersama, Maju Berkelanjutan."</div>
-            <div class="ft-socials">
-              <a class="ft-soc" href="https://www.facebook.com/ktoppen.lestari.9" target="_blank" title="Facebook Karang Taruna Oppen Lestari">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 8.5h-1.5c-.55 0-1 .45-1 1V11h2.4l-.3 2.2h-2.1V19h-2.3v-5.8H9.2V11h1.9V9.2c0-1.9 1.2-3.2 3.1-3.2H16v2.5z" fill="#fff"/></svg>
-              </a>
-              <a class="ft-soc" href="https://www.instagram.com/ktoppenlestari/" target="_blank" title="Instagram Karang Taruna">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r="0.9" fill="#fff"/></svg>
-              </a>
-              <a class="ft-soc" href="https://www.instagram.com/lensangemplak/" target="_blank" title="Instagram Dusun Ngemplak">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r="0.9" fill="#fff"/></svg>
-              </a>
-              <a class="ft-soc" href="https://wa.me/{{WA}}" target="_blank" title="WhatsApp">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 4c-4.42 0-8 3.58-8 8 0 1.42.37 2.75 1.02 3.9L4 20l4.24-1.02A7.96 7.96 0 0 0 12.04 20c4.42 0 8-3.58 8-8s-3.58-8-8-8zm4.34 11.06c-.18.5-1.05.96-1.45 1-.4.04-.78.18-2.6-.62-2.18-.96-3.58-3.18-3.69-3.32-.11-.14-.87-1.16-.87-2.2 0-1.05.55-1.56.75-1.77.2-.22.43-.27.58-.27h.42c.13 0 .31-.02.48.39.18.43.6 1.46.66 1.57.06.11.1.24.02.38-.08.14-.13.22-.25.34l-.36.4c-.12.13-.24.27-.1.52.13.25.6 1 1.3 1.62.9.78 1.65 1.03 1.92 1.15.27.12.43.1.59-.06.16-.16.7-.78.88-1.05.18-.27.36-.22.6-.13.24.09 1.55.7 1.82.83.27.13.45.2.51.31.06.12.06.65-.12 1.15z" fill="#fff"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="ft-col">
-            <div class="ft-addr">
-              Dusun Ngemplak, Desa Samping,<br>
-              Kec. Kemiri, Kab. Purworejo,<br>
-              Jawa Tengah 55751.
-            </div>
-            <div class="ft-contact">
-              <a class="ft-citem" href="https://wa.me/{{WA}}" target="_blank">
-                <div class="ft-cico"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 21l1.65-4.95a8.5 8.5 0 1 1 3.4 3.4L3 21z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <span class="ft-cval">0822-4143-9784</span>
-              </a>
-              <a class="ft-citem" href="mailto:samxngemplak@gmail.com">
-                <div class="ft-cico"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-                <span class="ft-cval">samxngemplak@gmail.com</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-        <div class="ft-copy">© 2026 Dusun Ngemplak · SIMBAH v1.0</div>
-      </div>
+      <!-- Footer — diisi otomatis oleh JS (lihat renderFooter() di script.js).
+           Dulu footer ini hardcode 2x (di Beranda & Tentang) — sekarang
+           cuma 1 sumber template di JS, render ke semua placeholder ini. -->
+      <div class="footer-slot" id="footer-beranda"></div>
 
     </div><!-- /p-beranda -->
 
@@ -926,13 +877,18 @@
             <p style="font-size:13px; color:var(--tx2); line-height:1.7">
               Dusun Ngemplak merupakan salah satu wilayah pedukuhan yang berada di Desa Samping,
               Kecamatan Kemiri, Kabupaten Purworejo, Provinsi Jawa Tengah. Dusun ini dikenal sebagai
-              lingkungan masyarakat yang menjunjung tinggi nilai gotong royong, kerukunan, serta
+              lingkungan masyarakat yang aman, rukun, dan menjunjung tinggi nilai gotong royong serta
               kehidupan sosial yang harmonis.
             </p>
             <p style="font-size:13px; color:var(--tx2); line-height:1.7; margin-top:10px">
               Dalam bidang ekonomi, masyarakat memiliki mata pencaharian yang beragam — selain
               pertanian, perkebunan, dan peternakan, warga juga mengembangkan usaha perdagangan,
               jasa, industri rumahan, serta berbagai kegiatan ekonomi produktif lainnya.
+            </p>
+            <p style="font-size:13px; color:var(--tx2); line-height:1.7; margin-top:10px">
+              Dengan kekuatan sumber daya manusia dan nilai budaya yang masih terjaga, Dusun Ngemplak
+              terus berupaya menjadi lingkungan yang maju, mandiri, dan sejahtera tanpa meninggalkan
+              jati diri serta warisan para leluhur.
             </p>
             <div class="motto-box">
               <div class="motto-label">Motto Dusun</div>
@@ -1230,59 +1186,8 @@
 
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-          <div class="ft-grid">
-
-            <div class="ft-col">
-              <div class="ft-brand">
-                <img class="ft-logo" src="img/logo.png" alt="Logo">
-                <div>
-                  <div class="ft-name">SIMBAH Ngemplak</div>
-                  <div class="ft-sub">Sistem Informasi Masyarakat Bale Harian</div>
-                </div>
-              </div>
-              <div class="ft-desc">
-                Balai dusun digital untuk warga Ngemplak — informasi, layanan, dan direktori komunitas dalam satu tempat.
-              </div>
-              <div class="ft-tagline">"Tumbuh Bersama, Maju Berkelanjutan."</div>
-              <div class="ft-socials">
-                <a class="ft-soc" href="https://www.facebook.com/ktoppen.lestari.9" target="_blank" title="Facebook Karang Taruna Oppen Lestari">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 8.5h-1.5c-.55 0-1 .45-1 1V11h2.4l-.3 2.2h-2.1V19h-2.3v-5.8H9.2V11h1.9V9.2c0-1.9 1.2-3.2 3.1-3.2H16v2.5z" fill="#fff"/></svg>
-                </a>
-                <a class="ft-soc" href="https://www.instagram.com/ktoppenlestari/" target="_blank" title="Instagram Karang Taruna">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r="0.9" fill="#fff"/></svg>
-                </a>
-                <a class="ft-soc" href="https://www.instagram.com/lensangemplak/" target="_blank" title="Instagram Dusun Ngemplak">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r="0.9" fill="#fff"/></svg>
-                </a>
-                <a class="ft-soc" href="https://wa.me/{{WA}}" target="_blank" title="WhatsApp">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 4c-4.42 0-8 3.58-8 8 0 1.42.37 2.75 1.02 3.9L4 20l4.24-1.02A7.96 7.96 0 0 0 12.04 20c4.42 0 8-3.58 8-8s-3.58-8-8-8zm4.34 11.06c-.18.5-1.05.96-1.45 1-.4.04-.78.18-2.6-.62-2.18-.96-3.58-3.18-3.69-3.32-.11-.14-.87-1.16-.87-2.2 0-1.05.55-1.56.75-1.77.2-.22.43-.27.58-.27h.42c.13 0 .31-.02.48.39.18.43.6 1.46.66 1.57.06.11.1.24.02.38-.08.14-.13.22-.25.34l-.36.4c-.12.13-.24.27-.1.52.13.25.6 1 1.3 1.62.9.78 1.65 1.03 1.92 1.15.27.12.43.1.59-.06.16-.16.7-.78.88-1.05.18-.27.36-.22.6-.13.24.09 1.55.7 1.82.83.27.13.45.2.51.31.06.12.06.65-.12 1.15z" fill="#fff"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <div class="ft-col">
-              <div class="ft-addr">
-                Dusun Ngemplak, Desa Samping,<br>
-                Kec. Kemiri, Kab. Purworejo,<br>
-                Jawa Tengah 55751.
-              </div>
-              <div class="ft-contact">
-                <a class="ft-citem" href="https://wa.me/{{WA}}" target="_blank">
-                  <div class="ft-cico"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 21l1.65-4.95a8.5 8.5 0 1 1 3.4 3.4L3 21z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <span class="ft-cval">0822-4143-9784</span>
-                </a>
-                <a class="ft-citem" href="mailto:samxngemplak@gmail.com">
-                  <div class="ft-cico"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-                  <span class="ft-cval">samxngemplak@gmail.com</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-          <div class="ft-copy">© 2026 Dusun Ngemplak · SIMBAH v1.0</div>
-        </div>
+        <!-- Footer — diisi otomatis oleh JS (lihat renderFooter() di script.js) -->
+        <div class="footer-slot" id="footer-tentang"></div>
 
       </div>
 

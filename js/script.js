@@ -115,6 +115,13 @@ async function muatDataUMKM() {
     renderGrid('');
     renderUMKMBeranda();
 
+    /* Update angka "UMKM Aktif" di Hero & section Kenali Ngemplak
+       supaya otomatis ikut jumlah riil di umkm.json — tidak perlu
+       lagi diingat-ingat untuk update manual tiap nambah UMKM baru.
+       Kalau fetch gagal (lihat blok catch di bawah), angka HARDCODE
+       yang sudah ada di index.html tetap tampil sebagai fallback. */
+    renderStatUMKM();
+
     /* Cek apakah halaman ini dibuka lewat link share UMKM
        (contoh: ?umkm=plandemic-space) — kalau iya, langsung
        buka detail UMKM itu tanpa perlu klik apa-apa. */
@@ -489,6 +496,30 @@ function renderUMKMBeranda() {
         <div class="uinfo"><div class="uname">${u.name}</div><div class="ucat">${u.cat}</div></div>
       </div>`;
   }).join('');
+}
+
+/**
+ * Update angka "UMKM Aktif" di Hero (#stat-umkm-hero) dan section
+ * Kenali Ngemplak (#stat-umkm-potensi) supaya otomatis mengikuti
+ * jumlah riil di data/umkm.json — tidak perlu lagi diingat-ingat
+ * untuk update manual tiap kali nambah/hapus UMKM.
+ *
+ * CATATAN soal tanda "+" di #stat-umkm-potensi: itu SENGAJA tetap
+ * ditambahkan manual di sini (bukan cuma angka polos), karena
+ * maksudnya "jumlah ini MASIH BISA bertambah" (ada potensi UMKM
+ * lain yang belum terdaftar) — bukan klaim angka pasti. Hero
+ * (#stat-umkm-hero) sebaliknya tidak pakai "+", karena di situ
+ * fungsinya sebagai angka kredibilitas yang harus akurat 1:1
+ * dengan jumlah yang benar-benar terdaftar.
+ */
+function renderStatUMKM() {
+  const jumlah = UMKM.length;
+
+  const heroEl = document.getElementById('stat-umkm-hero');
+  if (heroEl) { heroEl.textContent = jumlah; }
+
+  const potensiEl = document.getElementById('stat-umkm-potensi');
+  if (potensiEl) { potensiEl.textContent = jumlah + '+'; }
 }
 
 /**
@@ -1107,6 +1138,103 @@ function renderAgendaPage() {
 
 
 /* ================================================
+   8C. FOOTER — Sumber Tunggal
+   ------------------------------------------------
+   Dulu footer ditulis 2x manual di index.html (Beranda
+   & Tentang) dengan isi PERSIS SAMA — risiko gampang
+   gak sinkron kalau salah satu lupa diupdate (mis. ganti
+   nomor WA, alamat, atau link sosmed, harus diingat edit
+   di 2 tempat).
+
+   SEKARANG: index.html cuma punya placeholder kosong
+   <div id="footer-beranda"></div> dan <div id="footer-tentang"></div>.
+   Keduanya diisi oleh renderFooter() di bawah ini — 1
+   sumber HTML, ditempel ke semua placeholder yang ada.
+
+   CATATAN WA: dulu footer pakai placeholder teks "{{WA}}"
+   yang di-replace oleh script kecil di akhir index.html.
+   Sekarang gak perlu itu lagi khusus untuk footer — nomor
+   WA langsung diambil dari WA_UTAMA (sudah didefinisikan
+   di atas) saat HTML footer di-generate, jadi selalu benar
+   dari awal tanpa perlu langkah replace tambahan.
+
+   CARA TAMBAH placeholder footer baru (kalau nanti ada
+   halaman baru yang butuh footer juga): cukup tambah
+   <div class="footer-slot" id="footer-NAMA-BARU"></div>
+   di index.html, lalu daftarkan id-nya di array FOOTER_SLOTS
+   di bawah — tidak perlu copy-paste HTML footer lagi.
+   ================================================ */
+const FOOTER_SLOTS = ['footer-beranda', 'footer-tentang'];
+
+function templateFooter() {
+  return `
+    <div class="footer">
+      <div class="ft-grid">
+
+        <div class="ft-col">
+          <div class="ft-brand">
+            <img class="ft-logo" src="img/logo.png" alt="Logo">
+            <div>
+              <div class="ft-name">SIMBAH Ngemplak</div>
+              <div class="ft-sub">Sistem Informasi Masyarakat Bale Harian</div>
+            </div>
+          </div>
+          <div class="ft-desc">
+            Balai dusun digital untuk warga Ngemplak — informasi, layanan, dan direktori komunitas dalam satu tempat.
+          </div>
+          <div class="ft-tagline">"Tumbuh Bersama, Maju Berkelanjutan."</div>
+          <div class="ft-socials">
+            <a class="ft-soc" href="https://www.facebook.com/ktoppen.lestari.9" target="_blank" title="Facebook Karang Taruna Oppen Lestari">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 8.5h-1.5c-.55 0-1 .45-1 1V11h2.4l-.3 2.2h-2.1V19h-2.3v-5.8H9.2V11h1.9V9.2c0-1.9 1.2-3.2 3.1-3.2H16v2.5z" fill="#fff"/></svg>
+            </a>
+            <a class="ft-soc" href="https://www.instagram.com/ktoppenlestari/" target="_blank" title="Instagram Karang Taruna">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r="0.9" fill="#fff"/></svg>
+            </a>
+            <a class="ft-soc" href="https://www.instagram.com/lensangemplak/" target="_blank" title="Instagram Dusun Ngemplak">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r="0.9" fill="#fff"/></svg>
+            </a>
+            <a class="ft-soc" href="https://wa.me/${WA_UTAMA}" target="_blank" title="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 4c-4.42 0-8 3.58-8 8 0 1.42.37 2.75 1.02 3.9L4 20l4.24-1.02A7.96 7.96 0 0 0 12.04 20c4.42 0 8-3.58 8-8s-3.58-8-8-8zm4.34 11.06c-.18.5-1.05.96-1.45 1-.4.04-.78.18-2.6-.62-2.18-.96-3.58-3.18-3.69-3.32-.11-.14-.87-1.16-.87-2.2 0-1.05.55-1.56.75-1.77.2-.22.43-.27.58-.27h.42c.13 0 .31-.02.48.39.18.43.6 1.46.66 1.57.06.11.1.24.02.38-.08.14-.13.22-.25.34l-.36.4c-.12.13-.24.27-.1.52.13.25.6 1 1.3 1.62.9.78 1.65 1.03 1.92 1.15.27.12.43.1.59-.06.16-.16.7-.78.88-1.05.18-.27.36-.22.6-.13.24.09 1.55.7 1.82.83.27.13.45.2.51.31.06.12.06.65-.12 1.15z" fill="#fff"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="ft-col">
+          <div class="ft-addr">
+            Dusun Ngemplak, Desa Samping,<br>
+            Kec. Kemiri, Kab. Purworejo,<br>
+            Jawa Tengah 55751.
+          </div>
+          <div class="ft-contact">
+            <a class="ft-citem" href="https://wa.me/${WA_UTAMA}" target="_blank">
+              <div class="ft-cico"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 21l1.65-4.95a8.5 8.5 0 1 1 3.4 3.4L3 21z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="ft-cval">0822-4143-9784</span>
+            </a>
+            <a class="ft-citem" href="mailto:samxngemplak@gmail.com">
+              <div class="ft-cico"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+              <span class="ft-cval">samxngemplak@gmail.com</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="ft-copy">© 2026 Dusun Ngemplak · SIMBAH v1.0</div>
+    </div>`;
+}
+
+/** Render footer ke semua placeholder yang terdaftar di FOOTER_SLOTS */
+function renderFooter() {
+  const html = templateFooter();
+  FOOTER_SLOTS.forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) { el.outerHTML = html; }
+    /* pakai outerHTML (bukan innerHTML) supaya wrapper <div class="footer-slot">
+       digantikan total oleh <div class="footer">, tidak nested 2 div */
+  });
+}
+
+
+/* ================================================
    9. SEARCH GLOBAL
    Kotak pencarian di header, muncul saat ikon kaca
    pembesar diklik. Mencari di UMKM + Agenda +
@@ -1282,6 +1410,10 @@ muatDataUMKM();
 renderAgendaBeranda();
 renderTicker();
 renderInventarisBeranda();
+
+/* Render footer ke semua placeholder (Beranda & Tentang) — 1 sumber
+   template (lihat templateFooter() di atas), tidak perlu hardcode lagi. */
+renderFooter();
 
 /* Pasang event listener ke kotak pencarian */
 document.getElementById('search-input')?.addEventListener('input', function(e) {
