@@ -26,6 +26,133 @@
 const WA_UTAMA = '6282241439784';
 
 /* ================================================
+   KONSTANTA SEO — JUDUL & DESKRIPSI DEFAULT
+   ------------------------------------------------
+   Dipakai oleh updateMetaUMKM() & resetMetaDefault() di bawah,
+   supaya saat membuka halaman detail UMKM, document.title dan
+   meta description browser berubah otomatis jadi spesifik per
+   UMKM — bukan ikut judul SIMBAH umum terus-terusan. Ini PENTING
+   untuk SEO: Google butuh title/description BERBEDA per halaman
+   supaya tiap UMKM bisa muncul sendiri-sendiri di hasil pencarian,
+   bukan semua UMKM dianggap "1 halaman yang sama".
+
+   DOMAIN_SIMBAH dipakai untuk generate URL canonical & Open Graph
+   dinamis. Domain resmi = simbahngemplak.vercel.app (lihat catatan
+   domain di index.html). Kalau nanti pindah ke domain custom,
+   ganti di SINI SAJA — semua fungsi SEO dinamis di bawah otomatis
+   ikut benar.
+   ================================================ */
+const DOMAIN_SIMBAH = 'https://simbahngemplak.vercel.app';
+const TITLE_DEFAULT = 'SIMBAH — Portal Digital Dusun Ngemplak | Kemiri, Purworejo';
+const DESC_DEFAULT  = 'Dusun Ngemplak, Desa Samping, Kemiri, Purworejo — sejarah panjang, tradisi terjaga, dan puluhan UMKM yang terus bergerak maju bersama. Portal digital resmi warga Ngemplak.';
+
+/**
+ * Update document.title + meta description + Open Graph + canonical
+ * + Schema.org LocalBusiness supaya SPESIFIK untuk 1 UMKM yang
+ * sedang dibuka. Dipanggil dari showUMKM().
+ *
+ * CATATAN: ini tidak mengubah URL address bar (itu sudah ditangani
+ * terpisah oleh pushState di showUMKM()) — ini KHUSUS metadata yang
+ * dibaca Google/browser tab, supaya hasil pencarian & link preview
+ * (WA/FB share) menampilkan info usaha yang benar, bukan info SIMBAH
+ * secara umum.
+ */
+function updateMetaUMKM(u) {
+  const slug = slugify(u.name);
+  const url = DOMAIN_SIMBAH + '/?umkm=' + slug;
+  const judul = u.name + ' — ' + u.cat + ' di Dusun Ngemplak | SIMBAH';
+  /* Deskripsi dipotong 155 karakter — standar aman supaya tidak
+     terpotong aneh di hasil pencarian Google */
+  const deskripsiMentah = u.desc || ('Usaha ' + u.cat + ' warga Dusun Ngemplak, Desa Samping, Kemiri, Purworejo.');
+  const deskripsi = deskripsiMentah.length > 155 ? deskripsiMentah.slice(0, 152) + '...' : deskripsiMentah;
+
+  document.title = judul;
+
+  function setMeta(selector, attr, nilai) {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, nilai);
+  }
+
+  setMeta('meta[name="description"]', 'content', deskripsi);
+  setMeta('link[rel="canonical"]', 'href', url);
+  setMeta('meta[property="og:title"]', 'content', judul);
+  setMeta('meta[property="og:description"]', 'content', deskripsi);
+  setMeta('meta[property="og:url"]', 'content', url);
+  setMeta('meta[name="twitter:title"]', 'content', judul);
+  setMeta('meta[name="twitter:description"]', 'content', deskripsi);
+
+  /* ── Schema.org LocalBusiness — dinamis per UMKM ──
+     Beda dari Schema.org GovernmentOrganization yang statis di
+     <head> (itu untuk profil Dusun secara umum). Ini KHUSUS untuk
+     1 usaha warga yang sedang dibuka, supaya Google paham ini
+     adalah bisnis lokal nyata dengan alamat & kontak jelas — sinyal
+     SEO lokal yang jauh lebih kuat daripada teks biasa.
+     Pakai <script> dengan id unik supaya bisa dihapus/diganti tanpa
+     numpuk banyak <script type="application/ld+json"> tiap ganti UMKM. */
+  let ldScript = document.getElementById('ld-json-umkm');
+  if (!ldScript) {
+    ldScript = document.createElement('script');
+    ldScript.type = 'application/ld+json';
+    ldScript.id = 'ld-json-umkm';
+    document.head.appendChild(ldScript);
+  }
+  const adaMaps = u.maps && u.maps !== '#' && u.maps.trim() !== '';
+  const schemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    'name': u.name,
+    'description': deskripsiMentah,
+    'url': url,
+    'image': DOMAIN_SIMBAH + '/img/logo.png',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': u.alamat || 'Dusun Ngemplak, Desa Samping',
+      'addressLocality': 'Kecamatan Kemiri',
+      'addressRegion': 'Purworejo, Jawa Tengah',
+      'addressCountry': 'ID'
+    },
+    'areaServed': 'Desa Samping, Kemiri, Purworejo'
+  };
+  if (u.phone) { schemaData.telephone = '+' + u.phone; }
+  if (adaMaps) { schemaData.hasMap = u.maps; }
+  if (u.rating && u.rating !== '0' && u.ulasan) {
+    schemaData.aggregateRating = {
+      '@type': 'AggregateRating',
+      'ratingValue': u.rating,
+      'reviewCount': u.ulasan
+    };
+  }
+  ldScript.textContent = JSON.stringify(schemaData);
+}
+
+/**
+ * Kembalikan document.title + meta description + Open Graph +
+ * canonical ke nilai default SIMBAH (bukan UMKM tertentu). Dipanggil
+ * dari nav() setiap kali pindah ke halaman SELAIN detail UMKM.
+ */
+function resetMetaDefault() {
+  document.title = TITLE_DEFAULT;
+
+  function setMeta(selector, attr, nilai) {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, nilai);
+  }
+
+  setMeta('meta[name="description"]', 'content', DESC_DEFAULT);
+  setMeta('link[rel="canonical"]', 'href', DOMAIN_SIMBAH + '/');
+  setMeta('meta[property="og:title"]', 'content', 'SIMBAH — Dusun Ngemplak, Kemiri Purworejo');
+  setMeta('meta[property="og:description"]', 'content', DESC_DEFAULT);
+  setMeta('meta[property="og:url"]', 'content', DOMAIN_SIMBAH + '/');
+  setMeta('meta[name="twitter:title"]', 'content', 'SIMBAH — Dusun Ngemplak, Kemiri Purworejo');
+  setMeta('meta[name="twitter:description"]', 'content', DESC_DEFAULT);
+
+  /* Hapus Schema.org LocalBusiness kalau ada — supaya halaman
+     non-UMKM tidak ikut bawa data bisnis usaha terakhir yang dibuka */
+  const ldScript = document.getElementById('ld-json-umkm');
+  if (ldScript) { ldScript.remove(); }
+}
+
+/* ================================================
    KONSTANTA KAS — UPDATE DI SINI KALAU ADA PERUBAHAN
    ------------------------------------------------
    KAS_UPDATE : tanggal terakhir saldo diperbarui
@@ -265,9 +392,13 @@ function nav(key) {
 
   /* Bersihkan parameter ?umkm=... dari URL kalau pindah ke halaman
      LAIN (bukan detail UMKM) — supaya URL gak nyangkut nunjuk UMKM
-     lama padahal sudah pindah halaman lain. */
+     lama padahal sudah pindah halaman lain. Sekalian kembalikan
+     title/meta/Schema.org ke default SIMBAH (bukan UMKM tertentu). */
   if (key !== 'umkm-detail' && window.location.search) {
     window.history.pushState({}, '', window.location.pathname);
+  }
+  if (key !== 'umkm-detail') {
+    resetMetaDefault();
   }
 }
 
@@ -315,9 +446,13 @@ function goBack() {
   }
 
   /* Bersihkan parameter ?umkm=... dari URL kalau yang dituju
-     bukan halaman detail UMKM (sama seperti di nav() di atas) */
+     bukan halaman detail UMKM (sama seperti di nav() di atas).
+     Sekalian kembalikan title/meta/Schema.org ke default. */
   if (currentPage !== 'umkm-detail' && window.location.search) {
     window.history.pushState({}, '', window.location.pathname);
+  }
+  if (currentPage !== 'umkm-detail') {
+    resetMetaDefault();
   }
 }
 
@@ -602,6 +737,11 @@ function showUMKM(id, updateUrl) {
   /* Simpan sebagai UMKM aktif — dipakai fungsi shareUMKM() */
   currentUMKM = u;
 
+  /* Update title, meta description, Open Graph, canonical, dan
+     Schema.org LocalBusiness supaya spesifik untuk UMKM ini —
+     lihat fungsi updateMetaUMKM() di bagian atas file. */
+  updateMetaUMKM(u);
+
   /* Update URL browser jadi ?umkm=slug-nama, TANPA reload halaman.
      Supaya kalau di-share, orang lain yang klik link ini langsung
      diarahkan ke detail UMKM yang sama (lihat bukaUMKMdariURL()). */
@@ -739,7 +879,20 @@ function showUMKM(id, updateUrl) {
   /* ── Tombol WA kedua (di bagian bawah) ── */
   isiLink('ud-wa2', `https://wa.me/${u.phone}`);
 
-  /* ── Render galeri foto (cek dulu array-nya ada) ── */
+  /* ── Render galeri foto (cek dulu array-nya ada) ──
+     CATATAN UNTUK PENGEMBANGAN LANJUTAN (25 Juni 2026):
+     Saat ini u.galeri masih array EMOJI (placeholder, lihat
+     umkm.json), bukan foto asli — makanya dirender sebagai teks
+     polos di <div class="gfoto">. Begitu foto asli sudah ada di
+     img/umkm/ dan field galeri diubah jadi path foto (mis.
+     "img/umkm/plandemic-1.jpg"), baris di bawah WAJIB diubah jadi
+     <img src="${e}" alt="${u.name} - foto produk" loading="lazy">
+     — loading="lazy" PENTING dipasang supaya 18+ foto UMKM tidak
+     semua didownload sekaligus saat halaman dibuka (lambat di
+     koneksi HP warga). Jangan lupa juga ganti emoji deteksi: kalau
+     mau dukung KEDUANYA (UMKM lama masih emoji, UMKM baru sudah
+     foto asli), cek dulu apakah e diawali "img/" sebelum decide
+     render <img> atau teks emoji biasa. */
   const galeriEl = document.getElementById('ud-galeri');
   if (galeriEl) {
     galeriEl.innerHTML = (u.galeri || []).map(function(e) {
@@ -1478,4 +1631,5 @@ window.addEventListener('popstate', function() {
   history = [];
   document.getElementById(pageMap['beranda'])?.classList.add('active');
   (navMap['beranda'] || []).forEach(function(id) { document.getElementById(id)?.classList.add('active'); });
+  resetMetaDefault();
 });

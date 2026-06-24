@@ -113,7 +113,7 @@
   <!-- ===== HEADER ===== -->
   <div class="hdr">
     <button class="hlogo" onclick="goHome()">
-      <img src="img/logo.png" alt="Logo Ngemplak">
+      <img src="img/logo.png" alt="Logo Ngemplak" loading="eager">
       <div>
         <div class="hbrand">SIMBAH</div>
         <div class="hsub">Dusun Ngemplak</div>
@@ -144,7 +144,7 @@
     </nav>
 
     <!-- Search pill — morph dari ikon kaca jadi input, melebar ke kiri -->
-    <div class="search-pill" id="search-pill" onclick="openSearch()">
+    <div class="search-pill" id="search-pill" onclick="openSearch()" role="button" tabindex="0" aria-label="Buka pencarian UMKM dan agenda">
       <div class="search-pill-btn" id="search-pill-btn">
         <svg class="sp-ico sp-ico-search" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         <svg class="sp-ico sp-ico-x" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -522,10 +522,10 @@
       <!-- Foto cover + tombol navigasi -->
       <div class="ud-cover" id="ud-cover">
         🍪
-        <button class="ud-back" onclick="goBack()">
+        <button class="ud-back" onclick="goBack()" aria-label="Kembali ke daftar UMKM">
           <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         </button>
-        <button class="ud-share" onclick="shareUMKM()">
+        <button class="ud-share" onclick="shareUMKM()" aria-label="Bagikan halaman usaha ini">
           <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
         </button>
       </div>
@@ -934,7 +934,7 @@
             <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             <span>Kembali</span>
           </button>
-          <img class="tentang-logo" src="img/logo.png" alt="Logo Ngemplak">
+          <img class="tentang-logo" src="img/logo.png" alt="Logo Ngemplak" loading="lazy">
           <h2 class="tentang-name">Dusun Ngemplak</h2>
           <div class="tentang-loc">📍 Desa Samping, Kemiri, Purworejo, Jawa Tengah</div>
         </div>
