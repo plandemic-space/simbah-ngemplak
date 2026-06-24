@@ -653,7 +653,7 @@ body {
       rgba(20, 40, 25, 0.60) 45%,
       rgba(20, 40, 25, 0.22) 100%
     ),
-    url('../img/hero-bg.png') center 20% / cover no-repeat;
+    url('../img/hero-bg.webp') center 20% / cover no-repeat;
   padding: 20px 16px 24px;
   position: relative;
   overflow: hidden;
