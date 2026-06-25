@@ -6,7 +6,7 @@
       "name": "Plandemic Space",
       "cat": "Jasa",
       "emoji": "💻",
-      "desc": "Solusi teknologi dan layanan digital untuk kebutuhan masyarakat modern di Dusun Ngemplak. Melayani servis laptop, komputer, printer, dan smartphone; print, fotokopi, scan, dan pengetikan dokumen; jual-beli HP & laptop second; penggilingan tepung beras; parut kelapa dan umbi; serta obras dan jahit ringan. Berawal dari inisiatif membantu warga mengakses internet saat pandemi, kini berkembang jadi pusat layanan digital dusun yang melayani warga Kemiri, Purworejo, Kutoarjo, dan sekitarnya.",
+      "desc": "Layanan jasa teknologi & kebutuhan harian warga: servis HP, komputer, laptop, dan printer; jual-beli HP & laptop second; print, fotokopi, dan scan dokumen; penggilingan tepung beras; parut kelapa dan umbi; serta obras dan jahit ringan. Berawal dari inisiatif membantu warga mengakses internet saat pandemi, kini berkembang jadi pusat layanan digital dusun.",
       "phone": "6282241439784",
       "rating": "4.9",
       "ulasan": 28,
@@ -34,7 +34,7 @@
         },
         {
           "e": "📱",
-          "n": "Servis Smartphone",
+          "n": "Servis HP",
           "p": "Hubungi WA"
         },
         {
@@ -53,11 +53,6 @@
           "p": "Hubungi WA"
         },
         {
-          "e": "📲",
-          "n": "Layanan Digital",
-          "p": "Hubungi WA"
-        },
-        {
           "e": "🌾",
           "n": "Giling Tepung",
           "p": "Hubungi WA"
@@ -70,7 +65,7 @@
       "name": "Heri Bibit",
       "cat": "Perkebunan",
       "emoji": "🌱",
-      "desc": "Pusat bibit tanaman unik dan variegata dari Dusun Ngemplak. Heri Bibit fokus menyediakan tanaman dengan karakteristik langka — variegata, tanaman hias koleksi, dan bibit buah pilihan — yang dirawat secara intensif sejak tahap pembibitan. Cocok untuk kolektor, penghobi tanaman, maupun yang ingin mempercantik pekarangan. Melayani area Purworejo, Kebumen, Magelang, Wonosobo, dan Yogyakarta.",
+      "desc": "Heri Bibit dikenal sebagai spesialis bibit tanaman variegata dan tanaman hias koleksi di Dusun Ngemplak — cocok untuk kolektor maupun penghobi yang mencari tanaman unik dengan karakteristik langka. Tersedia pula bibit buah dan sayuran untuk kebutuhan pertanian. Sudah dipercaya puluhan pembeli di Google Maps.",
       "phone": "6281229917285",
       "rating": "5.0",
       "ulasan": 10,
@@ -103,12 +98,12 @@
         },
         {
           "e": "🌱",
-          "n": "Tanaman Daun Unik",
+          "n": "Bibit Tanaman Langka",
           "p": "Hubungi WA"
         },
         {
           "e": "🌳",
-          "n": "Bibit Buah Pilihan",
+          "n": "Bibit Buah",
           "p": "Hubungi WA"
         }
       ],
@@ -119,7 +114,7 @@
       "name": "Bibit Tanaman Buah Terdekat",
       "cat": "Perkebunan",
       "emoji": "🍎",
-      "desc": "Spesialis bibit tanaman buah unggulan di Dusun Ngemplak — pilihan tepat untuk pekarangan rumah, kebun produktif, maupun investasi jangka panjang. Tersedia Durian, Alpukat, Mangga, Kelengkeng, dan Jambu dalam kondisi sehat dan siap tanam. Melayani petani, pekebun, dan penghobi tanaman buah dari Purworejo dan sekitarnya.",
+      "desc": "Spesialis bibit tanaman buah yang berlokasi dekat warga Ngemplak. Pilihan tepat kalau butuh bibit buah unggul — tersedia Mangga, Alpukat, Durian, Kelengkeng, dan Jambu, cocok untuk pekarangan maupun kebun produktif dan investasi jangka panjang.",
       "phone": "6281328087110",
       "rating": "4.8",
       "ulasan": 6,
@@ -141,8 +136,8 @@
       ],
       "products": [
         {
-          "e": "🍑",
-          "n": "Bibit Durian",
+          "e": "🥭",
+          "n": "Bibit Mangga",
           "p": "Hubungi WA"
         },
         {
@@ -151,8 +146,8 @@
           "p": "Hubungi WA"
         },
         {
-          "e": "🥭",
-          "n": "Bibit Mangga",
+          "e": "🍑",
+          "n": "Bibit Durian",
           "p": "Hubungi WA"
         },
         {
@@ -170,10 +165,10 @@
     },
     {
       "id": 3,
-      "name": "Rahman Grosir Bibit Murah",
+      "name": "Rahman Grosir Bibit",
       "cat": "Perkebunan",
       "emoji": "🌿",
-      "desc": "Rahman Grosir Bibit Murah menyediakan bibit tanaman dengan harga grosir langsung dari Dusun Ngemplak — cocok untuk pembelian partai besar maupun eceran. Pilihan tepat bagi petani, pekebun, dan pelaku usaha bibit yang butuh pasokan berkualitas dengan harga terjangkau. Rating 5.0 dari pembeli nyata di Google Maps.",
+      "desc": "Rahman Grosir Bibit menyediakan pilihan bibit yang beragam — dari bibit buah, tanaman keras, hingga bibit penghijauan — untuk kebutuhan rumah tangga maupun pembelian grosir skala usaha. Pemilik Rahman melayani langsung, cocok untuk petani dan pekebun yang butuh pasokan bibit berkualitas dari satu sumber.",
       "phone": "6281227945108",
       "rating": "5.0",
       "ulasan": 2,
@@ -188,18 +183,29 @@
       "tp": "#",
       "galeri": [
         "🌿",
-        "🌱",
-        "🌾"
+        "🍎",
+        "🌲",
+        "🌱"
       ],
       "products": [
         {
-          "e": "🌿",
-          "n": "Bibit Grosir (Partai Besar)",
+          "e": "🍎",
+          "n": "Bibit Buah",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌲",
+          "n": "Bibit Tanaman Keras",
           "p": "Hubungi WA"
         },
         {
           "e": "🌱",
-          "n": "Bibit Eceran",
+          "n": "Bibit Penghijauan",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌿",
+          "n": "Bibit Produktif",
           "p": "Hubungi WA"
         }
       ],
@@ -210,7 +216,7 @@
       "name": "Jamil Bibit",
       "cat": "Perkebunan",
       "emoji": "🌾",
-      "desc": "Jamil Bibit spesialis bibit tanaman keras untuk penghijauan dan perkebunan investasi jangka panjang. Tersedia Mahoni, Sengon, Trembesi, dan Jati — pilihan petani dan pekebun yang butuh tanaman dengan nilai ekonomi tinggi di masa depan. Melayani area Purworejo dan sekitarnya.",
+      "desc": "Jamil Bibit spesialis bibit tanaman keras untuk penghijauan dan perkebunan jangka panjang. Tersedia Mahoni, Sengon, Trembesi, dan Jati — pilihan petani dan pekebun yang butuh tanaman investasi dengan nilai ekonomi tinggi di masa depan.",
       "phone": "6285292889734",
       "rating": "5.0",
       "ulasan": 1,
@@ -259,7 +265,7 @@
       "name": "Jamil Arya Tani",
       "cat": "Perkebunan",
       "emoji": "🚜",
-      "desc": "Jamil Arya Tani melayani kebutuhan bibit tanaman keras untuk penghijauan, perkebunan, dan program konservasi lingkungan. Tersedia Sengon, Mahoni, Jati, dan Trembesi — cocok untuk program penghijauan lingkungan maupun investasi perkebunan jangka panjang di wilayah Purworejo dan sekitarnya.",
+      "desc": "Jamil Arya Tani melayani kebutuhan bibit tanaman keras untuk penghijauan, perkebunan, dan budidaya tanaman produktif. Tersedia Sengon, Mahoni, Jati, dan Trembesi — cocok untuk program penghijauan lingkungan maupun investasi perkebunan jangka panjang.",
       "phone": "6285292889734",
       "rating": "5.0",
       "ulasan": 2,
@@ -308,7 +314,7 @@
       "name": "Naza Bibit",
       "cat": "Perkebunan",
       "emoji": "🌾",
-      "desc": "Naza Bibit spesialis bibit tanaman pakan ternak dan tanaman penguat kesuburan tanah — satu-satunya di Ngemplak yang fokus di segmen ini. Tersedia Rumput Gajah, Kaliandra, dan Indigofera, mendukung peternak modern yang ingin pakan berkualitas dari kebun sendiri sekaligus menjaga kesuburan lahan.",
+      "desc": "Naza Bibit spesialis bibit tanaman pakan ternak dan tanaman penguat kesuburan tanah — satu-satunya di Ngemplak yang fokus di segmen ini. Tersedia Rumput Gajah, Kaliandra, dan Indigofera, mendukung peternak modern yang ingin pakan berkualitas dari kebun sendiri.",
       "phone": "6281327009228",
       "rating": "5.0",
       "ulasan": 1,
@@ -357,7 +363,7 @@
       "name": "Alfarizie Bibit",
       "cat": "Perkebunan",
       "emoji": "🌱",
-      "desc": "Alfarizie Bibit menyediakan kombinasi bibit buah, tanaman keras, dan tanaman perkebunan dalam satu tempat. Pilihan praktis untuk pekebun yang butuh berbagai jenis bibit sekaligus tanpa perlu mencari ke banyak tempat. Tersedia bibit berkualitas untuk kebutuhan pekarangan hingga kebun skala besar.",
+      "desc": "Alfarizie Bibit menyediakan kombinasi bibit buah, tanaman keras, dan tanaman perkebunan dalam satu tempat — pilihan praktis untuk pekebun yang butuh berbagai jenis bibit sekaligus tanpa banyak mencari ke tempat berbeda.",
       "phone": "6281281227901",
       "rating": "0",
       "ulasan": 0,
@@ -399,7 +405,7 @@
       "name": "Ardelia Bibit",
       "cat": "Perkebunan",
       "emoji": "🪴",
-      "desc": "Ardelia Bibit hadir sebagai pusat pembibitan lengkap di Dusun Ngemplak — menyediakan bibit buah, tanaman keras, tanaman produktif, hingga bibit penghijauan dalam satu tempat. Satu tujuan untuk semua kebutuhan tanam, cocok untuk rumah tangga maupun pekebun skala besar.",
+      "desc": "Ardelia Bibit diposisikan sebagai pusat pembibitan terlengkap — menyediakan bibit buah, tanaman keras, tanaman produktif, hingga bibit untuk program penghijauan. Satu tempat untuk semua kebutuhan tanam, cocok untuk rumah tangga maupun pekebun skala besar.",
       "phone": "6282221085354",
       "rating": "0",
       "ulasan": 0,
@@ -446,7 +452,7 @@
       "name": "Martin Bibit Jaya",
       "cat": "Perkebunan",
       "emoji": "🌳",
-      "desc": "Martin Bibit Jaya — usaha pembibitan milik warga RT 01/02 Dusun Ngemplak yang menyediakan bibit buah, bibit kayu, dan tanaman produktif untuk kebutuhan rumah tangga, perkebunan, maupun penghijauan lingkungan. Lokasi paling dekat untuk warga RT 01 dan RT 02 Ngemplak.",
+      "desc": "Usaha pembibitan campuran milik warga RT 01/02 Dusun Ngemplak — tersedia bibit buah, bibit kayu, dan tanaman produktif untuk kebutuhan rumah tangga, perkebunan, maupun penghijauan lingkungan sekitar. Paling dekat untuk warga RT 01 dan RT 02.",
       "phone": "6285328014388",
       "rating": "0",
       "ulasan": 0,
@@ -488,7 +494,7 @@
       "name": "Trijaya Bibit",
       "cat": "Perkebunan",
       "emoji": "🌺",
-      "desc": "Trijaya Bibit spesialis tanaman hias untuk mempercantik halaman rumah, taman, dan area komersial. Tersedia tanaman hias, tanaman daun, dan tanaman koleksi — pilihan tepat untuk yang ingin taman rumah lebih hidup dan indah. Bibit sehat dan terawat langsung dari pembibitan Dusun Ngemplak.",
+      "desc": "Trijaya Bibit spesialis tanaman hias untuk mempercantik halaman rumah, taman, dan area komersial. Tersedia tanaman hias, tanaman daun, dan tanaman koleksi — pilihan tepat untuk yang ingin taman rumah lebih hidup dan indah.",
       "phone": "6288221128059",
       "rating": "5.0",
       "ulasan": 1,
@@ -532,7 +538,7 @@
       "name": "Samuji Bibit",
       "cat": "Perkebunan",
       "emoji": "🌾",
-      "desc": "Pak Samuji sudah lama jadi langganan bibit warga sekitar — harga dari tangan petani langsung, tanpa selisih tengkulak. Dengan 6 ulasan positif di Google Maps, kepercayaan pembelinya sudah teruji di lapangan. Tersedia berbagai bibit tanaman untuk kebutuhan pertanian dan perkebunan.",
+      "desc": "Pak Samuji sudah lama jadi langganan bibit warga sekitar — harga dari tangan petani langsung, tidak ada selisih harga tengkulak. Dengan 6 ulasan positif di Google Maps, kepercayaan pembelinya sudah teruji di lapangan.",
       "phone": "6282133648356",
       "rating": "5.0",
       "ulasan": 6,
@@ -553,7 +559,22 @@
       "products": [
         {
           "e": "🌾",
-          "n": "Bibit Tanaman",
+          "n": "Bibit Perkebunan",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🍎",
+          "n": "Bibit Buah",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌲",
+          "n": "Bibit Penghijauan",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌿",
+          "n": "Bibit Tanaman Keras",
           "p": "Hubungi WA"
         }
       ],
@@ -564,7 +585,7 @@
       "name": "Bibit Cabai Alip Sihmanto",
       "cat": "Perkebunan",
       "emoji": "🌶️",
-      "desc": "Spesialis bibit cabai Pak Alip Sihmanto — tersedia tiga varian unggulan: Cabai Rawit, Cabai Merah, dan Cabai Keriting. Buka mulai pukul 05.30 WIB. Cocok untuk petani hortikultura maupun warga yang ingin menanam cabai sendiri di pekarangan rumah dengan bibit berkualitas dari Dusun Ngemplak.",
+      "desc": "Spesialis bibit cabai Pak Alip Sihmanto — tersedia tiga varian unggulan: Cabai Rawit, Cabai Merah, dan Cabai Keriting. Cocok untuk petani hortikultura maupun warga yang ingin menanam cabai sendiri di pekarangan rumah.",
       "phone": "6285280348690",
       "rating": "4.1",
       "ulasan": 7,
@@ -607,7 +628,7 @@
       "name": "Muhtar Bibit Unggul",
       "cat": "Perkebunan",
       "emoji": "🌱",
-      "desc": "Muhtar Bibit Unggul spesialis bibit kehutanan dan reboisasi — mendukung program konservasi dengan bibit Sengon, Mahoni, Jabon, dan Trembesi berkualitas. Cocok untuk proyek penghijauan skala besar, reklamasi lahan, maupun investasi kayu jangka panjang di wilayah Purworejo dan sekitarnya.",
+      "desc": "Muhtar Bibit Unggul spesialis bibit kehutanan dan reboisasi — mendukung program konservasi dengan bibit Sengon, Mahoni, Jabon, dan Trembesi berkualitas. Cocok untuk proyek penghijauan, reklamasi lahan, maupun investasi kayu jangka panjang.",
       "phone": "6288201688120",
       "rating": "0",
       "ulasan": 0,
@@ -656,7 +677,7 @@
       "name": "PRIMATANI BIBIT",
       "cat": "Perkebunan",
       "emoji": "🌿",
-      "desc": "PRIMATANI BIBIT hadir untuk kebutuhan bibit skala pertanian, perkebunan, hingga program penghijauan di Dusun Ngemplak. Dengan rating 5.0 dari pembeli nyata di Google Maps, kualitas bibitnya sudah diakui — tersedia untuk pembelian eceran maupun partai besar.",
+      "desc": "PRIMATANI BIBIT hadir untuk kebutuhan bibit skala pertanian, perkebunan, hingga program penghijauan. Dengan rating 5.0 dari pembeli nyata di Google Maps, kualitas bibitnya sudah diakui — tersedia untuk pembelian langsung maupun partai besar.",
       "phone": "6281227002633",
       "rating": "5.0",
       "ulasan": 4,
@@ -677,8 +698,23 @@
       ],
       "products": [
         {
-          "e": "🌿",
-          "n": "Bibit Unggul",
+          "e": "🌱",
+          "n": "Bibit Perkebunan",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🍎",
+          "n": "Bibit Buah",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌲",
+          "n": "Bibit Penghijauan",
+          "p": "Hubungi WA"
+        },
+        {
+          "e": "🌾",
+          "n": "Bibit Pertanian",
           "p": "Hubungi WA"
         }
       ],
@@ -689,7 +725,7 @@
       "name": "Khanza Bibit",
       "cat": "Perkebunan",
       "emoji": "🪴",
-      "desc": "Khanza Bibit hadir untuk dua kebutuhan sekaligus — bibit tanaman buah untuk kebun produktif dan tanaman hias untuk memperindah pekarangan. Pilihan variatif dalam satu tempat, dengan bibit sehat dan siap tanam langsung dari Dusun Ngemplak, Kemiri, Purworejo.",
+      "desc": "Khanza Bibit hadir untuk dua kebutuhan sekaligus — bibit tanaman buah untuk kebun produktif dan tanaman hias untuk memperindah pekarangan. Pilihan variatif dalam satu tempat, dengan bibit sehat dan siap tanam.",
       "phone": "6282224415565",
       "rating": "0",
       "ulasan": 0,
@@ -731,7 +767,7 @@
       "name": "Isron Furniture",
       "cat": "Pertukangan",
       "emoji": "🪑",
-      "desc": "Isron Furniture — pengrajin furniture dan meubel kayu dari Dusun Ngemplak untuk kebutuhan rumah tangga dan bangunan. Menerima pesanan berbagai jenis perabotan kayu: kursi, meja, lemari, dipan, pintu, dan kusen. Kualitas terjamin, harga langsung dari tangan pengrajin.",
+      "desc": "Pengrajin furniture dan meubel kayu untuk kebutuhan rumah tangga. Menerima pesanan berbagai jenis perabotan kayu dengan kualitas terjamin dan harga langsung dari pengrajin.",
       "phone": "6281328432214",
       "rating": "0",
       "ulasan": 0,
@@ -780,7 +816,7 @@
       "name": "Dombaku",
       "cat": "Peternakan",
       "emoji": "🐑",
-      "desc": "Dombaku spesialis jual beli domba dan kambing Jawa dari Dusun Ngemplak — tersedia untuk kebutuhan aqiqah, kurban, konsumsi, maupun bibit ternak. Buka 07.00–22.00 WIB. Semua ternak dirawat dengan pakan terjaga dan kondisi sehat, dipilihkan langsung dari kandang.",
+      "desc": "Dombaku spesialis jual beli domba dan kambing Jawa — tersedia untuk kebutuhan aqiqah, kurban, konsumsi, maupun bibit ternak. Semua ternak dirawat dengan pakan terjaga dan kondisi sehat, dipilihkan langsung dari kandang.",
       "phone": "6285292966722",
       "rating": "5.0",
       "ulasan": 1,
@@ -828,7 +864,7 @@
       "name": "Sapu Jagad Fruits",
       "cat": "Perkebunan",
       "emoji": "🌳",
-      "desc": "Sapu Jagad Fruits menyediakan bibit tanaman buah unggulan dari Dusun Ngemplak — Alpukat, Durian, Mangga, Kelengkeng, dan Jambu — untuk pekarangan, kebun produktif, maupun budidaya komersial. Buka hingga pukul 00.00 WIB. Bibit sehat dan siap tanam, cocok untuk investasi kebun jangka panjang.",
+      "desc": "Sapu Jagad Fruits menyediakan bibit tanaman buah unggulan — Alpukat, Durian, Mangga, Kelengkeng, dan Jambu — untuk pekarangan, kebun produktif, maupun budidaya komersial. Bibit sehat dan siap tanam, cocok untuk investasi kebun jangka panjang.",
       "phone": "6281299049513",
       "rating": "5.0",
       "ulasan": 1,
