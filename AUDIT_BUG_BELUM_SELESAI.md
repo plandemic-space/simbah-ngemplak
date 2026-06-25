@@ -20,50 +20,36 @@
 - [x] Data dari katalog PDF, v2, v3, Excel — produk spesifik, koreksi karakter & kategori per UMKM
 - [x] Rahman Grosir Bibit masuk `id=3`, sitemap diupdate, slug bersih
 - [x] Samuji & PRIMATANI — produk dilengkapi dari 1 → 4 item
+- [x] FAQ per UMKM — field `faq` di `umkm.json`, render accordion di halaman detail, Schema `FAQPage`
+- [x] `seoTitle` & `seoDesc` per UMKM — `updateMetaUMKM()` pakai field khusus, fallback ke format lama
+- [x] Area layanan per UMKM — field `area` di `umkm.json`, tampil di info operasional, Schema `areaServed` spesifik per UMKM
+- [x] Isron Furniture — deskripsi diperbaiki (sebelumnya < 200 karakter)
+- [x] Meta `google-site-verification` dijaga — tidak boleh hilang saat update `index.html`
 
 ---
 
-## 🔴 KERJAKAN SEKARANG (kode, tidak butuh data lapangan)
+## 🔴 KERJAKAN BERIKUTNYA
 
-### 1. FAQ per UMKM — belum ada sama sekali
-**Kenapa penting:** Panduan SEO v3 menyebut ini wajib. FAQ sering muncul di Google sebagai rich snippet. Schema `FAQPage` juga baru bisa dipasang kalau FAQ-nya ada.
-**Data:** Sudah tersedia di katalog v3 — 3-5 FAQ per UMKM, tinggal dipindahkan ke `umkm.json` (tambah field `faq`) dan dirender di halaman detail UMKM.
-**File:** `umkm.json` + `script.js` (render FAQ) + `style.css` (styling FAQ)
+### 1. Internal linking "UMKM Terkait"
+**Kenapa penting:** Memperkuat SEO internal + UX — pengunjung halaman Heri Bibit bisa langsung loncat ke Khanza Bibit atau Trijaya Bibit tanpa balik ke daftar.
+**Data:** Sudah ada di katalog v3 per UMKM (field "UMKM Terkait"), tinggal dipindahkan.
+**Yang perlu dikerjakan:**
+- Tambah field `terkait` (array of id) di `umkm.json`
+- Render section "Usaha Terkait" di halaman detail UMKM (`script.js` + `index.html`)
+- Styling card terkait di `style.css`
 
-### 2. Schema FAQPage per UMKM
-**Kenapa penting:** Nyambung langsung dengan #1. Begitu FAQ ada di data, schema `FAQPage` ditambahkan ke `updateMetaUMKM()` di `script.js` — Google bisa tampilkan FAQ langsung di hasil pencarian.
-**File:** `script.js`, fungsi `updateMetaUMKM()`
-
-### 3. Field `tagline` & `seoDesc` per UMKM
-**Kenapa penting:** Sekarang `updateMetaUMKM()` pakai `u.desc` yang dipotong 155 karakter untuk meta description. Masalahnya `desc` ditulis untuk dibaca pengunjung (panjang, naratif), bukan untuk meta description Google (ringkas, keyword-rich). Katalog v3 sudah menyediakan meta description khusus per UMKM yang berbeda dari `desc`.
-**Solusi:** Tambah field `seoDesc` di `umkm.json`, dipakai khusus untuk meta description. Kalau kosong, fallback ke `desc` yang dipotong seperti sekarang.
-**File:** `umkm.json` + `script.js`
-
-### 4. Field `area` (area layanan) per UMKM
-**Kenapa penting:** Katalog v3 mencatat area layanan per UMKM (Purworejo, Kebumen, Magelang, dst). Ini bisa masuk Schema `areaServed` yang sekarang masih generik `"Desa Samping, Kemiri, Purworejo"` untuk semua UMKM.
-**File:** `umkm.json` + `script.js` (Schema `areaServed`)
-
-### 5. Internal linking "UMKM Terkait"
-**Kenapa penting:** Katalog v3 sudah menyusun rekomendasi "UMKM Terkait" per usaha (3 UMKM per halaman). Ini memperkuat SEO internal dan UX — pengunjung yang lihat Heri Bibit langsung bisa lompat ke Khanza Bibit atau Trijaya Bibit.
-**Data:** Sudah ada di katalog v3 per UMKM.
-**File:** `umkm.json` (tambah field `terkait`) + `script.js` (render section) + `style.css`
-
-### 6. Meta title per UMKM lebih spesifik
-**Sekarang:** `u.name + ' — ' + u.cat + ' di Dusun Ngemplak | SIMBAH'`
-**Contoh hasil:** `Heri Bibit — Perkebunan di Dusun Ngemplak | SIMBAH`
-**Masalah:** Kata "Perkebunan" terlalu generik — tidak ada keyword spesifik. Katalog v3 sudah menyiapkan SEO Title yang jauh lebih kuat per UMKM, contoh: `Heri Bibit | Bibit Variegata dan Tanaman Koleksi Purworejo`
-**Solusi:** Tambah field `seoTitle` di `umkm.json`. Kalau ada, dipakai. Kalau kosong, fallback ke format lama.
-**File:** `umkm.json` + `script.js`
-
-### 7. Isron Furniture — deskripsi terlalu pendek
-**Sekarang:** `desc` Isron hanya 119 karakter — satu-satunya yang tidak lolos cek >200 karakter.
-**File:** `umkm.json`
+### 2. Sitemap — perlu dicek ulang setelah semua perubahan
+**Catatan:** Setelah banyak perubahan data UMKM (koreksi slug, tambah Rahman id=3), perlu verifikasi semua 19 slug di sitemap cocok dengan slug yang dihasilkan fungsi `slugify()` di `script.js`. Kalau ada yang tidak cocok, link share UMKM itu tidak akan terbuka otomatis.
+**Yang perlu dikerjakan:**
+- Jalankan `slugify()` untuk semua 19 nama UMKM
+- Bandingkan dengan yang ada di `sitemap.xml`
+- Perbaiki yang tidak cocok
 
 ---
 
 ## 🟡 MENUNGGU DATA LAPANGAN (tugas Zen)
 
-- [ ] **Foto asli** UMKM & dusun — sedang disiapkan *(paling berdampak ke SEO menurut panduan v3)*
+- [ ] **Foto asli** UMKM & dusun — sedang disiapkan *(begitu siap, ganti emoji galeri → `<img>` + `loading="lazy"` di `script.js`)*
 - [ ] **Nomor kontak** Nyuwun Tulung (Kades, RW, RT, Bidan, Babinsa)
 - [ ] **Nama pengurus** organisasi (BPD, Takmir, PKK, Posyandu, Karang Taruna)
 - [ ] **Jam buka asli** tiap UMKM — sementara "Hubungi untuk jam buka"
@@ -71,30 +57,24 @@
 
 ---
 
-## 🔵 WISHLIST — Bisa dikerjakan nanti, bukan sekarang
+## 🔵 WISHLIST — Nanti setelah yang di atas beres
 
-Item-item ini valid secara SEO (dari panduan v3) tapi keluar dari prinsip SIMBAH (vanilla JS, 1 halaman, tanpa backend) atau butuh keputusan lebih dulu:
-
-- **Halaman kategori** (`/kategori/bibit-buah`, `/kategori/penghijauan`, dst) — panduan v3 bilang ini bisa naikan traffic 3-5x, tapi butuh arsitektur multi-halaman atau perombakan navigasi besar
-- **Halaman Sentra Bibit** — identitas terkuat Ngemplak menurut panduan v2, butuh halaman terpisah
-- **Schema `WebSite` + `BreadcrumbList`** di homepage — minor tapi dicatat
-- **Google Search Console** — daftarkan sitemap, pantau keyword. Ini tugas Zen, bukan coding
-- **Domain `.id`** — panduan v2 bilang ini pembeda antara 9.5/10 dan 10/10. Keputusan Zen & perangkat dusun
-- **Backlink lokal** — dari website Desa Samping, Kec. Kemiri, Kab. Purworejo. Bukan tugas coding
+- **Halaman Sentra Bibit** — identitas terkuat Ngemplak, butuh halaman terpisah (keluar dari SPA)
+- **Halaman kategori** (`/kategori/bibit-buah`, dst) — butuh arsitektur multi-halaman
+- **Schema `WebSite` + `BreadcrumbList`** di homepage
+- **Google Search Console** — submit sitemap, pantau keyword (tugas Zen, bukan coding)
+- **Domain `.id`** — keputusan Zen & perangkat dusun
+- **Backlink lokal** — dari website Desa Samping, Kec. Kemiri, Kab. Purworejo
 
 ---
 
-## 📌 URUTAN KERJAKAN SEKARANG
+## 📌 URUTAN KERJA BERIKUTNYA
 
 ```
-1 → FAQ per UMKM (data sudah siap di katalog v3)
-2 → Schema FAQPage (nyambung langsung dengan #1)
-3 → seoTitle & seoDesc per UMKM (data sudah siap di katalog v3)
-4 → Area layanan per UMKM (data sudah siap di katalog v3)
-5 → Internal linking UMKM Terkait (data sudah siap di katalog v3)
-6 → Fix deskripsi Isron Furniture
+1 → Cek & fix sitemap slug (cepat, ~10 menit)
+2 → Internal linking UMKM Terkait (data sudah siap di katalog v3)
 --- setelah foto dari Zen tiba ---
-7 → Ganti emoji galeri → <img> asli + loading="lazy"
+3 → Ganti emoji galeri → <img> asli + loading="lazy" di script.js
 --- setelah nomor kontak dari Zen ---
-8 → Aktifkan tombol Nyuwun Tulung
+4 → Aktifkan tombol Nyuwun Tulung di index.html
 ```

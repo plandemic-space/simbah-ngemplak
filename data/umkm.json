@@ -74,7 +74,8 @@
           "q": "Apakah melayani konsultasi teknologi?",
           "a": "Ya, pelanggan dapat berkonsultasi terlebih dahulu mengenai kebutuhan perangkat maupun layanan digital."
         }
-      ]
+      ],
+      "area": "Kemiri, Purworejo, Kutoarjo, Banyuurip"
     },
     {
       "id": 1,
@@ -139,7 +140,8 @@
           "q": "Apakah bibit siap tanam?",
           "a": "Sebagian besar bibit telah melalui tahap perawatan dan siap ditanam."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 2,
@@ -209,7 +211,8 @@
           "q": "Apakah bibit sudah siap tanam?",
           "a": "Ya, sebagian besar bibit telah memasuki fase siap tanam."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 3,
@@ -273,7 +276,8 @@
           "q": "Apakah melayani luar daerah?",
           "a": "Ya, melayani pengiriman ke berbagai wilayah."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 4,
@@ -338,7 +342,8 @@
           "q": "Apakah tersedia bibit dalam jumlah besar?",
           "a": "Ya, silakan hubungi untuk informasi stok."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 5,
@@ -403,7 +408,8 @@
           "q": "Apakah menerima pesanan proyek?",
           "a": "Ya, sesuai stok dan kebutuhan."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 6,
@@ -468,7 +474,8 @@
           "q": "Apakah menerima pembelian dalam jumlah besar?",
           "a": "Ya, silakan hubungi untuk informasi stok."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 7,
@@ -526,7 +533,8 @@
           "q": "Apakah bibit siap tanam?",
           "a": "Ya, sesuai ketersediaan stok."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 8,
@@ -589,7 +597,8 @@
           "q": "Apakah bibit siap tanam?",
           "a": "Ya, sesuai ketersediaan stok."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 9,
@@ -647,7 +656,8 @@
           "q": "Apakah menerima pesanan luar daerah?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Yogyakarta"
     },
     {
       "id": 10,
@@ -707,7 +717,8 @@
           "q": "Apakah menerima pembelian dalam jumlah banyak?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 11,
@@ -770,7 +781,8 @@
           "q": "Apakah melayani pembelian grosir?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang"
     },
     {
       "id": 12,
@@ -829,7 +841,8 @@
           "q": "Apakah tersedia berbagai jenis cabai?",
           "a": "Ya, tersedia Cabai Rawit, Cabai Merah, dan Cabai Keriting."
         }
-      ]
+      ],
+      "area": "Purworejo, Jawa Tengah, DIY"
     },
     {
       "id": 13,
@@ -894,7 +907,8 @@
           "q": "Apakah cocok untuk program reboisasi?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 14,
@@ -958,7 +972,8 @@
           "q": "Apakah melayani luar daerah?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 15,
@@ -1016,7 +1031,8 @@
           "q": "Apakah menerima pembelian dalam jumlah besar?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Yogyakarta"
     },
     {
       "id": 16,
@@ -1081,7 +1097,8 @@
           "q": "Apakah bisa memesan furniture sesuai ukuran?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 17,
@@ -1145,7 +1162,8 @@
           "q": "Apakah ternak dapat dipilih langsung?",
           "a": "Ya, sesuai ketersediaan."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     },
     {
       "id": 18,
@@ -1215,7 +1233,8 @@
           "q": "Apakah bibit siap tanam?",
           "a": "Ya."
         }
-      ]
+      ],
+      "area": "Purworejo, Kebumen, Magelang, Wonosobo"
     }
   ]
 }

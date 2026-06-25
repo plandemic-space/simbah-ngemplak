@@ -112,7 +112,7 @@ function updateMetaUMKM(u) {
       'addressRegion': 'Purworejo, Jawa Tengah',
       'addressCountry': 'ID'
     },
-    'areaServed': 'Desa Samping, Kemiri, Purworejo'
+    'areaServed': u.area || 'Desa Samping, Kemiri, Purworejo'
   };
   if (u.phone) { schemaData.telephone = '+' + u.phone; }
   if (adaMaps) { schemaData.hasMap = u.maps; }
@@ -920,6 +920,14 @@ function showUMKM(id, updateUrl) {
   isiTeks('ud-alamat', u.alamat);
   isiTeks('ud-jam', u.jam);
   isiTeks('ud-phone', u.phone ? '+' + u.phone : '-');
+  /* Area layanan — tampil kalau ada, sembunyi kalau tidak */
+  const areaRow = document.getElementById('ud-area-row');
+  if (u.area) {
+    isiTeks('ud-area', u.area);
+    if (areaRow) areaRow.style.display = '';
+  } else {
+    if (areaRow) areaRow.style.display = 'none';
+  }
   const mapsBox = document.getElementById('ud-maps-link');
   if (mapsBox) {
     if (adaMaps) { mapsBox.href = u.maps; mapsBox.style.display = ''; }
