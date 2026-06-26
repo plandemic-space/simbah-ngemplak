@@ -81,6 +81,7 @@ function updateMetaUMKM(u) {
   setMeta('meta[property="og:url"]', 'content', url);
   setMeta('meta[name="twitter:title"]', 'content', judul);
   setMeta('meta[name="twitter:description"]', 'content', deskripsi);
+  if (u.keywords) setMeta('meta[name="keywords"]', 'content', u.keywords);
 
   /* ── Schema.org LocalBusiness — dinamis per UMKM ──
      Beda dari Schema.org GovernmentOrganization yang statis di
