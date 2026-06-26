@@ -1015,8 +1015,7 @@ function showUMKM(id, updateUrl) {
   const galeriEl = document.getElementById('ud-galeri');
   if (galeriEl) {
     const fotoArr = (u.galeri || []).filter(function(e) { return e; });
-    const sedikit = fotoArr.length > 0 && fotoArr.length <= 3;
-    galeriEl.className = sedikit ? 'galeri galeri-besar' : 'galeri';
+    galeriEl.className = 'galeri';
     galeriEl.innerHTML = fotoArr.map(function(e) {
       if (e && e.includes('img/')) {
         return '<div class="gfoto"><img src="' + e + '" alt="' + u.name + ' - foto" loading="lazy"></div>';
