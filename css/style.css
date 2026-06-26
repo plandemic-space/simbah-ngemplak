@@ -1717,40 +1717,35 @@ body {
   border: 1px solid rgba(0, 0, 0, .05);
 }
 
-/* Grid produk/jasa — 2 kolom, otomatis turun 1 kolom di layar sangat sempit.
-   Diganti dari scroll horizontal card (.prow/.pcard lama) supaya semua produk
-   langsung kelihatan tanpa perlu geser — lebih mirip daftar menu toko fisik,
-   sesuai karakter SIMBAH yang sederhana dan bukan gaya app/e-commerce. */
+/* Baris produk scroll horizontal */
 .prow {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
   gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
 }
+.prow::-webkit-scrollbar { display: none; }
 
 .pcard {
   background: var(--wh);
-  border-radius: var(--rs);
-  padding: 10px 11px;
-  border: 1px solid rgba(0, 0, 0, .07);
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  min-width: 0; /* penting untuk grid -- supaya teks panjang bisa wrap, bukan dorong kolom melebar */
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 110px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, .05);
 }
 .pimg {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: var(--grl);
+  height: 75px;
+  background: var(--iv3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
-  flex-shrink: 0;
+  font-size: 26px;
 }
-.pinfo   { min-width: 0; } /* supaya child-nya (nama/keterangan) bisa wrap di dalam grid item sempit */
-.pname   { font-size: 11.5px; font-weight: 700; color: var(--tx); margin-bottom: 2px; line-height: 1.3; }
-.pket    { font-size: 10px; color: var(--tx2); line-height: 1.4; }
+.pinfo   { padding: 7px 9px; }
+.pname   { font-size: 11px; font-weight: 700; color: var(--tx); margin-bottom: 1px; }
+.pprice  { font-size: 11px; font-weight: 600; color: var(--gr); }
 
 /* Baris info (jam, lokasi, dll) */
 .irow {
@@ -1849,37 +1844,6 @@ body {
 /* Sub-judul section di detail UMKM */
 .ud-sec      { margin-top: 12px; margin-bottom: 6px; }
 .ud-sec-ttl  { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: var(--tx); margin-bottom: 8px; }
-
-/* Usaha Terkait — list vertikal compact, tanpa foto */
-.terkait-list { display: flex; flex-direction: column; gap: 6px; }
-.terkait-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--wh);
-  border: 1px solid var(--iv3);
-  border-radius: var(--rs);
-  padding: 10px 12px;
-  cursor: pointer;
-  transition: background .12s;
-  text-decoration: none;
-}
-.terkait-item:active { background: var(--iv2); }
-.terkait-ico {
-  width: 32px;
-  height: 32px;
-  background: var(--grl);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-.terkait-info { flex: 1; min-width: 0; }
-.terkait-nm  { font-size: 12px; font-weight: 700; color: var(--tx); }
-.terkait-cat { font-size: 10px; color: var(--br2); font-weight: 600; margin-top: 1px; }
-.terkait-arr { font-size: 16px; color: var(--tx3); flex-shrink: 0; }
 
 
 /* ================================================

@@ -40,18 +40,22 @@ ke search engine — lihat `<link rel="canonical">` di `index.html`.)
 │   └── script.js       ← SEMUA logika & data dinamis (AGENDA, INVENTARIS,
 │                           KAS, footer, navigasi, render UMKM, dll)
 ├── data/
-│   └── umkm.json       ← data UMKM/usaha warga (18 UMKM), dibaca
+│   └── umkm.json       ← data UMKM/usaha warga (19 UMKM), dibaca
 │                           oleh script.js via fetch()
 └── img/
-    ├── logo.png         ← logo resmi Dusun Ngemplak (final, jangan ganti
+    ├── branding/        ← logo, favicon, icon PWA (final, jangan ganti
     │                        kecuali memang mau rebranding)
-    └── hero-bg.webp     ← foto/ilustrasi background hero di Beranda
-                             (bisa diganti foto asli Ngemplak kapan saja)
+    ├── backgrounds/
+    │   └── hero-bg.webp ← foto/ilustrasi background hero di Beranda
+    │                         (bisa diganti foto asli Ngemplak kapan saja)
+    ├── about/           ← foto pendukung halaman Tentang Dusun
+    └── umkm/            ← foto asli tiap UMKM, 1 subfolder per usaha
+                              (cover.webp + gallery-01.webp dst)
 ```
 
-> Belum ada folder `img/umkm/` — UMKM masih pakai emoji sebagai ikon
-> sementara. Foto asli usaha warga bisa ditambahkan kapan saja begitu
-> sudah ada foto yang layak (lihat panduan di bawah).
+> Foto asli 19/19 UMKM sudah lengkap di `img/umkm/<slug-nama-usaha>/`
+> (`cover.webp` + 3–4 foto galeri), dirujuk lewat field `cover` & `galeri`
+> di `umkm.json`. Bukan emoji lagi — lihat Status Saat Ini di bawah.
 
 ---
 
@@ -134,23 +138,33 @@ Edit di sini saja — **tidak perlu** sentuh bagian lain dari kode.
 
 ### 7. Ganti Logo / Foto Hero
 
-- **Logo**: `img/logo.png` — sudah final, jangan diganti tanpa alasan
-  kuat (ini identitas visual yang sudah disepakati).
-- **Foto background hero**: `img/hero-bg.webp` — saat ini pakai foto
-  ilustratif, bisa diganti foto asli Ngemplak kapan saja. Cukup replace
-  file dengan nama yang sama (format boleh `.jpg`/`.png`, sesuaikan nama
-  di CSS kalau diganti format).
+- **Logo**: `img/branding/logo.png` (+ `logo.svg`) — sudah final, jangan
+  diganti tanpa alasan kuat (ini identitas visual yang sudah disepakati).
+- **Foto background hero**: `img/backgrounds/hero-bg.webp` — saat ini
+  pakai foto ilustratif, bisa diganti foto asli Ngemplak kapan saja.
+  Cukup replace file dengan nama yang sama (format boleh `.jpg`/`.png`,
+  sesuaikan nama di CSS kalau diganti format).
 
-### 8. Tambah Foto Asli UMKM (saat foto sudah siap)
+### 8. Foto Asli UMKM — `img/umkm/<slug>/`
 
-1. Buat folder `img/umkm/` di root repo
-2. Upload foto per UMKM (misal `plandemic-1.jpg`, `dombaku-1.jpg`)
-3. Di `data/umkm.json`, ubah field `galeri` dari array emoji ke array
-   path foto: `["img/umkm/plandemic-1.jpg", "img/umkm/plandemic-2.jpg"]`
-4. Di `js/script.js`, cari fungsi `showUMKM()` → bagian render galeri
-   (ada komentar "CATATAN UNTUK PENGEMBANGAN LANJUTAN") → ubah render
-   dari `${e}` teks emoji jadi `<img src="${e}" alt="..." loading="lazy">`
-5. Hero: replace `img/hero-bg.webp` dengan foto asli Ngemplak
+Sudah selesai untuk 19/19 UMKM, struktur per usaha:
+
+```
+img/umkm/<slug-nama-usaha>/
+├── cover.webp        ← foto sampul, dipakai di kartu grid & cover detail
+├── gallery-01.webp
+├── gallery-02.webp
+└── gallery-03.webp   (boleh sampai gallery-04.webp)
+```
+
+Path-nya dirujuk di `umkm.json` lewat field `cover` (string) & `galeri`
+(array path). Slug harus identik dengan hasil fungsi `slugify()` di
+`script.js` (nama usaha → huruf kecil → spasi jadi `-` → hapus tanda baca),
+supaya konsisten dengan URL share `?umkm=slug`.
+
+Cara tambah UMKM baru dengan foto: buat folder baru di `img/umkm/`
+sesuai slug nama usaha, isi `cover.webp` + foto galeri, lalu isi field
+`cover`/`galeri` di `umkm.json` dengan path-nya.
 
 ### 9. Kontak Penting (Nyuwun Tulung) & Struktur Pengurus
 
@@ -222,20 +236,22 @@ Alasan detail dan daftar fitur yang ditolak permanen ada di
 
 ---
 
-## 📊 Status Saat Ini (25 Juni 2026)
+## 📊 Status Saat Ini (26 Juni 2026)
 
 | Komponen | Status |
 |---|---|
 | Halaman Beranda | ✅ Lengkap |
-| Lapak UMKM (18 usaha) | ✅ Data dari katalog, produk spesifik |
+| Lapak UMKM (19 usaha) | ✅ Data dari katalog, produk spesifik |
 | Halaman Detail UMKM | ✅ SEO dinamis per UMKM |
 | Agenda Dusun | ✅ 4 event Juli–September 2026 |
 | Transparansi Kas | ✅ 4 komunitas + link Google Sheets |
 | Inventaris Dusun | ✅ 27 item, 4 kelompok |
 | Nyuwun Tulung | ✅ Kontak aktif (darurat/medis), kontak dusun nonaktif menunggu nomor asli |
 | Tentang Dusun | ✅ 4 sub-tab (Profil, Visi & Misi, Sejarah Accordion, Pengurus) |
-| SEO Dasar | ✅ Meta, OG, Schema.org, Sitemap, Robots, 404 custom |
-| SEO per-UMKM | ✅ Title/desc/canonical/LocalBusiness dinamis |
-| Foto UMKM | ⏳ Masih emoji — menunggu foto dari Zen |
-| Nomor kontak dusun | ⏳ Menunggu data lapangan |
-| Nama pengurus | ⏳ Menunggu data lapangan |
+| SEO Dasar | ✅ Meta, OG, Schema.org (`GovernmentOrganization` + `WebSite`), Sitemap, Robots, 404 custom |
+| SEO per-UMKM | ✅ Title/desc/canonical/`LocalBusiness`/`FAQPage` dinamis |
+| Foto UMKM | ✅ 19/19 sudah foto asli (`img/umkm/<slug>/`), bukan emoji lagi |
+| Google Search Console | ✅ Sitemap sudah disubmit, menunggu proses indexing Google (wajar, normalnya 4 hari–4 minggu) |
+| Nomor kontak dusun | ⏳ Menunggu data lapangan (nama pejabat sudah asli, nomor belum) |
+| Nama pengurus organisasi | ⏳ Menunggu data lapangan |
+| Foto hero beranda | ⏳ Masih ilustratif, menunggu foto asli Ngemplak |

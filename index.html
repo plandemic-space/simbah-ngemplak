@@ -87,6 +87,34 @@
   </script>
 
   <!-- =====================================================
+       SCHEMA.ORG: WebSite — deklarasi situs sebagai entitas
+       WebSite terpisah dari GovernmentOrganization (profil dusun)
+       di atas. Membantu Google memahami SIMBAH sebagai 1 situs utuh
+       (bukan cuma 1 organisasi), dan "name" di sini dipakai Google
+       sebagai nama resmi situs di hasil pencarian.
+       Tidak pakai "potentialAction": SearchAction — itu butuh
+       endpoint pencarian yang bisa diakses langsung via URL
+       (?q={term}), sedangkan search box SIMBAH murni JS sisi klien
+       tanpa URL pencarian publik. Menambahkannya tanpa endpoint
+       nyata akan jadi structured data yang salah/menyesatkan.
+       ===================================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SIMBAH Ngemplak",
+    "alternateName": "Balai Digital Warga Dusun Ngemplak",
+    "url": "https://simbahngemplak.vercel.app/",
+    "description": "Etalase UMKM, identitas dusun, dan informasi publik Dusun Ngemplak, Kemiri, Purworejo.",
+    "inLanguage": "id-ID",
+    "publisher": {
+      "@type": "GovernmentOrganization",
+      "name": "Dusun Ngemplak"
+    }
+  }
+  </script>
+
+  <!-- =====================================================
        FAVICON — dibuat dari logo.png resmi Dusun Ngemplak
        ===================================================== -->
   <link rel="icon" href="img/branding/favicon.ico" sizes="any">
@@ -803,7 +831,7 @@
           <div class="bline"></div>
           <div class="nt-card">
             <div class="nt-av av-b">👨‍💼</div>
-            <div><div class="nt-role">Kepala Desa Samping</div><div class="nt-name">Bpk. Amad Kowim</div><div class="nt-num">0822-xxxx-xxxx</div></div>
+            <div><div class="nt-role">Kepala Desa Samping</div><div class="nt-name">Bpk. Amad Kowim</div><div class="nt-num">Nomor belum tersedia</div></div>
             <div class="nt-btns">
               <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
               <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
@@ -811,7 +839,7 @@
           </div>
           <div class="nt-card">
             <div class="nt-av av-g">👨‍💼</div>
-            <div><div class="nt-role">Kepala Dusun</div><div class="nt-name">Bpk. Suroto</div><div class="nt-num">0812-xxxx-xxxx</div></div>
+            <div><div class="nt-role">Kepala Dusun</div><div class="nt-name">Bpk. Suroto</div><div class="nt-num">Nomor belum tersedia</div></div>
             <div class="nt-btns">
               <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
               <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
@@ -819,7 +847,7 @@
           </div>
           <div class="nt-card">
             <div class="nt-av av-b">👨‍💼</div>
-            <div><div class="nt-role">Ketua RW</div><div class="nt-name">Bpk. Sutiyo</div><div class="nt-num">0813-xxxx-xxxx</div></div>
+            <div><div class="nt-role">Ketua RW</div><div class="nt-name">Bpk. Sutiyo</div><div class="nt-num">Nomor belum tersedia</div></div>
             <div class="nt-btns">
               <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
               <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
@@ -827,7 +855,7 @@
           </div>
           <div class="nt-card">
             <div class="nt-av av-g">👨‍💼</div>
-            <div><div class="nt-role">Ketua RT 01</div><div class="nt-name">Bpk. Kar</div><div class="nt-num">0856-xxxx-xxxx</div></div>
+            <div><div class="nt-role">Ketua RT 01</div><div class="nt-name">Bpk. Kar</div><div class="nt-num">Nomor belum tersedia</div></div>
             <div class="nt-btns">
               <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
               <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
@@ -835,7 +863,7 @@
           </div>
           <div class="nt-card">
             <div class="nt-av av-g">👨‍💼</div>
-            <div><div class="nt-role">Ketua RT 02</div><div class="nt-name">Bpk. Fajar Arifin</div><div class="nt-num">0857-xxxx-xxxx</div></div>
+            <div><div class="nt-role">Ketua RT 02</div><div class="nt-name">Bpk. Fajar Arifin</div><div class="nt-num">Nomor belum tersedia</div></div>
             <div class="nt-btns">
               <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
               <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
@@ -918,7 +946,7 @@
             </div>
           </div>
           <div style="font-size:10px; color:var(--tx3); margin-top:4px; line-height:1.5; padding:0 2px">
-            Nama & nomor kontak yang masih xxxx akan diperbarui dengan data resmi dari pengelola.
+            Nama pejabat di atas sudah asli. Nomor kontak akan diperbarui setelah data resmi tersedia dari pengelola.
           </div>
         </div>
       </div>

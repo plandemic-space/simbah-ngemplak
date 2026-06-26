@@ -1016,28 +1016,41 @@ function showUMKM(id, updateUrl) {
     }).join('');
   }
 
-  /* ── Render daftar produk/jasa (cek dulu array-nya ada) ──
-     Layout grid 2 kolom (lihat .prow di style.css) — badge emoji kecil
-     di kiri, nama produk + keterangan di kanan. Field "k" (keterangan)
-     OPSIONAL — kalau diisi di umkm.json, tampil sebagai highlight nilai/
-     keunggulan produk (bukan harga). Kalau kosong, baris keterangan
-     tidak dirender sama sekali. Tombol "Hubungi WA" per produk DIHAPUS
-     (26 Juni 2026) — sudah ada CTA WhatsApp besar di atas & bawah section
-     ini, mengulang per produk cuma jadi noise visual. Field "p" di
-     umkm.json boleh dibiarkan ada (tidak dirender, tidak mengganggu). */
+  /* ── Render daftar produk/jasa (cek dulu array-nya ada) ── */
   const produkEl = document.getElementById('ud-products');
   if (produkEl) {
     produkEl.innerHTML = (u.products || []).map(function(p) {
-      const adaKeterangan = p.k && p.k.trim() !== '';
       return `
         <div class="pcard">
           <div class="pimg">${p.e}</div>
           <div class="pinfo">
             <div class="pname">${p.n}</div>
-            ${adaKeterangan ? `<div class="pket">${p.k}</div>` : ''}
+            <div class="pprice">${p.p}</div>
           </div>
         </div>`;
     }).join('');
+  }
+
+  /* ── Render testimoni warga (cek dulu array-nya ada) ──
+     Beda dari "Review Google" — ini testimoni manual yang
+     dikumpulkan Zen dari pembeli asli, bukan API Google. */
+  const testimoniEl = document.getElementById('ud-testimoni');
+  if (testimoniEl) {
+    const list = u.testimoni || [];
+    if (!list.length) {
+      testimoniEl.innerHTML = `<div style="font-size:11px; color:var(--tx3); padding:4px 0 8px">Belum ada testimoni warga untuk usaha ini.</div>`;
+    } else {
+      testimoniEl.innerHTML = list.map(function(t) {
+        return `
+          <div class="rv">
+            <div class="rv-top">
+              <span class="rv-name">${t.nama}</span>
+              <span class="rv-date">${t.tanggal}</span>
+            </div>
+            <div class="rv-txt">${t.teks}</div>
+          </div>`;
+      }).join('');
+    }
   }
 
   /* ── Render Usaha Terkait ──
@@ -1052,21 +1065,22 @@ function showUMKM(id, updateUrl) {
     const idTerkait = u.terkait || [];
     const dataTerkait = idTerkait
       .map(function(tid) { return UMKM.find(function(x) { return x.id === tid; }); })
-      .filter(Boolean);
+      .filter(Boolean); /* buang kalau id tidak ketemu (data tidak konsisten) */
 
     if (dataTerkait.length) {
       terkaitList.innerHTML = dataTerkait.map(function(t) {
+        var thumbHtml = t.cover
+          ? '<img src="' + t.cover + '" alt="' + t.name + '" loading="lazy">'
+          : t.emoji;
         return `
-          <div class="terkait-item" onclick="showUMKM(${t.id})">
-            <div class="terkait-ico">${t.emoji}</div>
-            <div class="terkait-info">
-              <div class="terkait-nm">${t.name}</div>
-              <div class="terkait-cat">${t.cat}</div>
+          <div class="ucard" onclick="showUMKM(${t.id})">
+            <div class="uimg">${thumbHtml}</div>
+            <div class="uinfo">
+              <div class="uname">${t.name}</div>
+              <div class="ucat">${t.cat}</div>
             </div>
-            <span class="terkait-arr">›</span>
           </div>`;
       }).join('');
-      terkaitList.className = 'terkait-list';
       terkaitSec.style.display = '';
     } else {
       terkaitSec.style.display = 'none';
