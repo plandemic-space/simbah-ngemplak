@@ -236,7 +236,7 @@ Alasan detail dan daftar fitur yang ditolak permanen ada di
 
 ---
 
-## 📊 Status Saat Ini (26 Juni 2026)
+## 📊 Status Saat Ini (27 Juni 2026)
 
 | Komponen | Status |
 |---|---|
@@ -255,3 +255,5 @@ Alasan detail dan daftar fitur yang ditolak permanen ada di
 | Nomor kontak dusun | ⏳ Menunggu data lapangan (nama pejabat sudah asli, nomor belum) |
 | Nama pengurus organisasi | ⏳ Menunggu data lapangan |
 | Foto hero beranda | ⏳ Masih ilustratif, menunggu foto asli Ngemplak |
+| Bug aktif (27 Juni) | 🔴 4 bug ditemukan audit — filter chip, variable `history`, Twitter Card, setTimeout UMKM. Lihat `AUDIT_BUG_BELUM_SELESAI.md` |
+| Risiko teknis (27 Juni) | 🟠 3 risiko — tidak ada preload hero, tidak ada manifest.json, tidak ada Cache-Control Vercel. Lihat `AUDIT_BUG_BELUM_SELESAI.md` |

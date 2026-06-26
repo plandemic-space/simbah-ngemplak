@@ -313,12 +313,12 @@ async function muatDataUMKM() {
    2. STATE — Kondisi Aplikasi
    Variabel yang menyimpan "kondisi saat ini"
    - currentPage : halaman yang sedang aktif
-   - history     : tumpukan halaman sebelumnya
+   - navHistory  : tumpukan halaman sebelumnya
                    (untuk tombol kembali)
    - menuOpen    : apakah menu sheet terbuka?
    ================================================ */
 let currentPage = 'beranda';
-let history     = [];
+let navHistory  = [];
 let menuOpen    = false;
 let currentUMKM = null; /* UMKM yang sedang dibuka di halaman detail — dipakai shareUMKM() */
 
@@ -383,8 +383,8 @@ function nav(key) {
   /* Tutup tombol menu tengah (mobile) */
   document.getElementById('bn-menu')?.classList.remove('open');
 
-  /* Simpan halaman sekarang ke history (untuk tombol kembali) */
-  history.push(currentPage);
+  /* Simpan halaman sekarang ke navHistory (untuk tombol kembali) */
+  navHistory.push(currentPage);
 
   /* Pindah ke halaman baru */
   currentPage = key;
@@ -399,9 +399,17 @@ function nav(key) {
     document.getElementById(id)?.classList.add('active');
   });
 
-  /* Kalau pindah ke halaman UMKM, render grid dulu */
+  /* Kalau pindah ke halaman UMKM, render grid dulu + reset chip filter
+     ke "Semua" — supaya tidak ada chip lama yang masih kelihatan aktif
+     dari sesi sebelumnya saat pengunjung masuk lagi ke halaman UMKM */
   if (key === 'umkm') {
     renderGrid('');
+    const row = document.getElementById('filter-row');
+    if (row) {
+      row.querySelectorAll('.fchip').forEach(function(x) { x.classList.remove('active'); });
+      const semuaChip = row.querySelector('[data-filter=""]');
+      if (semuaChip) semuaChip.classList.add('active');
+    }
   }
 
   /* Kalau pindah ke halaman Agenda, render daftar lengkap dulu */
@@ -438,7 +446,7 @@ function nav(key) {
  * Dipakai oleh tombol "← Kembali" di halaman dalam
  */
 function goBack() {
-  if (!history.length) return; /* tidak ada history, tidak jadi kembali */
+  if (!navHistory.length) return; /* tidak ada navHistory, tidak jadi kembali */
 
   /* Sembunyikan halaman sekarang */
   document.getElementById(pageMap[currentPage])?.classList.remove('active');
@@ -448,8 +456,8 @@ function goBack() {
     document.getElementById(id)?.classList.remove('active');
   });
 
-  /* Ambil halaman sebelumnya dari tumpukan history */
-  currentPage = history.pop();
+  /* Ambil halaman sebelumnya dari tumpukan navHistory */
+  currentPage = navHistory.pop();
   const el = document.getElementById(pageMap[currentPage]);
   if (el) {
     el.classList.add('active');
@@ -461,9 +469,17 @@ function goBack() {
     document.getElementById(id)?.classList.add('active');
   });
 
-  /* Kalau kembali ke halaman UMKM, render grid lagi */
+  /* Kalau kembali ke halaman UMKM, render grid lagi + reset chip filter
+     ke "Semua" supaya tidak ada chip lama (mis. "Pertukangan") yang
+     masih kelihatan aktif padahal grid sudah menampilkan semua UMKM */
   if (currentPage === 'umkm') {
     renderGrid('');
+    const row = document.getElementById('filter-row');
+    if (row) {
+      row.querySelectorAll('.fchip').forEach(function(x) { x.classList.remove('active'); });
+      const semuaChip = row.querySelector('[data-filter=""]');
+      if (semuaChip) semuaChip.classList.add('active');
+    }
   }
 
   /* Kalau kembali ke halaman Agenda, render daftar lengkap lagi */
@@ -492,7 +508,7 @@ function goBack() {
  * Dipakai oleh klik logo di header
  */
 function goHome() {
-  history = []; /* kosongkan history */
+  navHistory = []; /* kosongkan navHistory */
   nav('beranda');
 }
 
@@ -1708,8 +1724,7 @@ function runSearch(query) {
 function goToUMKM(id) {
   closeSearch();
   nav('umkm');
-  /* beri waktu sedikit supaya halaman UMKM aktif dulu sebelum detail dibuka */
-  setTimeout(function() { showUMKM(id); }, 50);
+  showUMKM(id); // data sudah di memory, tidak perlu setTimeout
 }
 
 
@@ -1821,7 +1836,7 @@ window.addEventListener('popstate', function() {
   document.getElementById(pageMap[currentPage])?.classList.remove('active');
   semuaIdNav.forEach(function(id) { document.getElementById(id)?.classList.remove('active'); });
   currentPage = 'beranda';
-  history = [];
+  navHistory = [];
   document.getElementById(pageMap['beranda'])?.classList.add('active');
   (navMap['beranda'] || []).forEach(function(id) { document.getElementById(id)?.classList.add('active'); });
   resetMetaDefault();
