@@ -1142,6 +1142,10 @@ function shareUMKM() {
  * Chip "Semua" sudah ada di HTML — fungsi ini hanya tambah chip per kategori
  * yang muncul di umkm.json, diurutkan alfabet.
  * Kalau nanti ada UMKM baru dengan kategori baru, chip-nya otomatis muncul.
+ * 
+ * FIX (26 Juni 2026): jangan pakai innerHTML = '' — itu hapus event listener.
+ * Sebaiknya removeChild semua chip kategori (bukan "Semua"), atau rebuild
+ * keseluruhan tanpa hapus DOM.
  */
 function renderFilterChips() {
   const row = document.getElementById('filter-row');
@@ -1150,11 +1154,14 @@ function renderFilterChips() {
   /* Kumpulkan kategori unik, urutkan alfabet */
   const cats = [...new Set(UMKM.map(function(u) { return u.cat; }).filter(Boolean))].sort();
 
-  /* Hapus chip lama kecuali "Semua" (chip pertama) */
-  const semua = row.querySelector('.fchip');
-  row.innerHTML = '';
-  if (semua) row.appendChild(semua);
+  /* Hapus chip kategori lama (bukan "Semua") tanpa hapus event listener "Semua" */
+  const semuaChip = row.querySelector('[data-filter=""]');
+  const chipKategoriLama = row.querySelectorAll('[data-filter]:not([data-filter=""])');
+  chipKategoriLama.forEach(function(chip) {
+    row.removeChild(chip);
+  });
 
+  /* Buat chip kategori baru */
   cats.forEach(function(cat) {
     const btn = document.createElement('button');
     btn.className = 'fchip';
@@ -1168,13 +1175,20 @@ function renderFilterChips() {
     row.appendChild(btn);
   });
 
-  /* Pastikan chip "Semua" juga punya event listener yang bener */
-  if (semua) {
-    semua.onclick = function() {
+  /* Pastikan chip "Semua" punya event listener yang benar.
+     Pakai addEventListener untuk konsistensi dengan chip kategori. */
+  if (semuaChip) {
+    /* Hapus listener lama kalau ada (hindari duplikat) */
+    const semuaChipClone = semuaChip.cloneNode(false);
+    semuaChipClone.className = semuaChip.className;
+    semuaChipClone.textContent = semuaChip.textContent;
+    semuaChipClone.dataset.filter = '';
+    semuaChipClone.addEventListener('click', function() {
       row.querySelectorAll('.fchip').forEach(function(x) { x.classList.remove('active'); });
-      semua.classList.add('active');
+      semuaChipClone.classList.add('active');
       filterUMKM('');
-    };
+    });
+    row.replaceChild(semuaChipClone, semuaChip);
   }
 }
 
