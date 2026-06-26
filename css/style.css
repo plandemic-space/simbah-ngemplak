@@ -1845,6 +1845,20 @@ body {
 .ud-sec      { margin-top: 12px; margin-bottom: 6px; }
 .ud-sec-ttl  { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: var(--tx); margin-bottom: 8px; }
 
+/* Usaha Terkait — list vertikal compact */
+.terkait-list  { display: flex; flex-direction: column; gap: 2px; }
+.terkait-item  {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px; border-radius: 8px;
+  cursor: pointer; transition: background .12s;
+}
+.terkait-item:active  { background: var(--grl); }
+.terkait-ico   { font-size: 20px; flex-shrink: 0; width: 28px; text-align: center; }
+.terkait-info  { flex: 1; min-width: 0; }
+.terkait-name  { font-size: 13px; font-weight: 600; color: var(--tx); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.terkait-cat   { font-size: 11px; color: var(--tx3); margin-top: 1px; }
+.terkait-arr   { font-size: 18px; color: var(--tx3); flex-shrink: 0; line-height: 1; }
+
 
 /* ================================================
    18. TENTANG DUSUN

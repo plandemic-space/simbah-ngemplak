@@ -104,7 +104,7 @@ function updateMetaUMKM(u) {
     'name': u.name,
     'description': deskripsiMentah,
     'url': url,
-    'image': DOMAIN_SIMBAH + '/img/logo.png',
+    'image': DOMAIN_SIMBAH + '/img/branding/logo.png',
     'address': {
       '@type': 'PostalAddress',
       'streetAddress': u.alamat || 'Dusun Ngemplak, Desa Samping',
@@ -993,19 +993,11 @@ function showUMKM(id, updateUrl) {
   isiLink('ud-wa2', `https://wa.me/${u.phone}`);
 
   /* ── Render galeri foto (cek dulu array-nya ada) ──
-     CATATAN UNTUK PENGEMBANGAN LANJUTAN (25 Juni 2026):
-     Saat ini u.galeri masih array EMOJI (placeholder, lihat
-     umkm.json), bukan foto asli — makanya dirender sebagai teks
-     polos di <div class="gfoto">. Begitu foto asli sudah ada di
-     img/umkm/ dan field galeri diubah jadi path foto (mis.
-     "img/umkm/plandemic-1.jpg"), baris di bawah WAJIB diubah jadi
-     <img src="${e}" alt="${u.name} - foto produk" loading="lazy">
-     — loading="lazy" PENTING dipasang supaya 18+ foto UMKM tidak
-     semua didownload sekaligus saat halaman dibuka (lambat di
-     koneksi HP warga). Jangan lupa juga ganti emoji deteksi: kalau
-     mau dukung KEDUANYA (UMKM lama masih emoji, UMKM baru sudah
-     foto asli), cek dulu apakah e diawali "img/" sebelum decide
-     render <img> atau teks emoji biasa. */
+     Per 26 Juni 2026: semua 19 UMKM sudah pakai path foto asli
+     (img/umkm/<slug>/gallery-NN.webp) — tidak ada lagi emoji placeholder.
+     Kode di bawah sudah benar: cek e.includes('img/') untuk render <img>,
+     fallback ke teks biasa kalau bukan path (tidak dipakai saat ini tapi
+     aman dibiarkan untuk kompatibilitas). loading="lazy" wajib dijaga. */
   const galeriEl = document.getElementById('ud-galeri');
   if (galeriEl) {
     galeriEl.innerHTML = (u.galeri || []).map(function(e) {
@@ -1054,9 +1046,9 @@ function showUMKM(id, updateUrl) {
   }
 
   /* ── Render Usaha Terkait ──
-     Baca array id dari field terkait, cari data UMKM-nya, render
-     sebagai card horizontal scroll pakai class .ucard yang sudah ada
-     (sama persis dengan card di beranda — tidak perlu CSS baru).
+     List vertikal compact tanpa foto — lebih ringan dan tidak
+     mendistraksi dari konten utama. Pakai class .terkait-list /
+     .terkait-item (didefinisikan di style.css).
      Section disembunyikan otomatis kalau field terkait kosong atau
      tidak ada satu pun id yang cocok di data. */
   const terkaitSec = document.getElementById('ud-terkait-sec');
@@ -1068,19 +1060,18 @@ function showUMKM(id, updateUrl) {
       .filter(Boolean); /* buang kalau id tidak ketemu (data tidak konsisten) */
 
     if (dataTerkait.length) {
-      terkaitList.innerHTML = dataTerkait.map(function(t) {
-        var thumbHtml = t.cover
-          ? '<img src="' + t.cover + '" alt="' + t.name + '" loading="lazy">'
-          : t.emoji;
-        return `
-          <div class="ucard" onclick="showUMKM(${t.id})">
-            <div class="uimg">${thumbHtml}</div>
-            <div class="uinfo">
-              <div class="uname">${t.name}</div>
-              <div class="ucat">${t.cat}</div>
-            </div>
-          </div>`;
-      }).join('');
+      terkaitList.innerHTML = '<div class="terkait-list">' +
+        dataTerkait.map(function(t) {
+          return '<div class="terkait-item" onclick="showUMKM(' + t.id + ')">' +
+            '<span class="terkait-ico">' + t.emoji + '</span>' +
+            '<div class="terkait-info">' +
+              '<div class="terkait-name">' + t.name + '</div>' +
+              '<div class="terkait-cat">' + t.cat + '</div>' +
+            '</div>' +
+            '<span class="terkait-arr">›</span>' +
+          '</div>';
+        }).join('') +
+      '</div>';
       terkaitSec.style.display = '';
     } else {
       terkaitSec.style.display = 'none';
