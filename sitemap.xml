@@ -3,122 +3,198 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://simbahngemplak.vercel.app/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=plandemic-space</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/plandemic-space/cover.webp</image:loc>
+      <image:title>Plandemic Space — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=heri-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/heri-bibit/cover.webp</image:loc>
+      <image:title>Heri Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=bibit-tanaman-buah-terdekat</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/bibit-tanaman-buah-terdekat/cover.webp</image:loc>
+      <image:title>Bibit Tanaman Buah Terdekat — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=rahman-grosir-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/rahman-grosir-bibit/cover.webp</image:loc>
+      <image:title>Rahman Grosir Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=jamil-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/jamil-bibit/cover.webp</image:loc>
+      <image:title>Jamil Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=jamil-arya-tani</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/jamil-arya-tani/cover.webp</image:loc>
+      <image:title>Jamil Arya Tani — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=naza-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/naza-bibit/cover.webp</image:loc>
+      <image:title>Naza Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=alfarizie-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/alfarizie-bibit/cover.webp</image:loc>
+      <image:title>Alfarizie Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=ardelia-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/ardelia-bibit/cover.webp</image:loc>
+      <image:title>Ardelia Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=martin-bibit-jaya</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/martin-bibit-jaya/cover.webp</image:loc>
+      <image:title>Martin Bibit Jaya — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=trijaya-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/trijaya-bibit/cover.webp</image:loc>
+      <image:title>Trijaya Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=samuji-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/samuji-bibit/cover.webp</image:loc>
+      <image:title>Samuji Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=bibit-cabai-alip-sihmanto</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/bibit-cabai-alip-sihmanto/cover.webp</image:loc>
+      <image:title>Bibit Cabai Alip Sihmanto — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=muhtar-bibit-unggul</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/muhtar-bibit-unggul/cover.webp</image:loc>
+      <image:title>Muhtar Bibit Unggul — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=primatani-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/primatani-bibit/cover.webp</image:loc>
+      <image:title>PRIMATANI BIBIT — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=khanza-bibit</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/khanza-bibit/cover.webp</image:loc>
+      <image:title>Khanza Bibit — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=isron-furniture</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/isron-furniture/cover.webp</image:loc>
+      <image:title>Isron Furniture — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=dombaku</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/dombaku/cover.webp</image:loc>
+      <image:title>Dombaku — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/?umkm=sapu-jagad-fruits</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/sapu-jagad-fruits/cover.webp</image:loc>
+      <image:title>Sapu Jagad Fruits — Dusun Ngemplak, Purworejo</image:title>
+    </image:image>
   </url>
 </urlset>
