@@ -1013,12 +1013,15 @@ function showUMKM(id, updateUrl) {
   const produkEl = document.getElementById('ud-products');
   if (produkEl) {
     produkEl.innerHTML = (u.products || []).map(function(p) {
+      var keteranganHtml = p.k
+        ? '<div class="pketerangan">' + p.k + '</div>'
+        : '';
       return `
         <div class="pcard">
           <div class="pimg">${p.e}</div>
           <div class="pinfo">
             <div class="pname">${p.n}</div>
-            <div class="pprice">${p.p}</div>
+            ${keteranganHtml}
           </div>
         </div>`;
     }).join('');
