@@ -656,7 +656,7 @@ body {
       rgba(20, 40, 25, 0.60) 45%,
       rgba(20, 40, 25, 0.22) 100%
     ),
-    url('../img/hero-bg.webp') center 20% / cover no-repeat;
+    url('../img/backgrounds/hero-bg.webp') center 20% / cover no-repeat;
   padding: 20px 16px 24px;
   position: relative;
   overflow: hidden;
@@ -2946,4 +2946,51 @@ body {
   line-height: 1.7;
   padding: 10px 13px 13px;
   border-top: 1px solid var(--iv2);
+}
+
+
+/* ================================================
+   FOTO UMKM — Cover & Galeri (gambar asli)
+   ------------------------------------------------
+   Dulu semua card UMKM pakai emoji sebagai ikon.
+   Sekarang ada foto asli — CSS di sini supaya foto
+   tampil proporsional di semua kontainer kartu.
+   ================================================ */
+
+/* Cover foto besar di halaman detail UMKM */
+.ud-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Thumbnail di grid UMKM (halaman Lapak Warga) */
+.ug-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Thumbnail di kartu horizontal (Beranda) */
+.uimg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Foto di galeri detail UMKM */
+.gfoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
 }

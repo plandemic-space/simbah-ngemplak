@@ -35,9 +35,9 @@
   <meta property="og:url" content="https://simbahngemplak.vercel.app/">
   <meta property="og:title" content="SIMBAH — Dusun Ngemplak, Kemiri Purworejo">
   <meta property="og:description" content="Sejarah panjang, tradisi terjaga, dan puluhan UMKM yang terus bergerak maju bersama. Portal digital resmi Dusun Ngemplak, Kemiri, Purworejo.">
-  <meta property="og:image" content="https://simbahngemplak.vercel.app/img/logo.png">
-  <meta property="og:image:width" content="200">
-  <meta property="og:image:height" content="200">
+  <meta property="og:image" content="https://simbahngemplak.vercel.app/img/branding/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="SIMBAH Ngemplak">
   <meta property="og:locale" content="id_ID">
 
@@ -47,7 +47,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="SIMBAH — Dusun Ngemplak, Kemiri Purworejo">
   <meta name="twitter:description" content="Sejarah panjang, tradisi terjaga, dan puluhan UMKM yang terus bergerak maju. Portal digital resmi Dusun Ngemplak, Kemiri, Purworejo.">
-  <meta name="twitter:image" content="https://simbahngemplak.vercel.app/img/logo.png">
+  <meta name="twitter:image" content="https://simbahngemplak.vercel.app/img/branding/og-image.webp">
 
   <!-- =====================================================
        SEO — Schema.org JSON-LD
@@ -63,7 +63,7 @@
     "alternateName": "SIMBAH Ngemplak",
     "description": "Dusun Ngemplak, Kemiri, Purworejo — sejarah panjang, tradisi terjaga, dan puluhan UMKM yang terus bergerak maju bersama.",
     "url": "https://simbahngemplak.vercel.app/",
-    "logo": "https://simbahngemplak.vercel.app/img/logo.png",
+    "logo": "https://simbahngemplak.vercel.app/img/branding/logo.png",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Dusun Ngemplak",
@@ -89,13 +89,13 @@
   <!-- =====================================================
        FAVICON — dibuat dari logo.png resmi Dusun Ngemplak
        ===================================================== -->
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48x48.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png">
+  <link rel="icon" href="img/branding/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/branding/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/branding/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="img/branding/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/branding/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/branding/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="img/branding/icon-512.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,7 @@
   <!-- ===== HEADER ===== -->
   <div class="hdr">
     <button class="hlogo" onclick="goHome()">
-      <img src="img/logo.png" alt="Logo Ngemplak" loading="eager">
+      <img src="img/branding/logo.png" alt="Logo Ngemplak" loading="eager">
       <div>
         <div class="hbrand">SIMBAH</div>
         <div class="hsub">Dusun Ngemplak</div>
@@ -335,6 +335,9 @@
         </div>
         <div class="bline"></div>
         <div id="agenda-beranda-list"></div>
+        <div style="background:var(--brl); border:1px solid var(--iv3); border-left:3px solid var(--br); border-radius:var(--rs); padding:10px 13px; margin-top:10px; font-size:11px; color:var(--br); line-height:1.6;">
+          📋 <strong>Catatan:</strong> Agenda di atas merupakan <strong>contoh ilustrasi</strong>. Jadwal kegiatan resmi dusun akan diperbarui setelah mendapat konfirmasi dari perangkat &amp; pengurus.
+        </div>
       </div>
 
       <div class="div8 bg-divider"></div>
@@ -431,6 +434,9 @@
           <a class="kas-detail" href="#" onclick="nav('kas'); return false;">
             📊 Lihat Rincian per Komunitas →
           </a>
+          <div style="background:var(--brl); border:1px solid var(--iv3); border-left:3px solid var(--br); border-radius:var(--rs); padding:10px 13px; margin-top:10px; font-size:11px; color:var(--br); line-height:1.6;">
+            📋 <strong>Catatan:</strong> Angka saldo di atas adalah <strong>ilustrasi sementara</strong> dan belum mencerminkan nilai yang sesungguhnya. Data resmi akan diperbarui setelah rapat perangkat/pengurus dan mendapat persetujuan warga.
+          </div>
         </div>
       </div>
 
@@ -475,6 +481,9 @@
       </div>
 
       <!-- Isi agenda — diisi otomatis oleh JS (lihat renderAgendaPage() di script.js) -->
+        <div style="background:var(--brl); border:1px solid var(--iv3); border-left:3px solid var(--br); border-radius:var(--rs); padding:10px 14px; margin:0 16px 4px; font-size:11px; color:var(--br); line-height:1.6;">
+          📋 <strong>Catatan:</strong> Agenda di bawah merupakan <strong>contoh ilustrasi</strong>. Jadwal kegiatan resmi dusun akan diperbarui setelah mendapat konfirmasi dari perangkat &amp; pengurus.
+        </div>
       <div style="flex:1; overflow-y:auto; padding-bottom:20px" id="agenda-page-list"></div>
 
     </div><!-- /p-agenda -->
@@ -678,6 +687,9 @@
             <div class="kastot-val">Rp 905.000</div>
             <div class="kastot-sub">Gabungan 4 kas komunitas · Diperbarui manual oleh pengelola</div>
           </div>
+          <div style="background:var(--brl); border:1px solid var(--iv3); border-left:3px solid var(--br); border-radius:var(--rs); padding:10px 13px; margin-top:6px; font-size:11px; color:var(--br); line-height:1.6;">
+            📋 <strong>Catatan:</strong> Angka saldo di atas adalah <strong>ilustrasi sementara</strong> dan belum mencerminkan nilai yang sesungguhnya. Data resmi akan diperbarui setelah rapat perangkat/pengurus dan mendapat persetujuan warga.
+          </div>
         </div>
 
         <div class="sec">
@@ -837,14 +849,6 @@
           <div class="sec-hdr"><h3 class="sec-ttl">Layanan Kesehatan</h3></div>
           <div class="bline"></div>
           <div class="nt-card">
-            <div class="nt-av av-b">👩‍⚕️</div>
-            <div><div class="nt-role">Bidan Desa</div><div class="nt-name">—</div><div class="nt-num">0813-xxxx-xxxx</div></div>
-            <div class="nt-btns">
-              <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
-              <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
-            </div>
-          </div>
-          <div class="nt-card">
             <div class="nt-av av-g">🏥</div>
             <div><div class="nt-role">Puskesmas Kemiri</div><div class="nt-name">Layanan Kesehatan Kecamatan</div><div class="nt-num">0852-9010-0073</div></div>
             <div class="nt-btns">
@@ -881,14 +885,6 @@
         <div class="sec">
           <div class="sec-hdr"><h3 class="sec-ttl">Keamanan & Darurat</h3></div>
           <div class="bline"></div>
-          <div class="nt-card">
-            <div class="nt-av av-g">👮</div>
-            <div><div class="nt-role">Babinsa</div><div class="nt-name">—</div><div class="nt-num">0811-xxxx-xxxx</div></div>
-            <div class="nt-btns">
-              <a class="nt-wa" data-kontak-publik href="https://wa.me/{{WA}}" target="_blank">💬 WA</a>
-              <a class="nt-telp" data-kontak-publik href="tel:{{WA}}">📞 Telp</a>
-            </div>
-          </div>
           <div class="nt-card">
             <div class="nt-av av-b">👮</div>
             <div><div class="nt-role">Polsek Kemiri</div><div class="nt-name">Kepolisian Sektor Kemiri</div><div class="nt-num">(0275) 641616</div></div>
@@ -945,7 +941,7 @@
             <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             <span>Kembali</span>
           </button>
-          <img class="tentang-logo" src="img/logo.png" alt="Logo Ngemplak" loading="lazy">
+          <img class="tentang-logo" src="img/branding/logo.png" alt="Logo Ngemplak" loading="lazy">
           <h2 class="tentang-name">Dusun Ngemplak</h2>
           <div class="tentang-loc">📍 Desa Samping, Kemiri, Purworejo, Jawa Tengah</div>
         </div>

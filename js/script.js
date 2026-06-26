@@ -616,10 +616,13 @@ function renderGrid(filter) {
      rating dipindah ke baris baru .ug-rating supaya kedua info ini
      sama-sama kelihatan, tidak saling timpa. */
   grid.innerHTML = list.map(function(u) {
+    var thumbHtml = u.cover
+      ? '<img src="' + u.cover + '" alt="' + u.name + '" loading="lazy">'
+      : u.emoji;
     return `
       <div class="ugcard" onclick="showUMKM(${u.id})">
         <div class="ug-img">
-          ${u.emoji}
+          ${thumbHtml}
           <div class="ug-badge">${u.cat}</div>
         </div>
         <div class="ug-info">
@@ -704,9 +707,12 @@ function renderUMKMBeranda() {
   var list = acak(wakil).concat(sisa).slice(0, JUMLAH_TAMPIL);
 
   el.innerHTML = list.map(function(u) {
+    var thumbHtml = u.cover
+      ? '<img src="' + u.cover + '" alt="' + u.name + '" loading="lazy">'
+      : u.emoji;
     return `
       <div class="ucard" onclick="showUMKM(${u.id})">
-        <div class="uimg">${u.emoji}<div class="uwa">💬</div></div>
+        <div class="uimg">${thumbHtml}<div class="uwa">💬</div></div>
         <div class="uinfo"><div class="uname">${u.name}</div><div class="ucat">${u.cat}</div></div>
       </div>`;
   }).join('');
@@ -865,7 +871,17 @@ function showUMKM(id, updateUrl) {
 
   /* ── Isi bagian atas (cover & nama) ── */
   const cover = document.getElementById('ud-cover');
-  if (cover && cover.childNodes[0]) { cover.childNodes[0].textContent = u.emoji; }
+  if (cover) {
+    const backBtn = cover.querySelector('.ud-back');
+    const shareBtn = cover.querySelector('.ud-share');
+    if (u.cover) {
+      cover.innerHTML = '<img src="' + u.cover + '" alt="' + u.name + '" loading="eager">';
+    } else {
+      cover.innerHTML = u.emoji;
+    }
+    if (backBtn) cover.appendChild(backBtn);
+    if (shareBtn) cover.appendChild(shareBtn);
+  }
   isiTeks('ud-logo', u.emoji);
   isiTeks('ud-name', u.name);
   isiTeks('ud-cat', u.cat);
@@ -993,7 +1009,10 @@ function showUMKM(id, updateUrl) {
   const galeriEl = document.getElementById('ud-galeri');
   if (galeriEl) {
     galeriEl.innerHTML = (u.galeri || []).map(function(e) {
-      return `<div class="gfoto">${e}</div>`;
+      if (e && e.includes('img/')) {
+        return '<div class="gfoto"><img src="' + e + '" alt="' + u.name + ' - foto" loading="lazy"></div>';
+      }
+      return '<div class="gfoto">' + e + '</div>';
     }).join('');
   }
 
@@ -1431,7 +1450,7 @@ function templateFooter() {
 
         <div class="ft-col">
           <div class="ft-brand">
-            <img class="ft-logo" src="img/logo.png" alt="Logo">
+            <img class="ft-logo" src="img/branding/logo.png" alt="Logo">
             <div>
               <div class="ft-name">SIMBAH Ngemplak</div>
               <div class="ft-sub">Sistem Informasi Masyarakat Bale Harian</div>
