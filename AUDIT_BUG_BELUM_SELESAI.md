@@ -1,6 +1,6 @@
 # SIMBAH — Audit & Next Step
 
-> Diperbarui: **27 Juni 2026 (malam, sesi 5 — SEMUA ITEM SELESAI)** — gabungan checklist lama + hasil Audit Total (kode, SEO, a11y, security).
+> Diperbarui: **27 Juni 2026 (sesi 6 — Audit Profesional baru, sebagian sudah dikerjakan)** — gabungan checklist lama + hasil Audit Total (kode, SEO, a11y, security) + hasil cross-check `AUDIT_SIMBAH_PROFESSIONAL.md`.
 > Cara pakai: kerjakan dari atas ke bawah per section. Coret kalau sudah deploy & dicek live.
 
 ---
@@ -77,6 +77,56 @@
       Dicek 3 kondisi: login sendiri (View only), belum login/Guest (Hanya lihat), dan mode
       Incognito (Hanya lihat) — ketiganya konsisten tidak bisa edit. Tidak ada tindakan lanjutan
       di sisi Google Drive. SEC-03 (ganti bentuk URL) jadi opsional, bukan wajib lagi.
+
+### Sesi 27 Juni 2026 (sesi 6) — Cross-check `AUDIT_SIMBAH_PROFESSIONAL.md`
+> Zen upload audit baru dari sumber independen (27 temuan: 1 Critical, 4 High, 9 Medium, 8 Low,
+> 5 Info). Setiap temuan dicek manual ke kode aktual di zip sebelum dieksekusi — beberapa klaim
+> audit ternyata **sudah usang** (auditor melihat versi kode sebelum sesi 5): H-01 (CSP/security
+> headers), M-06 (button semantik), M-07 (focus-visible), L-06 (width/height img) semuanya
+> **sudah benar di kode**, bukan bug nyata. Yang benar-benar valid dan sudah dikerjakan sesi ini:
+
+- [x] **[C-01]** XSS — `escapeHtml()` sudah ada (dipakai di search query sejak XSS-01) tapi belum
+      dipasang di render data UMKM dari `umkm.json`: card grid, card beranda, cover detail, rating
+      pill, FAQ, galeri, produk, usaha terkait, dan hasil search untuk data UMKM/agenda/inventaris.
+      → Fix: `escapeHtml()` dipasang di semua titik render `umkm.json` di atas (12 lokasi).
+- [x] **[H-02]** `<script src="js/script.js">` tanpa `defer` — render-blocking.
+      → Fix: tambah `defer` di script utama DAN inline script `{{WA}}` (supaya urutan eksekusi
+      tetap terjaga — `defer` menjamin urutan dokumen tetap dipatuhi).
+- [x] **[H-03]** Tidak ada `<noscript>` fallback kalau JS diblokir browser.
+      → Fix: tambah pesan fallback pakai warna brand (`#F5F0E8` / `#1A2E23`) tepat setelah `<body>`.
+- [x] **[H-04]** `console.log`/`console.warn` aktif di production, bocorkan struktur ID/elemen internal.
+      → Fix: tambah `const DEBUG = false` di atas, semua `log`/`warn` debug dibungkus `if (DEBUG)`.
+      `console.error` untuk error fetch kritikal TETAP aktif (bukan info disclosure berbahaya).
+- [x] **[M-01]** `<h2 class="pttl">` jadi judul utama 5 halaman dalam (Agenda, Lapak Warga, Kas,
+      Inventaris, Nyuwun Tulung) + `<h2 class="tentang-name">` di Tentang — tidak ada `<h1>` sendiri.
+      → Fix: 6 heading judul halaman diubah ke `<h1>` (class CSS tidak berubah, cuma tag semantik).
+- [x] **[M-02]** Google Fonts `<link rel="stylesheet">` langsung — render-blocking ~300–800ms di 3G.
+      → Fix: ganti jadi `rel="preload" as="style" onload="this.rel='stylesheet'"` + `<noscript>`
+      fallback. Sekalian **[I-01]**: weight `600` Lora dihapus dari URL (dicek via Python — cuma
+      weight `700` yang benar-benar dipakai di seluruh `style.css`).
+- [x] **[L-01]** Field `p` (harga, isinya selalu `"Hubungi WA"`, tidak pernah dirender) dihapus dari
+      75 entry produk di `umkm.json`.
+- [x] **[L-02]** Field `testimoni: []` (sisa dari section yang sudah dihapus permanen) dihapus dari
+      19 UMKM di `umkm.json`.
+- [x] **[I-03]** Tidak ada validasi ID duplikat — kalau Zen tambah UMKM baru dengan id yang sudah
+      dipakai, akan tabrakan diam-diam. → Fix: tambah cek otomatis di `muatDataUMKM()`, kalau ada
+      ID duplikat langsung `console.error` jelas (bukan diam-diam gagal).
+
+**Ditinjau tapi SENGAJA TIDAK dieksekusi (bukan lupa):**
+- **[L-03]** Manifest tanpa `purpose: maskable` icon — **butuh aset gambar baru** dengan safe-zone
+      40%, logo "N" saat ini mengisi hampir penuh kanvas tanpa margin. Menandai icon yang ada sebagai
+      `maskable` tanpa redesain ulang akan membuat logo terpotong parah di launcher Android — lebih
+      buruk dari kondisi sekarang. **Menunggu Zen siapkan versi logo dengan margin aman**, baru di-apply.
+- **[I-02]** `alert()` untuk error "UMKM tidak ditemukan" — audit sendiri menandai prioritas Info/edge
+      case jarang terjadi. Ganti ke toast notification butuh komponen UI baru untuk dampak yang kecil.
+      Trade-off tidak sepadan, dibiarkan sesuai filter "simplicity over completeness".
+- **[I-04]** `robots.txt` tidak disallow domain GitHub Pages — secara teknis **tidak bisa** dilakukan
+      karena file yang sama di-deploy ke kedua domain (Vercel + GH Pages); disallow per-domain butuh
+      server-side logic yang keluar dari arsitektur static SPA. Canonical tag sudah menangani ini dengan
+      benar — bukan bug, ini limitasi arsitektur yang sudah dimitigasi.
+- **M-03, M-04, M-05, M-08, M-09** — semuanya trade-off arsitektur yang sudah disadari & didokumentasikan
+      di Roadmap (SPA crawlability, JSON scraping, cache-busting foto, inline onclick untuk maintainability
+      non-programmer). Tidak ada tindakan kode lebih lanjut yang masuk akal sekarang.
 
 ---
 
@@ -170,12 +220,16 @@ Jadi target yang sehat: **±90 di kategori yang benar-benar bisa dikontrol dari 
 ## 📌 STATUS SEKARANG
 
 ```
-Item coding outstanding: 0 ✅ (lihat section 🔴 BARU di atas)
+Item coding outstanding: 0 ✅ (semua temuan valid dari AUDIT_SIMBAH_PROFESSIONAL.md sudah dikerjakan)
+Item yang menunggu KEPUTUSAN/ASET dari Zen: 1
+  → L-03: maskable icon — butuh logo versi safe-zone 40%, bukan sekadar edit JSON
+
 Item yang wajib dicek manual: 0 — SEC-01 sudah terverifikasi aman (27 Juni 2026)
 
 Yang perlu dilakukan Zen:
   → Kumpulkan nomor kontak Nyuwun Tulung
   → Kumpulkan nama pengurus organisasi
+  → (opsional) siapkan versi logo dengan margin aman untuk maskable icon PWA
 
 Yang perlu dipantau:
   → GSC indexing report (~4 minggu dari submit sitemap, deadline ~25 Juli 2026)

@@ -26,6 +26,16 @@
 const WA_UTAMA = '6282241439784';
 
 /* ================================================
+   FLAG DEBUG — production logging
+   ------------------------------------------------
+   false = console.log/warn yang sifatnya debug
+   internal (nama elemen, ID, jumlah data) tidak
+   muncul di browser publik. Set true sementara
+   kalau perlu trace error pas develop lokal.
+   ================================================ */
+const DEBUG = false;
+
+/* ================================================
    KONSTANTA SEO — JUDUL & DESKRIPSI DEFAULT
    ------------------------------------------------
    Dipakai oleh updateMetaUMKM() & resetMetaDefault() di bawah,
@@ -264,7 +274,19 @@ async function muatDataUMKM() {
     }
 
     UMKM = hasil.umkm;
-    console.log('✓ Data UMKM berhasil dimuat:', UMKM.length, 'usaha');
+    if (DEBUG) console.log('✓ Data UMKM berhasil dimuat:', UMKM.length, 'usaha');
+
+    /* Cek ID duplikat — kalau Zen tambah UMKM baru tapi lupa
+       ganti "id", 2 UMKM bisa diam-diam tabrakan (yang satu
+       "menutupi" yang lain saat dicari pakai .find()). Ini
+       cuma peringatan di console, tidak menghentikan website,
+       supaya warga tetap bisa lihat halaman seperti biasa
+       sambil Zen perbaiki id yang konflik. */
+    const _idTerpakai = UMKM.map(function(u) { return u.id; });
+    const _idDuplikat = _idTerpakai.filter(function(id, i) { return _idTerpakai.indexOf(id) !== i; });
+    if (_idDuplikat.length) {
+      console.error('⚠️ ID UMKM duplikat ditemukan di data/umkm.json:', _idDuplikat.join(', '), '— periksa field "id" supaya setiap UMKM punya angka unik.');
+    }
 
     /* Generate chip filter dinamis dari kategori yang ada di data */
     renderFilterChips();
@@ -435,7 +457,7 @@ function nav(key) {
      lama padahal sudah pindah halaman lain. Sekalian kembalikan
      title/meta/Schema.org ke default SIMBAH (bukan UMKM tertentu). */
   if (key !== 'umkm-detail' && window.location.search) {
-    window.history.pushState({}, '', window.location.pathname);
+    window.history.pushState({ page: key }, '', window.location.pathname);
   }
   if (key !== 'umkm-detail') {
     resetMetaDefault();
@@ -497,7 +519,7 @@ function goBack() {
      bukan halaman detail UMKM (sama seperti di nav() di atas).
      Sekalian kembalikan title/meta/Schema.org ke default. */
   if (currentPage !== 'umkm-detail' && window.location.search) {
-    window.history.pushState({}, '', window.location.pathname);
+    window.history.pushState({ page: currentPage }, '', window.location.pathname);
   }
   if (currentPage !== 'umkm-detail') {
     resetMetaDefault();
@@ -638,19 +660,19 @@ function renderGrid(filter) {
      sama-sama kelihatan, tidak saling timpa. */
   grid.innerHTML = list.map(function(u) {
     var thumbHtml = u.cover
-      ? '<img src="' + u.cover + '" alt="' + u.name + '" width="100%" height="100%" loading="lazy">'
-      : u.emoji;
+      ? '<img src="' + escapeHtml(u.cover) + '" alt="' + escapeHtml(u.name) + '" width="100%" height="100%" loading="lazy">'
+      : escapeHtml(u.emoji);
     return `
       <div class="ugcard" onclick="showUMKM(${u.id})">
         <div class="ug-img">
           ${thumbHtml}
-          <div class="ug-badge">${u.cat}</div>
+          <div class="ug-badge">${escapeHtml(u.cat)}</div>
         </div>
         <div class="ug-info">
-          <div class="ug-name">${u.name}</div>
-          <div class="ug-cat">${u.cat}</div>
-          <div class="ug-rating">${u.rating && u.rating !== '0' ? '⭐ ' + u.rating : '<span class="ug-new">Baru</span>'}</div>
-          ${u.phone ? `<a class="ug-wa" href="https://wa.me/${u.phone}" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>` : `<span class="ug-wa-empty">📍 Lihat Maps</span>`}
+          <div class="ug-name">${escapeHtml(u.name)}</div>
+          <div class="ug-cat">${escapeHtml(u.cat)}</div>
+          <div class="ug-rating">${u.rating && u.rating !== '0' ? '⭐ ' + escapeHtml(u.rating) : '<span class="ug-new">Baru</span>'}</div>
+          ${u.phone ? `<a class="ug-wa" href="https://wa.me/${escapeHtml(u.phone)}" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>` : `<span class="ug-wa-empty">📍 Lihat Maps</span>`}
         </div>
       </div>`;
   }).join('');
@@ -729,12 +751,12 @@ function renderUMKMBeranda() {
 
   el.innerHTML = list.map(function(u) {
     var thumbHtml = u.cover
-      ? '<img src="' + u.cover + '" alt="' + u.name + '" width="100%" height="100%" loading="lazy">'
-      : u.emoji;
+      ? '<img src="' + escapeHtml(u.cover) + '" alt="' + escapeHtml(u.name) + '" width="100%" height="100%" loading="lazy">'
+      : escapeHtml(u.emoji);
     return `
       <div class="ucard" onclick="showUMKM(${u.id})">
         <div class="uimg">${thumbHtml}<div class="uwa">💬</div></div>
-        <div class="uinfo"><div class="uname">${u.name}</div><div class="ucat">${u.cat}</div></div>
+        <div class="uinfo"><div class="uname">${escapeHtml(u.name)}</div><div class="ucat">${escapeHtml(u.cat)}</div></div>
       </div>`;
   }).join('');
 }
@@ -857,7 +879,7 @@ function bukaUMKMdariURL() {
   const cocok = UMKM.find(function(item) { return slugify(item.name) === slug; });
 
   if (!cocok) {
-    console.warn('⚠️ Link UMKM "' + slug + '" tidak ditemukan — mungkin nama usaha sudah berubah.');
+    if (DEBUG) console.warn('⚠️ Link UMKM "' + slug + '" tidak ditemukan — mungkin nama usaha sudah berubah.');
     return; /* slug tidak ketemu — biarkan saja di Beranda, tidak perlu alert mengganggu */
   }
 
@@ -886,7 +908,7 @@ function showUMKM(id, updateUrl) {
 
   /* Kalau data tidak ditemukan — kasih tau jelas, jangan diam saja */
   if (!u) {
-    console.warn('⚠️ UMKM dengan id', id, 'tidak ditemukan di data/umkm.json');
+    if (DEBUG) console.warn('⚠️ UMKM dengan id', id, 'tidak ditemukan di data/umkm.json');
     alert('Maaf, data UMKM ini tidak ditemukan. Silakan kembali ke daftar UMKM.');
     return;
   }
@@ -917,12 +939,12 @@ function showUMKM(id, updateUrl) {
   function isiTeks(elementId, nilai) {
     const el = document.getElementById(elementId);
     if (el) { el.textContent = nilai; }
-    else { console.warn('⚠️ Elemen #' + elementId + ' tidak ditemukan di HTML'); }
+    else if (DEBUG) { console.warn('⚠️ Elemen #' + elementId + ' tidak ditemukan di HTML'); }
   }
   function isiLink(elementId, nilai) {
     const el = document.getElementById(elementId);
     if (el) { el.href = nilai; }
-    else { console.warn('⚠️ Elemen #' + elementId + ' tidak ditemukan di HTML'); }
+    else if (DEBUG) { console.warn('⚠️ Elemen #' + elementId + ' tidak ditemukan di HTML'); }
   }
 
   /**
@@ -938,7 +960,7 @@ function showUMKM(id, updateUrl) {
    */
   function isiLinkSosmed(elementId, nilai) {
     const el = document.getElementById(elementId);
-    if (!el) { console.warn('⚠️ Elemen #' + elementId + ' tidak ditemukan di HTML'); return; }
+    if (!el) { if (DEBUG) console.warn('⚠️ Elemen #' + elementId + ' tidak ditemukan di HTML'); return; }
 
     const isiKosong = !nilai || nilai === '#' || nilai.trim() === '';
     if (isiKosong) {
@@ -955,7 +977,7 @@ function showUMKM(id, updateUrl) {
     const backBtn = cover.querySelector('.ud-back');
     const shareBtn = cover.querySelector('.ud-share');
     if (u.cover) {
-      cover.innerHTML = '<img src="' + u.cover + '" alt="' + u.name + '" width="100%" height="100%" loading="eager">';
+      cover.innerHTML = '<img src="' + escapeHtml(u.cover) + '" alt="' + escapeHtml(u.name) + '" width="100%" height="100%" loading="eager">';
       cover.style.background = '';
     } else {
       /* Fallback: gradien berdasarkan kategori, emoji besar di tengah */
@@ -967,7 +989,7 @@ function showUMKM(id, updateUrl) {
         'Jasa':        'linear-gradient(135deg, #1a2a3d 0%, #2d4a6a 60%, #5280a8 100%)',
       };
       const grad = gradienKat[u.cat] || 'linear-gradient(135deg, #1e3a2f 0%, #2d6a4f 100%)';
-      cover.innerHTML = '<div class="ud-cover-fallback"><span class="ud-cover-emoji">' + u.emoji + '</span><span class="ud-cover-name">' + u.name + '</span></div>';
+      cover.innerHTML = '<div class="ud-cover-fallback"><span class="ud-cover-emoji">' + escapeHtml(u.emoji) + '</span><span class="ud-cover-name">' + escapeHtml(u.name) + '</span></div>';
       cover.style.background = grad;
     }
     if (backBtn) cover.appendChild(backBtn);
@@ -994,7 +1016,7 @@ function showUMKM(id, updateUrl) {
   const jumlahUlasan = u.ulasan || 0;
   if (ratingPill) {
     if (adaRating) {
-      ratingPill.innerHTML = `<span>⭐</span><span class="rn">${u.rating}</span>${jumlahUlasan ? `<span class="rn-ulasan">(${jumlahUlasan})</span>` : ''}`;
+      ratingPill.innerHTML = `<span>⭐</span><span class="rn">${escapeHtml(u.rating)}</span>${jumlahUlasan ? `<span class="rn-ulasan">(${escapeHtml(String(jumlahUlasan))})</span>` : ''}`;
       ratingPill.style.display = '';
     } else {
       ratingPill.innerHTML = `<span class="rn-new">Baru</span>`;
@@ -1080,8 +1102,8 @@ function showUMKM(id, updateUrl) {
     if (faqList.length) {
       faqEl.innerHTML = faqList.map(function(f) {
         return `<details class="faq-item">
-          <summary class="faq-q">${f.q}</summary>
-          <div class="faq-a">${f.a}</div>
+          <summary class="faq-q">${escapeHtml(f.q)}</summary>
+          <div class="faq-a">${escapeHtml(f.a)}</div>
         </details>`;
       }).join('');
       faqSec.style.display = '';
@@ -1110,9 +1132,9 @@ function showUMKM(id, updateUrl) {
     galeriEl.className = fotoArr.length >= 4 ? 'galeri galeri-banyak' : 'galeri';
     galeriEl.innerHTML = fotoArr.map(function(e) {
       if (e && e.includes('img/')) {
-        return '<div class="gfoto"><img src="' + e + '" alt="' + u.name + ' - foto" width="100%" height="100%" loading="lazy"></div>';
+        return '<div class="gfoto"><img src="' + escapeHtml(e) + '" alt="' + escapeHtml(u.name) + ' - foto" width="100%" height="100%" loading="lazy"></div>';
       }
-      return '<div class="gfoto">' + e + '</div>';
+      return '<div class="gfoto">' + escapeHtml(e) + '</div>';
     }).join('');
   }
 
@@ -1121,13 +1143,13 @@ function showUMKM(id, updateUrl) {
   if (produkEl) {
     produkEl.innerHTML = (u.products || []).map(function(p) {
       var keteranganHtml = p.k
-        ? '<div class="pketerangan">' + p.k + '</div>'
+        ? '<div class="pketerangan">' + escapeHtml(p.k) + '</div>'
         : '';
       return `
         <div class="pcard">
-          <div class="pimg">${p.e}</div>
+          <div class="pimg">${escapeHtml(p.e)}</div>
           <div class="pinfo">
-            <div class="pname">${p.n}</div>
+            <div class="pname">${escapeHtml(p.n)}</div>
             ${keteranganHtml}
           </div>
         </div>`;
@@ -1152,10 +1174,10 @@ function showUMKM(id, updateUrl) {
       terkaitList.innerHTML = '<div class="terkait-list">' +
         dataTerkait.map(function(t) {
           return '<div class="terkait-item" onclick="showUMKM(' + t.id + ')">' +
-            '<span class="terkait-ico">' + t.emoji + '</span>' +
+            '<span class="terkait-ico">' + escapeHtml(t.emoji) + '</span>' +
             '<div class="terkait-info">' +
-              '<div class="terkait-name">' + t.name + '</div>' +
-              '<div class="terkait-cat">' + t.cat + '</div>' +
+              '<div class="terkait-name">' + escapeHtml(t.name) + '</div>' +
+              '<div class="terkait-cat">' + escapeHtml(t.cat) + '</div>' +
             '</div>' +
             '<span class="terkait-arr">›</span>' +
           '</div>';
@@ -1749,7 +1771,7 @@ function runSearch(query) {
            (u.desc && u.desc.toLowerCase().includes(q));
   });
   umkmHasil.forEach(function(u) {
-    html += `<button class="src-item" onclick="goToUMKM(${u.id})"><span class="src-ico">${u.emoji || '🏪'}</span><span class="src-body"><span class="src-ttl">${u.name}</span><span class="src-meta">UMKM · ${u.cat || ''}</span></span></button>`;
+    html += `<button class="src-item" onclick="goToUMKM(${u.id})"><span class="src-ico">${escapeHtml(u.emoji || '🏪')}</span><span class="src-body"><span class="src-ttl">${escapeHtml(u.name)}</span><span class="src-meta">UMKM · ${escapeHtml(u.cat || '')}</span></span></button>`;
   });
 
   /* --- Cari di Agenda (hanya yang belum lewat) --- */
@@ -1759,7 +1781,7 @@ function runSearch(query) {
   agendaHasil.forEach(function(a) {
     var tgl = new Date(a.date + 'T00:00:00');
     var metaTgl = String(tgl.getDate()).padStart(2, '0') + ' ' + NAMA_BULAN_SINGKAT[tgl.getMonth()] + ' · ' + a.lokasi;
-    html += `<button class="src-item" onclick="nav('agenda')"><span class="src-ico">📅</span><span class="src-body"><span class="src-ttl">${a.title}</span><span class="src-meta">Agenda · ${metaTgl}</span></span></button>`;
+    html += `<button class="src-item" onclick="nav('agenda')"><span class="src-ico">📅</span><span class="src-body"><span class="src-ttl">${escapeHtml(a.title)}</span><span class="src-meta">Agenda · ${escapeHtml(metaTgl)}</span></span></button>`;
   });
 
   /* --- Cari di Inventaris --- */
@@ -1767,7 +1789,7 @@ function runSearch(query) {
     return i.title.toLowerCase().includes(q);
   });
   invHasil.forEach(function(i) {
-    html += `<button class="src-item" onclick="nav('inventaris')"><span class="src-ico">📦</span><span class="src-body"><span class="src-ttl">${i.title}</span><span class="src-meta">Inventaris · ${i.meta}</span></span></button>`;
+    html += `<button class="src-item" onclick="nav('inventaris')"><span class="src-ico">📦</span><span class="src-body"><span class="src-ttl">${escapeHtml(i.title)}</span><span class="src-meta">Inventaris · ${escapeHtml(i.meta)}</span></span></button>`;
   });
 
   /* --- Tidak ada hasil --- */
@@ -1903,10 +1925,11 @@ document.addEventListener('keydown', function(e) {
  * Kalau tidak ada, pulangkan ke Beranda. Ini cukup untuk kasus paling
  * umum (orang share link UMKM, ada yang buka, lalu back).
  */
-window.addEventListener('popstate', function() {
+window.addEventListener('popstate', function(event) {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('umkm');
 
+  /* Kasus 1: URL punya ?umkm=slug — tampilkan detail UMKM */
   if (slug) {
     const cocok = UMKM.find(function(item) { return slugify(item.name) === slug; });
     if (cocok) {
@@ -1915,7 +1938,22 @@ window.addEventListener('popstate', function() {
     }
   }
 
-  /* Tidak ada parameter umkm yang valid — pulangkan ke Beranda */
+  /* Kasus 2: state menyimpan halaman sebelumnya (diisi oleh nav() & goBack()) */
+  if (event.state && event.state.page && pageMap[event.state.page]) {
+    const targetPage = event.state.page;
+    document.getElementById(pageMap[currentPage])?.classList.remove('active');
+    semuaIdNav.forEach(function(id) { document.getElementById(id)?.classList.remove('active'); });
+    currentPage = targetPage;
+    document.getElementById(pageMap[currentPage])?.classList.add('active');
+    (navMap[currentPage] || []).forEach(function(id) { document.getElementById(id)?.classList.add('active'); });
+    if (currentPage === 'umkm') renderGrid('');
+    if (currentPage === 'agenda') renderAgendaPage();
+    if (currentPage === 'inventaris') renderInventarisPage();
+    resetMetaDefault();
+    return;
+  }
+
+  /* Kasus 3: tidak ada info apapun — fallback ke Beranda */
   document.getElementById(pageMap[currentPage])?.classList.remove('active');
   semuaIdNav.forEach(function(id) { document.getElementById(id)?.classList.remove('active'); });
   currentPage = 'beranda';
