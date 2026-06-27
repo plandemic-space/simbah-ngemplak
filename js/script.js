@@ -1841,3 +1841,31 @@ window.addEventListener('popstate', function() {
   (navMap['beranda'] || []).forEach(function(id) { document.getElementById(id)?.classList.add('active'); });
   resetMetaDefault();
 });
+
+/* ================================================
+   TOMBOL KEMBALI KE ATAS
+   Muncul setelah scroll melewati 1 tinggi viewport,
+   supaya tidak langsung muncul pas baru buka halaman
+   pendek (Nyuwun Tulung, dst). Pakai window scroll
+   karena .page tidak punya scroll container sendiri
+   (lihat css/style.css — .page { overflow-y: visible }).
+   ================================================ */
+(function () {
+  var btt = document.getElementById('btt');
+  if (!btt) return;
+
+  function toggleBtt() {
+    if (window.scrollY > window.innerHeight * 0.6) {
+      btt.classList.add('show');
+    } else {
+      btt.classList.remove('show');
+    }
+  }
+
+  window.addEventListener('scroll', toggleBtt, { passive: true });
+  toggleBtt(); /* cek posisi awal saat load (misal buka via link share + anchor) */
+})();
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
