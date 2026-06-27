@@ -50,7 +50,7 @@
   /* Warna Teks */
   --tx:  #1A2E23;   /* teks utama */
   --tx2: #4A5E52;   /* teks sekunder */
-  --tx3: #7A8E82;   /* teks tersier / placeholder */
+  --tx3: #5C6F64;   /* teks tersier / placeholder — #5C6F64 kontras ≥4.5 (A11Y-01) */
   --wh:  #fff;      /* putih */
 
   /* Warna Semantik (status pemasukan/pengeluaran, dll) */
@@ -73,6 +73,12 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent; /* hilangkan highlight tap di HP */
+}
+
+/* [A11Y-03] Fokus keyboard — visible, konsisten di semua browser */
+:focus-visible {
+  outline: 2px solid var(--gr);
+  outline-offset: 2px;
 }
 
 body {

@@ -819,6 +819,17 @@ function renderTrustStrip() {
  * Tidak perlu field manual baru di JSON — slug dihitung otomatis
  * dari field "name" yang sudah ada.
  */
+
+/* [XSS-01] Escape teks user sebelum disisip ke innerHTML */
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function slugify(name) {
   return name
     .toLowerCase()
@@ -1030,6 +1041,8 @@ function showUMKM(id, updateUrl) {
 
   /* ── Link "Lihat Review di Google Maps" — reuse link Maps yang sama.
      CATATAN: ini mengarahkan ke profil Maps usaha (kalau linknya sudah
+     diisi di field maps). Kalau kosong, tombol Maps juga sudah disembunyikan
+     di blok di atas, jadi link ini tidak pernah tampil tanpa URL yang valid. */
 
   /* ── Info operasional (alamat, jam, telepon) ── */
   isiTeks('ud-alamat', u.alamat);
@@ -1759,7 +1772,7 @@ function runSearch(query) {
 
   /* --- Tidak ada hasil --- */
   if (!html) {
-    html = `<div class="src-empty">Tidak ditemukan hasil untuk "${query}"</div>`;
+    html = `<div class="src-empty">Tidak ditemukan hasil untuk "${escapeHtml(query)}"</div>`;
   }
 
   resultsEl.innerHTML = html;
