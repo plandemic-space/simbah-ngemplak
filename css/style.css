@@ -1189,36 +1189,35 @@ body {
 /* CTA pendaftaran UMKM baru */
 .umkm-daftar-cta {
   margin: 4px 16px 20px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   background: var(--brl);
   border: 1px solid rgba(139, 105, 20, .2);
   border-radius: var(--r);
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
 }
-.umkm-daftar-icon { font-size: 22px; flex-shrink: 0; }
+.umkm-daftar-icon { font-size: 20px; flex-shrink: 0; }
 .umkm-daftar-body { flex: 1; min-width: 0; }
 .umkm-daftar-title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--tx);
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 .umkm-daftar-desc {
-  font-size: 11.5px;
+  font-size: 10.5px;
   color: var(--tx2);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 .umkm-daftar-btn {
   display: inline-flex;
   align-items: center;
   background: var(--gr);
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 9px 16px;
+  padding: 8px 12px;
   border-radius: 8px;
   text-decoration: none;
   white-space: nowrap;
@@ -1742,12 +1741,12 @@ body {
 /* Tombol kembali di atas foto */
 .ud-back {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 32px;
-  height: 32px;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
   background: rgba(0, 0, 0, .35);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
