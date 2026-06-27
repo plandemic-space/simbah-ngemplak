@@ -279,6 +279,7 @@ async function muatDataUMKM() {
        Kalau fetch gagal (lihat blok catch di bawah), angka HARDCODE
        yang sudah ada di index.html tetap tampil sebagai fallback. */
     renderStatUMKM();
+    renderTrustStrip();
 
     /* Cek apakah halaman ini dibuka lewat link share UMKM
        (contoh: ?umkm=plandemic-space) — kalau iya, langsung
@@ -760,6 +761,46 @@ function renderStatUMKM() {
 
   const potensiEl = document.getElementById('stat-umkm-potensi');
   if (potensiEl) { potensiEl.textContent = jumlah + '+'; }
+}
+
+/**
+ * Hitung & tampilkan Trust Strip di beranda:
+ * - Rata-rata rating berbobot (weighted average) dari UMKM yang punya rating > 0
+ * - Total ulasan semua UMKM
+ * Dipanggil setelah data UMKM berhasil dimuat oleh muatDataUMKM().
+ *
+ * CATATAN: UMKM tanpa rating (rating = 0 / "0") sengaja TIDAK dihitung
+ * ke rata-rata supaya angka tidak turun karena data belum diisi —
+ * bukan berarti ratingnya 0, tapi belum ada datanya.
+ * Kalau tidak ada satu pun UMKM yang punya rating, trust strip disembunyikan
+ * supaya tidak menampilkan angka kosong atau nol.
+ */
+function renderTrustStrip() {
+  var ratingEl  = document.getElementById('trust-rating');
+  var ulasanEl  = document.getElementById('trust-ulasan');
+  var stripEl   = document.getElementById('trust-strip');
+
+  if (!ratingEl || !ulasanEl || !stripEl) return;
+
+  /* Hanya hitung UMKM yang punya rating & ulasan > 0 */
+  var adaRating = UMKM.filter(function(u) {
+    return parseFloat(u.rating) > 0 && parseInt(u.ulasan) > 0;
+  });
+
+  if (adaRating.length === 0) {
+    stripEl.style.display = 'none'; /* sembunyikan kalau belum ada data sama sekali */
+    return;
+  }
+
+  var totalUlasan  = adaRating.reduce(function(s, u) { return s + parseInt(u.ulasan); }, 0);
+  var weightedSum  = adaRating.reduce(function(s, u) { return s + parseFloat(u.rating) * parseInt(u.ulasan); }, 0);
+  var avgRating    = weightedSum / totalUlasan;
+
+  /* Bulatkan 1 desimal (4.85 → 4.9, 4.94 → 4.9, dst) */
+  var avgTampil = avgRating.toFixed(1);
+
+  ratingEl.textContent = avgTampil + '★';
+  ulasanEl.textContent = totalUlasan + '+';
 }
 
 /**
