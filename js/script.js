@@ -638,7 +638,7 @@ function renderGrid(filter) {
      sama-sama kelihatan, tidak saling timpa. */
   grid.innerHTML = list.map(function(u) {
     var thumbHtml = u.cover
-      ? '<img src="' + u.cover + '" alt="' + u.name + '" loading="lazy">'
+      ? '<img src="' + u.cover + '" alt="' + u.name + '" width="100%" height="100%" loading="lazy">'
       : u.emoji;
     return `
       <div class="ugcard" onclick="showUMKM(${u.id})">
@@ -729,7 +729,7 @@ function renderUMKMBeranda() {
 
   el.innerHTML = list.map(function(u) {
     var thumbHtml = u.cover
-      ? '<img src="' + u.cover + '" alt="' + u.name + '" loading="lazy">'
+      ? '<img src="' + u.cover + '" alt="' + u.name + '" width="100%" height="100%" loading="lazy">'
       : u.emoji;
     return `
       <div class="ucard" onclick="showUMKM(${u.id})">
@@ -955,7 +955,7 @@ function showUMKM(id, updateUrl) {
     const backBtn = cover.querySelector('.ud-back');
     const shareBtn = cover.querySelector('.ud-share');
     if (u.cover) {
-      cover.innerHTML = '<img src="' + u.cover + '" alt="' + u.name + '" loading="eager">';
+      cover.innerHTML = '<img src="' + u.cover + '" alt="' + u.name + '" width="100%" height="100%" loading="eager">';
       cover.style.background = '';
     } else {
       /* Fallback: gradien berdasarkan kategori, emoji besar di tengah */
@@ -1110,7 +1110,7 @@ function showUMKM(id, updateUrl) {
     galeriEl.className = fotoArr.length >= 4 ? 'galeri galeri-banyak' : 'galeri';
     galeriEl.innerHTML = fotoArr.map(function(e) {
       if (e && e.includes('img/')) {
-        return '<div class="gfoto"><img src="' + e + '" alt="' + u.name + ' - foto" loading="lazy"></div>';
+        return '<div class="gfoto"><img src="' + e + '" alt="' + u.name + ' - foto" width="100%" height="100%" loading="lazy"></div>';
       }
       return '<div class="gfoto">' + e + '</div>';
     }).join('');
@@ -1619,7 +1619,7 @@ function templateFooter() {
 
         <div class="ft-col">
           <div class="ft-brand">
-            <img class="ft-logo" src="img/branding/logo.png" alt="Logo">
+            <img class="ft-logo" src="img/branding/logo.png" alt="Logo" width="38" height="38">
             <div>
               <div class="ft-name">SIMBAH Ngemplak</div>
               <div class="ft-sub">Sistem Informasi Masyarakat Bale Harian</div>
