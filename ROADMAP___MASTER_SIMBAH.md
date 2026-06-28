@@ -1,0 +1,122 @@
+# SIMBAH — Prinsip & Keputusan Permanen
+
+> Dokumen ini berisi **prinsip yang tidak pernah berubah** selama proyek hidup.
+> Bukan to-do, bukan history — murni pagar acuan.
+>
+> Untuk status pekerjaan & checklist teknis → lihat `AUDIT_BUG_BELUM_SELESAI.md`
+> Diperbarui: **27 Juni 2026**
+
+---
+
+## 1. Definisi Produk
+
+**SIMBAH ADALAH**: etalase UMKM + identitas dusun + informasi publik sederhana ("Balai Digital Warga").
+
+**SIMBAH BUKAN**: aplikasi administrasi desa, sistem pemerintahan, portal berita, media sosial, aplikasi warga, sistem backend kompleks, super app desa.
+
+---
+
+## 2. Filter Wajib untuk Fitur Baru
+
+Setiap ada usul fitur baru — dari Zen, dari Claude, dari siapapun — cek 4 pertanyaan ini dulu:
+
+1. Apakah meningkatkan visibilitas UMKM **atau** memperkuat identitas Ngemplak?
+2. Apakah bisa dirawat tanpa backend, oleh 1–2 orang non-programmer?
+3. Apakah **tidak** bisa diselesaikan cukup lewat WhatsApp/IG/FB?
+4. Apakah warga akan benar-benar pakai, bahkan 5 tahun lagi?
+
+> Kalau ada 1 jawaban "tidak" → fitur ditolak atau ditunda.
+
+---
+
+## 3. Stack & Arsitektur (FINAL, locked)
+
+- **HTML + CSS + JS vanilla murni** — tanpa framework, tanpa build tool, tanpa transpiler
+- **Hosting**: GitHub Pages (primary) + Vercel mirror (`simbahngemplak.vercel.app`)
+- **Data**: `data/umkm.json` (UMKM), `const AGENDA` / `INVENTARIS` / `KAS_TOTAL` di `js/script.js`
+- **TANPA**: backend, database, login, API kompleks, node_modules, CI/CD
+- **Single Page App**: semua section di 1 `index.html`, navigasi via `nav()` di JS
+
+---
+
+## 4. Identitas Visual (FINAL, locked)
+
+- **Logo**: "N" abstrak hijau-emas — tidak boleh diusulkan rebranding
+- **Warna**: CSS variable di `:root` — `--iv` (ivory/krem), `--gr` (hijau), `--br` (emas/bronze)
+- **Proporsi**: Ivory 70% : Hijau 20% : Emas 10%
+- **Karakter**: hangat, agraris, tenang, sederhana, modern-tradisional
+- **Hindari**: neon, gradient berlebihan, warna mencolok, slider/video otomatis, gaya startup/SaaS
+
+---
+
+## 5. Fitur yang Ditolak Permanen
+
+Jangan diusulkan ulang — sudah diputuskan dan alasannya konsisten:
+
+| Fitur | Alasan |
+|---|---|
+| Login warga / dashboard admin / RBAC | Butuh backend, tidak bisa dirawat 1 orang |
+| Forum warga / chat warga | Butuh moderasi, WA sudah cukup |
+| WA Gateway / notifikasi WA otomatis | API berbayar, risiko banned |
+| Sistem surat-menyurat / pelaporan kompleks | Di luar scope, domain aplikasi desa resmi |
+| Booking inventaris | WA ke PJ lebih cepat |
+| Galeri foto section terpisah | Digantikan IG aktif (@ktoppenlestari, @lensangemplak) |
+| Video / slider otomatis | Berat, tidak sesuai karakter visual |
+| Kalender bulanan interaktif | Over-engineering untuk 1 event/bulan |
+| Pengumuman darurat di website | Warga buka WA tiap menit, bukan website |
+| PWA penuh + Service Worker | Risiko cache basi, kompleksitas tidak worth it saat ini |
+
+---
+
+## 6. Keputusan Konten & Data
+
+- **Testimoni warga**: dihapus permanen — tidak realistis kumpulkan 19 testimoni asli, kosong/generik justru menurunkan kredibilitas
+- **Jam buka UMKM bibit**: `"Fleksibel, hubungi WA"` — karena kenyataannya ada yang muat bibit malam, kirim subuh; jam kaku menyesatkan pembeli
+- **Hero beranda**: tetap ilustrasi — tidak perlu foto asli, ganti hanya kalau ada foto asli Ngemplak yang jauh lebih bagus
+- **Kategori "Pertanian"**: tidak perlu ditambah — semua UMKM bibit masuk "Perkebunan" (bibit buah/keras/penghijauan = komoditas perkebunan; "Pertanian" identik sawah/padi yang tidak ada di Ngemplak)
+- **Em dash (`—`)**: dipakai untuk data yang belum terisi, bukan placeholder teks karangan
+- **Foto UMKM**: selalu merge ke base zip Zen saat ada perubahan — jangan overwrite path `cover`/`galeri` yang sudah ada
+
+---
+
+## 7. Mekanisme Kunci (jangan diubah tanpa alasan kuat)
+
+- **`{{WA}}` inject**: script di akhir `index.html` ganti semua `{{WA}}` dengan `WA_UTAMA`. Link `[data-kontak-publik]` → dinonaktifkan (bukan fallback ke Zen). Link lain (footer, sejarah) → inject `WA_UTAMA`.
+- **UMKM fetch**: `muatDataUMKM()` ambil `data/umkm.json` via `fetch()`. Tombol WA otomatis hilang kalau `phone` kosong.
+- **Navigasi**: `nav('nama-section')` toggle class `.active` di `<div class="page" id="p-NAMA">`.
+- **Footer**: satu fungsi `templateFooter()` + array `FOOTER_SLOTS` — edit sekali, berlaku semua halaman.
+- **SEO per-UMKM**: `updateMetaUMKM()` update title/desc/canonical/OG/Schema dinamis saat buka detail UMKM.
+- **Slug**: `slugify(name)` — nama usaha → huruf kecil → spasi jadi `-` → hapus tanda baca. Harus konsisten antara `cover` path, `sitemap.xml`, dan URL `?umkm=slug`.
+
+---
+
+## 8. Definisi Keberhasilan
+
+SIMBAH berhasil kalau: orang cari "Ngemplak" ketemu SIMBAH di Google, UMKM dapat trafik/pelanggan nyata, warga tahu agenda, warga percaya data kas, info mudah ditemukan, warga bangga.
+
+**Tidak diukur dari**: jumlah halaman, fitur, animasi, atau akun login.
+
+---
+
+## 9. Konteks Proyek
+
+- **Pengelola**: Zen (1 orang, non-programmer, update via drag-drop GitHub)
+- **Workflow**: edit file → drag-drop ke GitHub repo → commit → Pages rebuild otomatis (~1–2 menit)
+- **Constraint permanen**: Rp0, bisa dikelola 1–2 orang tanpa SDM IT
+- **Domain sekarang**: `simbahngemplak.vercel.app` (canonical) + `samxngemplak-arch.github.io`
+- **Migrasi domain**: nanti ke `dusunngemplak.id` atau sejenis, kalau sudah matang
+
+---
+
+## 10. Wishlist Masa Depan
+
+Bukan ditolak — ditunda sampai ada kebutuhan riil atau SDM:
+
+| Item | Syarat sebelum dipertimbangkan |
+|---|---|
+| Domain `.id` berbayar | Keputusan Zen & perangkat dusun |
+| Schema `BreadcrumbList` | Ada struktur multi-level / domain `.id` + SSR/prerender |
+| Backlink lokal | Koordinasi dengan web Desa Samping / Kec. Kemiri / Kab. Purworejo |
+| Halaman Sentra Bibit | Diskusi arsitektur dulu (keluar dari SPA) |
+| Histori transaksi kas | Kalau Google Sheets sudah tidak cukup |
+| Integrasi Pengaduan ke Nyuwun Tulung | Harus ada kejelasan siapa yang baca & follow-up |

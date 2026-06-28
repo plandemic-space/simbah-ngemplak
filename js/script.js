@@ -53,7 +53,7 @@ const DEBUG = false;
    ikut benar.
    ================================================ */
 const DOMAIN_SIMBAH = 'https://simbahngemplak.vercel.app';
-const TITLE_DEFAULT = 'SIMBAH — Portal Digital Dusun Ngemplak | Kemiri, Purworejo';
+const TITLE_DEFAULT = 'SIMBAH Ngemplak — 19 UMKM Lokal, Agenda & Info Dusun';
 const DESC_DEFAULT  = 'Dusun Ngemplak, Desa Samping, Kemiri, Purworejo — sejarah panjang, tradisi terjaga, dan puluhan UMKM yang terus bergerak maju bersama. Portal digital resmi warga Ngemplak.';
 
 /**
@@ -127,7 +127,7 @@ function updateMetaUMKM(u) {
   };
   if (u.phone) { schemaData.telephone = '+' + u.phone; }
   if (adaMaps) { schemaData.hasMap = u.maps; }
-  if (u.rating && u.rating !== '0' && u.ulasan) {
+  if (u.rating && u.ulasan) {
     schemaData.aggregateRating = {
       '@type': 'AggregateRating',
       'ratingValue': u.rating,
@@ -682,7 +682,7 @@ function renderGrid(filter) {
         <div class="ug-info">
           <div class="ug-name">${escapeHtml(u.name)}</div>
           <div class="ug-cat">${escapeHtml(u.cat)}</div>
-          <div class="ug-rating">${u.rating && u.rating !== '0' ? '⭐ ' + escapeHtml(u.rating) : '<span class="ug-new">Baru</span>'}</div>
+          <div class="ug-rating">${u.rating ? '⭐ ' + escapeHtml(u.rating) : '<span class="ug-new">Baru</span>'}</div>
           ${u.phone ? `<a class="ug-wa" href="https://wa.me/${escapeHtml(u.phone)}" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>` : `<span class="ug-wa-empty">📍 Lihat Maps</span>`}
         </div>
       </div>`;
@@ -1023,7 +1023,7 @@ function showUMKM(id, updateUrl) {
 
   /* Rating pill — kalau 0 atau kosong tampilkan badge "Baru", kalau ada tampilkan bintang + jumlah ulasan */
   const ratingPill = document.getElementById('ud-rating-pill');
-  const adaRating = u.rating && u.rating !== '0';
+  const adaRating = u.rating;
   const jumlahUlasan = u.ulasan || 0;
   if (ratingPill) {
     if (adaRating) {
@@ -1652,7 +1652,7 @@ function templateFooter() {
 
         <div class="ft-col">
           <div class="ft-brand">
-            <img class="ft-logo" src="img/branding/logo.png" alt="Logo" width="38" height="38">
+            <img class="ft-logo" src="img/branding/logo.png" alt="Logo" width="38" height="38" loading="lazy">
             <div>
               <div class="ft-name">SIMBAH Ngemplak</div>
               <div class="ft-sub">Sistem Informasi Masyarakat Bale Harian</div>
@@ -1921,6 +1921,14 @@ document.getElementById('search-input')?.addEventListener('input', function(e) {
 /* ESC menutup search pill */
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape' && _searchOpen) closeSearch();
+});
+
+/* Enter/Space membuka search pill (A11Y — WCAG 2.1 SC 2.1.1) */
+document.getElementById('search-pill')?.addEventListener('keydown', function(e) {
+  if ((e.key === 'Enter' || e.key === ' ') && !_searchOpen) {
+    e.preventDefault();
+    openSearch();
+  }
 });
 /* Filter chip di-generate dan di-attach event listener oleh renderFilterChips()
    yang dipanggil setelah data UMKM selesai di-fetch. */

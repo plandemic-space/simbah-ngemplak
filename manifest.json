@@ -2,8 +2,11 @@
   "name": "SIMBAH Ngemplak",
   "short_name": "SIMBAH",
   "description": "Portal digital Dusun Ngemplak, Kemiri, Purworejo",
+  "lang": "id",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#F5F0E8",
   "theme_color": "#2D5A3D",
   "icons": [

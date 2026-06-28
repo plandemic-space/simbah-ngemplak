@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Halaman Tidak Ditemukan — SIMBAH Ngemplak</title>
   <meta name="robots" content="noindex">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Lora:wght@700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Lora:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Lora:wght@700&display=swap"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -108,8 +109,8 @@
   </div>
 
   <script>
-    /* GitHub Pages akan render 404.html ini, tapi URL-nya tetap
-       path yang salah. Redirect otomatis ke beranda setelah 5 detik
+    /* Vercel dan GitHub Pages sama-sama menyajikan 404.html untuk URL yang
+       tidak ditemukan. Redirect otomatis ke beranda setelah 5 detik
        supaya pengunjung yang bingung tidak nyangkut. */
     var sisa = 5;
     var cdEl = document.getElementById('cd');
