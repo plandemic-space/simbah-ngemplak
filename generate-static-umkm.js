@@ -251,6 +251,9 @@ ${faqHTML}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <!-- Critical CSS first to prevent FOUC -->
+  <link rel="stylesheet" href="/css/style.css">
+  
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
   <meta name="keywords" content="${escapeHtml(umkm.keywords || '')}">
@@ -279,7 +282,6 @@ ${faqHTML}
   <link rel="icon" type="image/png" sizes="32x32" href="/img/branding/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/branding/apple-touch-icon.png">
   
-  <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
