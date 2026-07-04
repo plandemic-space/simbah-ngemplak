@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lapak Warga — Daftar UMKM Dusun Ngemplak | SIMBAH</title>
+  <meta name="description" content="Jelajahi 19 UMKM dan usaha warga Dusun Ngemplak, Desa Samping, Kemiri, Purworejo. Temukan bibit tanaman, peternakan, furniture, dan jasa warga.">
+  <meta name="keywords" content="UMKM Ngemplak, usaha warga, bibit tanaman, dusun ngemplak, purworejo">
+  <meta name="author" content="SIMBAH Ngemplak">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://simbahngemplak.vercel.app/umkm/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://simbahngemplak.vercel.app/umkm/">
+  <meta property="og:title" content="Lapak Warga — Daftar UMKM Dusun Ngemplak | SIMBAH">
+  <meta property="og:description" content="Jelajahi 19 UMKM dan usaha warga Dusun Ngemplak, Desa Samping, Kemiri, Purworejo.">
+  <meta property="og:image" content="https://simbahngemplak.vercel.app/img/branding/og-image.webp">
+  <meta property="og:site_name" content="SIMBAH Ngemplak">
+  <meta property="og:locale" content="id_ID">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lapak Warga — Daftar UMKM Dusun Ngemplak | SIMBAH">
+  <meta name="twitter:description" content="Jelajahi 19 UMKM dan usaha warga Dusun Ngemplak.">
+  <meta name="twitter:image" content="https://simbahngemplak.vercel.app/img/branding/og-image.webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Daftar UMKM Dusun Ngemplak",
+    "description": "19 UMKM dan usaha warga Dusun Ngemplak.",
+    "url": "https://simbahngemplak.vercel.app/umkm/",
+    "about": {
+      "@type": "Thing",
+      "name": "UMKM Ngemplak"
+    }
+  }
+  </script>
+
+  <link rel="icon" href="/img/branding/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/branding/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/branding/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:wght@700&display=swap"></noscript>
+
+  <meta name="theme-color" content="#2D5A3D">
+</head>
+<body>
+<div class="phone">
+
+  <div class="hdr">
+    <a href="/" class="hlogo" style="text-decoration:none">
+      <img src="/img/branding/logo.png" alt="Logo Ngemplak" width="34" height="34" loading="eager">
+      <div>
+        <div class="hbrand">SIMBAH</div>
+        <div class="hsub">Dusun Ngemplak</div>
+      </div>
+    </a>
+    <nav class="dnav">
+      <a href="/?page=beranda" class="dn-item">Beranda</a>
+      <a href="/?page=umkm" class="dn-item dn-item-active">UMKM</a>
+      <a href="/?page=agenda" class="dn-item">Agenda</a>
+      <a href="/?page=nyuwun" class="dn-item">Nyuwun Tulung</a>
+      <a href="/?page=tentang" class="dn-item">Tentang</a>
+      <div class="dn-dropdown-wrap">
+        <button class="dn-item dn-dropdown-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+          Lainnya
+          <svg class="dn-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dn-dropdown-menu" style="display:none">
+          <a href="/?page=kas" class="dn-dropdown-item">💰 Transparansi Kas</a>
+          <a href="/?page=inventaris" class="dn-dropdown-item">📦 Inventaris Dusun</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="page active" style="display:block">
+
+    <div class="phdr">
+      <a href="/" class="pback" style="text-decoration:none">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        <span>Kembali</span>
+      </a>
+      <h1 class="pttl">Lapak Warga</h1>
+      <div class="psub">UMKM & usaha warga Dusun Ngemplak</div>
+    </div>
+
+    <div class="filter-row" id="filter-row">
+          <button class="fchip active" data-filter="">Semua</button>
+          <button class="fchip" data-filter="Jasa">Jasa</button>
+          <button class="fchip" data-filter="Perkebunan">Perkebunan</button>
+          <button class="fchip" data-filter="Pertukangan">Pertukangan</button>
+          <button class="fchip" data-filter="Peternakan">Peternakan</button>
+    </div>
+
+    <div class="ugrid" id="umkm-grid">
+        <div class="ugcard" onclick="window.location.href='/umkm/plandemic-space.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/plandemic-space/cover.webp" alt="Plandemic Space" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Jasa</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Plandemic Space</div>
+            <div class="ug-cat">Jasa</div>
+            <div class="ug-rating">⭐ 4.9</div>
+            <a class="ug-wa" href="https://wa.me/6282241439784" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/heri-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/heri-bibit/cover.webp" alt="Heri Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Heri Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6281229917285" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/bibit-tanaman-buah-terdekat.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/bibit-tanaman-buah-terdekat/cover.webp" alt="Bibit Tanaman Buah Terdekat" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Bibit Tanaman Buah Terdekat</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 4.8</div>
+            <a class="ug-wa" href="https://wa.me/6281328087110" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/rahman-grosir-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/rahman-grosir-bibit/cover.webp" alt="Rahman Grosir Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Rahman Grosir Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6281227945108" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/jamil-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/jamil-bibit/cover.webp" alt="Jamil Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Jamil Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6285292889734" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/jamil-arya-tani.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/jamil-arya-tani/cover.webp" alt="Jamil Arya Tani" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Jamil Arya Tani</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6285292889734" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/naza-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/naza-bibit/cover.webp" alt="Naza Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Naza Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6281327009228" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/alfarizie-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/alfarizie-bibit/cover.webp" alt="Alfarizie Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Alfarizie Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating"><span class="ug-new">Baru</span></div>
+            <a class="ug-wa" href="https://wa.me/6281281227901" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/ardelia-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/ardelia-bibit/cover.webp" alt="Ardelia Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Ardelia Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating"><span class="ug-new">Baru</span></div>
+            <a class="ug-wa" href="https://wa.me/6282221085354" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/martin-bibit-jaya.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/martin-bibit-jaya/cover.webp" alt="Martin Bibit Jaya" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Martin Bibit Jaya</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating"><span class="ug-new">Baru</span></div>
+            <a class="ug-wa" href="https://wa.me/6285328014388" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/trijaya-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/trijaya-bibit/cover.webp" alt="Trijaya Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Trijaya Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6288221128059" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/samuji-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/samuji-bibit/cover.webp" alt="Samuji Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Samuji Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6282133648356" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/bibit-cabai-alip-sihmanto.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/bibit-cabai-alip-sihmanto/cover.webp" alt="Bibit Cabai Alip Sihmanto" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Bibit Cabai Alip Sihmanto</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 4.1</div>
+            <a class="ug-wa" href="https://wa.me/6285280348690" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/muhtar-bibit-unggul.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/muhtar-bibit-unggul/cover.webp" alt="Muhtar Bibit Unggul" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Muhtar Bibit Unggul</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating"><span class="ug-new">Baru</span></div>
+            <a class="ug-wa" href="https://wa.me/6288201688120" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/primatani-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/primatani-bibit/cover.webp" alt="PRIMATANI BIBIT" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">PRIMATANI BIBIT</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6281227002633" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/khanza-bibit.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/khanza-bibit/cover.webp" alt="Khanza Bibit" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Khanza Bibit</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating"><span class="ug-new">Baru</span></div>
+            <a class="ug-wa" href="https://wa.me/6282224415565" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/isron-furniture.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/isron-furniture/cover.webp" alt="Isron Furniture" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Pertukangan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Isron Furniture</div>
+            <div class="ug-cat">Pertukangan</div>
+            <div class="ug-rating"><span class="ug-new">Baru</span></div>
+            <a class="ug-wa" href="https://wa.me/6281328432214" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/dombaku.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/dombaku/cover.webp" alt="Dombaku" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Peternakan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Dombaku</div>
+            <div class="ug-cat">Peternakan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6285292966722" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+        <div class="ugcard" onclick="window.location.href='/umkm/sapu-jagad-fruits.html'">
+          <div class="ug-img">
+            <img src="/img/umkm/sapu-jagad-fruits/cover.webp" alt="Sapu Jagad Fruits" width="100%" height="100%" loading="lazy">
+            <div class="ug-badge">Perkebunan</div>
+          </div>
+          <div class="ug-info">
+            <div class="ug-name">Sapu Jagad Fruits</div>
+            <div class="ug-cat">Perkebunan</div>
+            <div class="ug-rating">⭐ 5.0</div>
+            <a class="ug-wa" href="https://wa.me/6281299049513" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>
+          </div>
+        </div>
+    </div>
+
+    <div class="umkm-daftar-cta">
+      <div class="umkm-daftar-body">
+        <div class="umkm-daftar-title">Usahamu belum ada di sini?</div>
+        <div class="umkm-daftar-desc">Warga Ngemplak bisa daftar gratis — kirim info lewat WhatsApp, pengelola yang urus sisanya.</div>
+      </div>
+      <a class="umkm-daftar-btn" id="umkm-daftar-wa" href="#" target="_blank" rel="noopener">Daftar Sekarang →</a>
+    </div>
+
+  </div>
+
+</div>
+<script>
+// Simple filter functionality (no need for full script.js)
+document.addEventListener('DOMContentLoaded', function() {
+  const filterBtns = document.querySelectorAll('.fchip');
+  const cards = document.querySelectorAll('.ugcard');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.getAttribute('data-filter');
+      
+      // Update active state
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filter cards
+      cards.forEach(card => {
+        const cat = card.querySelector('.ug-cat').textContent;
+        if (!filter || cat === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+  // Daftar WA button handler
+  const daftarBtn = document.getElementById('umkm-daftar-wa');
+  if (daftarBtn) {
+    daftarBtn.href = 'https://wa.me/6285728433754?text=Halo%2C%20saya%20ingin%20mendaftarkan%20usaha%20di%20SIMBAH%20Ngemplak';
+  }
+});
+</script>
+</body>
+</html>
