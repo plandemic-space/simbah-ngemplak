@@ -303,11 +303,11 @@ ${faqHTML}
     </a>
 
     <nav class="dnav">
-      <a href="/?page=beranda" class="dn-item">Beranda</a>
-      <a href="/?page=umkm" class="dn-item">UMKM</a>
-      <a href="/?page=agenda" class="dn-item">Agenda</a>
-      <a href="/?page=nyuwun" class="dn-item">Nyuwun Tulung</a>
-      <a href="/?page=tentang" class="dn-item">Tentang</a>
+      <a href="/?page=beranda" class="dn-item" style="text-decoration:none">Beranda</a>
+      <a href="/?page=umkm" class="dn-item" style="text-decoration:none">UMKM</a>
+      <a href="/?page=agenda" class="dn-item" style="text-decoration:none">Agenda</a>
+      <a href="/?page=nyuwun" class="dn-item" style="text-decoration:none">Nyuwun Tulung</a>
+      <a href="/?page=tentang" class="dn-item" style="text-decoration:none">Tentang</a>
       <div class="dn-dropdown-wrap">
         <button class="dn-item dn-dropdown-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
           Lainnya
@@ -544,11 +544,11 @@ function generateIndex(umkmList) {
       </div>
     </a>
     <nav class="dnav">
-      <a href="/?page=beranda" class="dn-item">Beranda</a>
-      <a href="/?page=umkm" class="dn-item dn-item-active">UMKM</a>
-      <a href="/?page=agenda" class="dn-item">Agenda</a>
-      <a href="/?page=nyuwun" class="dn-item">Nyuwun Tulung</a>
-      <a href="/?page=tentang" class="dn-item">Tentang</a>
+      <a href="/?page=beranda" class="dn-item" style="text-decoration:none">Beranda</a>
+      <a href="/?page=umkm" class="dn-item dn-item-active" style="text-decoration:none">UMKM</a>
+      <a href="/?page=agenda" class="dn-item" style="text-decoration:none">Agenda</a>
+      <a href="/?page=nyuwun" class="dn-item" style="text-decoration:none">Nyuwun Tulung</a>
+      <a href="/?page=tentang" class="dn-item" style="text-decoration:none">Tentang</a>
       <div class="dn-dropdown-wrap">
         <button class="dn-item dn-dropdown-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
           Lainnya
