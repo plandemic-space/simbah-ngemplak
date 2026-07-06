@@ -1,6 +1,6 @@
 # SIMBAH — Catatan Kerja & Status
 
-> Diperbarui: **6 Juli 2026 (sesi 9 — audit SEO + permanenkan arsitektur statis UMKM)**
+> Diperbarui: **6 Juli 2026 (sesi 9 — audit SEO + permanenkan arsitektur statis UMKM + fix h1 19 halaman UMKM)**
 > Cara pakai: kerjakan dari atas ke bawah. Coret kalau sudah deploy & dicek live.
 
 ---
@@ -9,7 +9,7 @@
 
 | Aspek | Skor | Catatan singkat |
 |---|---|---|
-| SEO | 95/100 | Schema dinamis matang, sitemap sinkron + `/umkm/` index + `image:image`, semua meta description unik (duplikat sudah dibenahi) |
+| SEO | 97/100 | Schema dinamis matang, sitemap sinkron + `/umkm/` index + `image:image`, semua meta description unik, `<h1>` di 19 halaman statis UMKM sudah benar |
 | Accessibility | 82/100 | Kontras & keyboard sudah diperbaiki. Gap minor: CSS monolitik |
 | Performance | 86/100 | WebP, lazy-load, defer, preload, cache /data/ sudah dikonfigurasi |
 | Best Practices | 90/100 | escapeHtml, noscript, DEBUG=false, defer inline sudah diperbaiki |
@@ -17,7 +17,7 @@
 | UI/UX | 88/100 | Konsisten, tipografi bersih, komponen profesional |
 | Maintainability | 91/100 | 1 sumber data per fitur, komentar sangat baik, WA_UTAMA terpusat |
 
-**Rata-rata estimasi: ~89/100.**
+**Rata-rata estimasi: ~90/100.**
 
 ---
 
@@ -61,6 +61,12 @@
 - [x] **[SEO-04]** `sitemap.xml` — halaman `/umkm/` (daftar UMKM) sebelumnya tidak ikut terdaftar, padahal punya canonical + Schema `CollectionPage` sendiri. Ditambahkan ke `updateSitemap()` di `generate-static-umkm.js` (permanen, tidak akan hilang lagi tiap re-generate)
 - [x] **[SEO-05]** `sitemap.xml` mendeklarasikan `xmlns:image` tapi tidak pernah dipakai. Ditambahkan `<image:image>` per UMKM (pakai `cover.webp` masing-masing) di `updateSitemap()`
 - [x] **[SEO-06]** Duplicate meta description — Martin Bibit Jaya & Primatani Bibit punya `seoDesc` identik di `umkm.json` (copy-paste), kena resiko flag "duplicate meta description" di Search Console. Ditulis ulang jadi unik per usaha, sesuai produk masing-masing
+- [x] **[SEO-07]** 19 halaman `/umkm/*.html` sama sekali tidak punya `<h1>` — nama usaha cuma `<div class="ud-bname">`, padahal `<h1>` adalah sinyal utama Google untuk topik halaman. Diperbaiki di 3 tempat: `css/style.css` (tambah `margin:0` di `.ud-bname` biar tampilan visual tidak berubah pas jadi heading), `generate-static-umkm.js` (template generator, `div` → `h1`), dan `index.html` versi SPA (`?umkm=slug`) ikut disamakan. Semua 19 file diregenerasi ulang & diverifikasi manual — 0/19 bermasalah
+
+**Ditinjau, sengaja tidak dikerjakan (audit sesi 9):**
+- 3 title UMKM sedikit >60 karakter — masih dalam batas aman, tidak signifikan
+- Meta desc Beranda 156 karakter (batas 155) — selisih 1 karakter, tidak signifikan
+- Jamil Bibit & Jamil Arya Tani pakai nomor WA sama, lokasi Maps beda ~3km — **dicek, bukan bug**: FAQ Jamil Arya Tani di `umkm.json` sudah menjelaskan "keduanya dikelola Pak Jamil namun berlokasi berbeda". Data sudah konsisten, tidak perlu diubah
 
 
 
@@ -81,7 +87,6 @@
 
 **Ditinjau, sengaja tidak dikerjakan:**
 - **[PERF-02]** Critical CSS inline — pekerjaan besar, gain kecil di koneksi normal. Tunda ke nanti
-- **[L-03]** Maskable icon — butuh aset logo dengan safe-zone 40%. Menunggu Zen siapkan logo versi baru
 
 ---
 
@@ -95,8 +100,8 @@
 - [ ] **Nama pengurus** organisasi (BPD, Takmir, PKK, Posyandu, Karang Taruna)
   → Ctrl+F nama jabatan di `index.html`, ganti `—` dengan nama asli
 
-- [ ] **Logo maskable** — versi dengan margin/safe-zone 40% untuk PWA launcher Android
-  → Logo "N" saat ini mengisi hampir penuh kanvas, akan terpotong kalau langsung di-set maskable
+- [x] **Logo maskable** — versi dengan margin/safe-zone 40% untuk PWA launcher Android
+  → Selesai dibuat (6 Juli 2026): `img/branding/icon-maskable-192.png` & `icon-maskable-512.png`. Logo "N" di-scale 60% dari kanvas, ditaro di tengah dengan background ivory (`#F5F0E8`) full-bleed. `manifest.json` sudah ditambah 2 entri baru `"purpose": "maskable"`, icon lama tetap `"purpose": "any"`
 
 ---
 
@@ -133,7 +138,7 @@
 ---
 
 ```
-Status coding: 0 item outstanding ✅
-Menunggu keputusan/data Zen: 4 item (postalCode, kontak, pengurus, maskable icon)
+Status coding: 0 item outstanding ✅ (SEO-07 h1 fix selesai & diverifikasi 19/19)
+Menunggu keputusan/data Zen: 3 item (postalCode, kontak, pengurus)
 Pantau: GSC indexing (~25 Juli 2026)
 ```
