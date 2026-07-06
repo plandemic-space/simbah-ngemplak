@@ -2096,11 +2096,10 @@ body {
 .ud-revisi-link {
   font-size: 13px;
   font-weight: 600;
-  color: var(--gr);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: var(--tx2);
+  text-decoration: none;
 }
-.ud-revisi-link:active { color: var(--gr2); }
+.ud-revisi-link:active { color: var(--gr); }
 .terkait-arr   { font-size: 18px; color: var(--tx3); flex-shrink: 0; line-height: 1; }
 
 
