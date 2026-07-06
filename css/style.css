@@ -1832,6 +1832,7 @@ body {
   font-weight: 700;
   color: var(--tx);
   line-height: 1.2;
+  margin: 0;
 }
 .ud-bcat {
   font-size: 11px;

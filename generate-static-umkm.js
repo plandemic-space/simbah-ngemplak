@@ -346,7 +346,7 @@ ${faqHTML}
     <div class="ud-logo-strip">
       <div class="ud-logo-box">${escapeHtml(umkm.emoji)}</div>
       <div class="ud-name-group">
-        <div class="ud-bname">${escapeHtml(umkm.name)}</div>
+        <h1 class="ud-bname">${escapeHtml(umkm.name)}</h1>
         <div class="ud-bcat">${escapeHtml(umkm.cat)}</div>
         ${taglineHTML}
       </div>
