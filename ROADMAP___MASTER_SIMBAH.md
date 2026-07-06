@@ -4,7 +4,7 @@
 > Bukan to-do, bukan history — murni pagar acuan.
 >
 > Untuk status pekerjaan & checklist teknis → lihat `AUDIT_BUG_BELUM_SELESAI.md`
-> Diperbarui: **27 Juni 2026**
+> Diperbarui: **6 Juli 2026** (revisi arsitektur: halaman statis per-UMKM dipermanenkan)
 
 ---
 
@@ -35,7 +35,23 @@ Setiap ada usul fitur baru — dari Zen, dari Claude, dari siapapun — cek 4 pe
 - **Hosting**: GitHub Pages (primary) + Vercel mirror (`simbahngemplak.vercel.app`)
 - **Data**: `data/umkm.json` (UMKM), `const AGENDA` / `INVENTARIS` / `KAS_TOTAL` di `js/script.js`
 - **TANPA**: backend, database, login, API kompleks, node_modules, CI/CD
-- **Single Page App**: semua section di 1 `index.html`, navigasi via `nav()` di JS
+- **Single Page App**: semua section (Beranda, Agenda, Kas, Inventaris, Nyuwun Tulung, Tentang) di 1 `index.html`, navigasi via `nav()` di JS
+- **Halaman UMKM: hybrid SPA + statis (permanen, sejak 5 Juli 2026)** — detail UMKM bisa dibuka 2 cara:
+  1. `index.html?umkm=slug` (SPA, dipakai link lama yang sudah tersebar di WA/medsos — tetap didukung selamanya)
+  2. `/umkm/slug.html` (file HTML statis, hasil generate — ini yang didaftarkan ke sitemap & jadi target crawler Google)
+  Alasan: Google Search Console sempat menandai halaman UMKM "Crawled — currently not indexed" karena konten baru muncul setelah JS jalan. File statis menaruh konten penuh + meta SEO langsung di HTML awal.
+  **Ini bukan pelanggaran prinsip "no build tool"** — `generate-static-umkm.js` bukan build step yang wajib jalan tiap deploy, tapi utility sekali-jalan (`node generate-static-umkm.js`) yang dipanggil manual oleh Zen hanya saat data UMKM berubah. Tidak ada CI/CD, tidak ada dependency baru, output-nya file HTML statis biasa yang di-drag-drop seperti file lain.
+  - Sumber tunggal tetap `data/umkm.json` — file statis **tidak pernah diedit tangan**, selalu re-generate dari situ
+  - `updateMetaUMKM()` di `script.js` mengarahkan `<link rel="canonical">` versi SPA ke URL statis yang sesuai, supaya Google tidak melihat 2 URL sebagai konten duplikat
+  - Detail lengkap cara pakai generator: lihat `README_GENERATOR.md`
+
+---
+
+## 3a. Revisi Keputusan: Halaman Statis Per-UMKM
+
+Versi awal proyek ini menolak ide "halaman HTML statis per UMKM" (disebut juga "Level 3") dengan alasan tidak scalable untuk 1 orang non-programmer — kalau harus ditulis/diedit tangan untuk 19+ usaha, itu benar tidak realistis.
+
+**Keputusan itu direvisi**, bukan dibatalkan diam-diam: masalah "tidak scalable"-nya sudah tidak berlaku begitu generator otomatis (`generate-static-umkm.js`) dibuat. Zen tidak pernah menulis HTML manual — cukup edit `umkm.json` seperti biasa, lalu jalankan 1 command, semua file `/umkm/*.html` + `sitemap.xml` ter-update otomatis. Beban kerja Zen tidak bertambah dibanding sebelumnya.
 
 ---
 
@@ -86,7 +102,8 @@ Jangan diusulkan ulang — sudah diputuskan dan alasannya konsisten:
 - **Navigasi**: `nav('nama-section')` toggle class `.active` di `<div class="page" id="p-NAMA">`.
 - **Footer**: satu fungsi `templateFooter()` + array `FOOTER_SLOTS` — edit sekali, berlaku semua halaman.
 - **SEO per-UMKM**: `updateMetaUMKM()` update title/desc/canonical/OG/Schema dinamis saat buka detail UMKM.
-- **Slug**: `slugify(name)` — nama usaha → huruf kecil → spasi jadi `-` → hapus tanda baca. Harus konsisten antara `cover` path, `sitemap.xml`, dan URL `?umkm=slug`.
+- **Slug**: `slugify(name)` — nama usaha → huruf kecil → spasi jadi `-` → hapus tanda baca. Harus konsisten antara `cover` path, `sitemap.xml`, `/umkm/slug.html`, dan URL `?umkm=slug`.
+- **Generator statis**: `generate-static-umkm.js` (Node.js, jalan manual di komputer Zen, bukan di server) — baca `umkm.json`, tulis ulang semua `/umkm/*.html` + `umkm/index.html` + `sitemap.xml`. Wajib dijalankan ulang setiap kali `umkm.json` berubah (UMKM baru, edit data, ganti foto cover). Field `seoTitle`/`seoDesc` di `umkm.json` opsional — kalau kosong, generator fallback ke `desc` yang dipotong 155 karakter. **Isi manual `seoDesc` yang unik per UMKM**, jangan copy-paste dari UMKM lain (pernah kejadian 2 UMKM bibit punya `seoDesc` identik, kena flag duplicate meta description di Search Console).
 
 ---
 

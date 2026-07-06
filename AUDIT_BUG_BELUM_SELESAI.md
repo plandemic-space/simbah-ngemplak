@@ -1,6 +1,6 @@
 # SIMBAH — Catatan Kerja & Status
 
-> Diperbarui: **28 Juni 2026 (sesi 8 — Audit Kedua, semua temuan valid sudah dikerjakan)**
+> Diperbarui: **6 Juli 2026 (sesi 9 — audit SEO + permanenkan arsitektur statis UMKM)**
 > Cara pakai: kerjakan dari atas ke bawah. Coret kalau sudah deploy & dicek live.
 
 ---
@@ -9,7 +9,7 @@
 
 | Aspek | Skor | Catatan singkat |
 |---|---|---|
-| SEO | 93/100 | Schema dinamis matang, sitemap sinkron, heading hierarchy sudah diperbaiki, title disinkronkan |
+| SEO | 95/100 | Schema dinamis matang, sitemap sinkron + `/umkm/` index + `image:image`, semua meta description unik (duplikat sudah dibenahi) |
 | Accessibility | 82/100 | Kontras & keyboard sudah diperbaiki. Gap minor: CSS monolitik |
 | Performance | 86/100 | WebP, lazy-load, defer, preload, cache /data/ sudah dikonfigurasi |
 | Best Practices | 90/100 | escapeHtml, noscript, DEBUG=false, defer inline sudah diperbaiki |
@@ -54,6 +54,15 @@
 - [x] Fisher-Yates shuffle berbobot — implementasi lengkap
 - [x] Field `testimoni` dan `p` (harga) dihapus dari `umkm.json`
 - [x] UI-01/02/03: ukuran tombol back/share/chip dikembalikan ke natural (keputusan Zen)
+
+### Sesi 9 — 6 Juli 2026 (Audit SEO + Permanenkan Arsitektur Statis UMKM)
+
+- [x] **[ARCH-01]** Halaman statis `/umkm/*.html` + `umkm/index.html` dipermanenkan sebagai bagian arsitektur resmi (revisi keputusan "Level 3 ditolak" — lihat `ROADMAP___MASTER_SIMBAH.md` §3a). Generator: `generate-static-umkm.js`, panduan: `README_GENERATOR.md`
+- [x] **[SEO-04]** `sitemap.xml` — halaman `/umkm/` (daftar UMKM) sebelumnya tidak ikut terdaftar, padahal punya canonical + Schema `CollectionPage` sendiri. Ditambahkan ke `updateSitemap()` di `generate-static-umkm.js` (permanen, tidak akan hilang lagi tiap re-generate)
+- [x] **[SEO-05]** `sitemap.xml` mendeklarasikan `xmlns:image` tapi tidak pernah dipakai. Ditambahkan `<image:image>` per UMKM (pakai `cover.webp` masing-masing) di `updateSitemap()`
+- [x] **[SEO-06]** Duplicate meta description — Martin Bibit Jaya & Primatani Bibit punya `seoDesc` identik di `umkm.json` (copy-paste), kena resiko flag "duplicate meta description" di Search Console. Ditulis ulang jadi unik per usaha, sesuai produk masing-masing
+
+
 
 ### Sesi 28 Juni 2026 (Audit Kedua — semua dikerjakan sekaligus)
 

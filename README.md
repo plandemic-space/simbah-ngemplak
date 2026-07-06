@@ -20,16 +20,24 @@ ke search engine — lihat `<link rel="canonical">` di `index.html`.)
 
 ```
 (root repo)
-├── index.html          ← satu-satunya halaman HTML. Semua section
-│                           (Beranda, Agenda, UMKM, UMKM Detail, Kas,
-│                           Inventaris, Nyuwun Tulung, Tentang) ada di
-│                           file ini, ditampilkan/disembunyikan lewat JS
+├── index.html          ← satu-satunya halaman SPA. Semua section
+│                           (Beranda, Agenda, UMKM, Kas, Inventaris,
+│                           Nyuwun Tulung, Tentang) ada di file ini,
+│                           ditampilkan/disembunyikan lewat JS
 │                           (lihat nav() di js/script.js)
 ├── 404.html            ← halaman error custom, auto-redirect ke Beranda
 │                           setelah 5 detik
+├── generate-static-umkm.js  ← script Node.js, jalan MANUAL di komputer
+│                           (bukan build step server). Baca umkm.json,
+│                           generate ulang semua /umkm/*.html + sitemap.
+│                           Jalankan ulang setiap kali umkm.json berubah.
+│                           Panduan lengkap: README_GENERATOR.md
+├── README_GENERATOR.md ← panduan pakai generate-static-umkm.js
 ├── sitemap.xml         ← daftar URL untuk Google (SEO) — 1 beranda +
-│                           19 URL UMKM individual (?umkm=slug-nama),
-│                           masing-masing sudah punya <image:image> cover
+│                           1 halaman daftar UMKM (/umkm/) + 19 URL
+│                           UMKM statis (/umkm/slug.html), masing-masing
+│                           sudah punya <image:image> cover.
+│                           JANGAN edit tangan — selalu hasil generate.
 ├── robots.txt          ← izin crawl untuk search engine
 ├── favicon.ico + img/favicon-*.png, icon-*.png, apple-touch-icon.png
 │                           ← ikon tab browser & home screen HP
@@ -41,8 +49,14 @@ ke search engine — lihat `<link rel="canonical">` di `index.html`.)
 │   └── script.js       ← SEMUA logika & data dinamis (AGENDA, INVENTARIS,
 │                           KAS, footer, navigasi, render UMKM, dll)
 ├── data/
-│   └── umkm.json       ← data UMKM/usaha warga (19 UMKM), dibaca
-│                           oleh script.js via fetch()
+│   └── umkm.json       ← SATU-SATUNYA sumber data UMKM (19 usaha).
+│                           Dibaca script.js via fetch() untuk versi SPA,
+│                           dan dibaca generate-static-umkm.js untuk
+│                           generate /umkm/*.html. Edit di sini saja.
+├── umkm/                ← hasil generate, JANGAN edit tangan
+│   ├── index.html       ← halaman daftar semua UMKM (statis)
+│   ├── plandemic-space.html
+│   └── ... (19 file total, 1 per UMKM)
 └── img/
     ├── branding/        ← logo, favicon, icon PWA (final, jangan ganti
     │                        kecuali memang mau rebranding)
@@ -60,15 +74,45 @@ ke search engine — lihat `<link rel="canonical">` di `index.html`.)
 
 ---
 
-## 🧩 Cara Kerja Website (Single Page, bukan multi-halaman)
+## 🧷 Kapan Harus Jalankan `generate-static-umkm.js`
 
-Ini bukan website multi-halaman biasa. Semua section ada di **1 file
-`index.html`**, masing-masing dibungkus `<div class="page" id="p-NAMA">`.
-JavaScript (`nav('nama-section')`) yang mengatur section mana yang
-tampil/sembunyi.
+Setiap kali `data/umkm.json` berubah — tambah UMKM baru, edit deskripsi/produk/FAQ,
+ganti foto cover, update kontak — jalankan ulang generator supaya halaman statis
+`/umkm/*.html` dan `sitemap.xml` ikut ter-update:
 
-Untuk link share UMKM, URL berubah jadi `?umkm=slug-nama-usaha` — ini
-yang membuat tiap UMKM bisa muncul satu-satu di Google Search.
+```bash
+node generate-static-umkm.js
+```
+
+Lalu drag-drop folder `/umkm/` yang baru + `sitemap.xml` ke GitHub seperti file
+lain. Detail lengkap (termasuk cara testing & troubleshooting) ada di
+`README_GENERATOR.md`.
+
+**Penting:** field `seoDesc` di setiap blok UMKM di `umkm.json` harus **unik**,
+jangan copy-paste dari UMKM lain — ini yang jadi meta description di Google.
+Dua UMKM dengan `seoDesc` sama akan kena flag "duplicate meta description" di
+Search Console (pernah terjadi, sudah diperbaiki 6 Juli 2026).
+
+---
+
+## 🧩 Cara Kerja Website (SPA untuk browsing, statis untuk UMKM/SEO)
+
+Section Beranda, Agenda, Kas, Inventaris, Nyuwun Tulung, dan Tentang ada di
+**1 file `index.html`**, masing-masing dibungkus `<div class="page" id="p-NAMA">`.
+JavaScript (`nav('nama-section')`) yang mengatur section mana yang tampil/sembunyi.
+
+Khusus **halaman UMKM**, ada 2 versi yang hidup berdampingan:
+
+- **`index.html?umkm=slug`** — versi SPA, dipakai untuk link yang sudah tersebar
+  di WA/medsos. Tetap didukung selamanya, tidak akan diputus.
+- **`/umkm/slug.html`** — file HTML statis (hasil `generate-static-umkm.js`),
+  ini yang didaftarkan ke `sitemap.xml` dan jadi target utama Google Search.
+  Dibuat karena Google sempat kesulitan index versi SPA (konten baru muncul
+  setelah JS jalan).
+
+Kedua versi otomatis saling arah lewat `<link rel="canonical">` — buka yang
+mana pun, Google diarahkan ke versi statis sebagai sumber utama, jadi tidak
+dianggap konten duplikat.
 
 Cara cari section tertentu di `index.html`: cari komentar seperti
 `<!-- ======= UMKM ======= -->` atau cari `id="p-umkm"`, `id="p-agenda"`, dll.
@@ -89,10 +133,12 @@ Edit di sini saja — **tidak perlu** sentuh bagian lain dari kode.
   UMKM baru ditambahkan — tidak perlu update manual di `index.html`.
 - Tombol WA otomatis tersembunyi kalau field `phone` kosong
   (diganti badge "📍 Lihat Maps").
-- Sitemap.xml — saat tambah UMKM baru, **wajib tambahkan** juga 1 blok
-  `<url>` baru di `sitemap.xml`. Cara dapat slug yang benar: nama usaha
-  → huruf kecil → spasi jadi `-` → hapus tanda baca.
-  Contoh: "Toko Kelontong Bu Siti" → `toko-kelontong-bu-siti`
+- Setelah menambah/edit UMKM, **jalankan `node generate-static-umkm.js`**
+  supaya `/umkm/*.html` dan `sitemap.xml` ter-update otomatis — tidak perlu
+  edit `sitemap.xml` manual lagi. Detail: lihat bagian "Kapan Harus Jalankan
+  generate-static-umkm.js" di atas.
+- Isi field `seoDesc` dengan kalimat yang **unik** per UMKM (dipakai sebagai
+  meta description di Google) — jangan copy dari UMKM lain.
 - `fetch()` UMKM hanya berjalan kalau dibuka lewat server HTTP.
   Di hosting (GitHub Pages / Vercel) sudah otomatis terpenuhi.
   Testing lokal: jalankan `python -m http.server 8000` di folder
@@ -239,13 +285,13 @@ Alasan detail dan daftar fitur yang ditolak permanen ada di
 
 ---
 
-## 📊 Status Saat Ini (27 Juni 2026 — audit total bersih)
+## 📊 Status Saat Ini (6 Juli 2026 — arsitektur statis UMKM dipermanenkan)
 
 | Komponen | Status |
 |---|---|
 | Halaman Beranda | ✅ Lengkap |
 | Lapak UMKM (19 usaha) | ✅ Data dari katalog, produk spesifik |
-| Halaman Detail UMKM | ✅ SEO dinamis per UMKM |
+| Halaman Detail UMKM | ✅ SEO dinamis (SPA) + halaman statis `/umkm/*.html` untuk crawler |
 | Agenda Dusun | ✅ 4 event Juli–September 2026 |
 | Transparansi Kas | ✅ 4 komunitas + link Google Sheets |
 | Inventaris Dusun | ✅ 27 item, 4 kelompok |
