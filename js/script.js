@@ -70,6 +70,18 @@ const DESC_DEFAULT  = 'Dusun Ngemplak, Desa Samping, Kemiri, Purworejo — sejar
 function updateMetaUMKM(u) {
   const slug = slugify(u.name);
   const url = DOMAIN_SIMBAH + '/?umkm=' + slug;
+
+  /* [SEO-04, 6 Juli 2026] Sejak ada halaman statis /umkm/slug.html
+     (generate-static-umkm.js, sesi 5 Juli), rute SPA ini (?umkm=slug)
+     TIDAK BOLEH lagi self-canonical — kalau iya, ada 2 URL yang
+     sama-sama ngaku "asli" untuk konten yang identik (duplicate
+     content), padahal halaman statis itu dibuat KHUSUS supaya Google
+     lebih gampang index (konten sudah ter-embed, tidak perlu render
+     JS). Jadi canonical rute SPA ini diarahkan ke halaman statis —
+     og:url & Schema.org tetap pakai `url` (URL SPA) karena itu alamat
+     nyata yang sedang dibuka/dibagikan user. */
+  const canonicalUrl = DOMAIN_SIMBAH + '/umkm/' + slug + '.html';
+
   /* Pakai seoTitle kalau ada, fallback ke format generik */
   const judul = u.seoTitle || (u.name + ' — ' + u.cat + ' di Dusun Ngemplak | SIMBAH');
 
@@ -85,7 +97,7 @@ function updateMetaUMKM(u) {
   }
 
   setMeta('meta[name="description"]', 'content', deskripsi);
-  setMeta('link[rel="canonical"]', 'href', url);
+  setMeta('link[rel="canonical"]', 'href', canonicalUrl);
   setMeta('meta[property="og:title"]', 'content', judul);
   setMeta('meta[property="og:description"]', 'content', deskripsi);
   setMeta('meta[property="og:url"]', 'content', url);
@@ -674,7 +686,8 @@ function renderGrid(filter) {
       ? '<img src="' + escapeHtml(u.cover) + '" alt="' + escapeHtml(u.name) + '" width="100%" height="100%" loading="lazy">'
       : escapeHtml(u.emoji);
     return `
-      <div class="ugcard" onclick="showUMKM(${u.id})">
+      <div class="ugcard" style="position:relative">
+        <a href="/umkm/${slugify(u.name)}.html" aria-label="${escapeHtml(u.name)}" style="position:absolute; inset:0; z-index:1" onclick="event.preventDefault(); showUMKM(${u.id})"></a>
         <div class="ug-img">
           ${thumbHtml}
           <div class="ug-badge">${escapeHtml(u.cat)}</div>
@@ -683,7 +696,7 @@ function renderGrid(filter) {
           <div class="ug-name">${escapeHtml(u.name)}</div>
           <div class="ug-cat">${escapeHtml(u.cat)}</div>
           <div class="ug-rating">${u.rating ? '⭐ ' + escapeHtml(u.rating) : '<span class="ug-new">Baru</span>'}</div>
-          ${u.phone ? `<a class="ug-wa" href="https://wa.me/${escapeHtml(u.phone)}" target="_blank" onclick="event.stopPropagation()">💬 Chat WA</a>` : `<span class="ug-wa-empty">📍 Lihat Maps</span>`}
+          ${u.phone ? `<a class="ug-wa" href="https://wa.me/${escapeHtml(u.phone)}" target="_blank" style="position:relative; z-index:2">💬 Chat WA</a>` : `<span class="ug-wa-empty" style="position:relative; z-index:2">📍 Lihat Maps</span>`}
         </div>
       </div>`;
   }).join('');
@@ -765,10 +778,10 @@ function renderUMKMBeranda() {
       ? '<img src="' + escapeHtml(u.cover) + '" alt="' + escapeHtml(u.name) + '" width="100%" height="100%" loading="lazy">'
       : escapeHtml(u.emoji);
     return `
-      <div class="ucard" onclick="showUMKM(${u.id})">
+      <a class="ucard" href="/umkm/${slugify(u.name)}.html" style="text-decoration:none; color:inherit" onclick="event.preventDefault(); showUMKM(${u.id})">
         <div class="uimg">${thumbHtml}<div class="uwa">💬</div></div>
         <div class="uinfo"><div class="uname">${escapeHtml(u.name)}</div><div class="ucat">${escapeHtml(u.cat)}</div></div>
-      </div>`;
+      </a>`;
   }).join('');
 }
 
@@ -1184,20 +1197,29 @@ function showUMKM(id, updateUrl) {
     if (dataTerkait.length) {
       terkaitList.innerHTML = '<div class="terkait-list">' +
         dataTerkait.map(function(t) {
-          return '<div class="terkait-item" onclick="showUMKM(' + t.id + ')">' +
+          return '<a class="terkait-item" href="/umkm/' + slugify(t.name) + '.html" style="text-decoration:none; color:inherit" onclick="event.preventDefault(); showUMKM(' + t.id + ')">' +
             '<span class="terkait-ico">' + escapeHtml(t.emoji) + '</span>' +
             '<div class="terkait-info">' +
               '<div class="terkait-name">' + escapeHtml(t.name) + '</div>' +
               '<div class="terkait-cat">' + escapeHtml(t.cat) + '</div>' +
             '</div>' +
             '<span class="terkait-arr">›</span>' +
-          '</div>';
+          '</a>';
         }).join('') +
       '</div>';
       terkaitSec.style.display = '';
     } else {
       terkaitSec.style.display = 'none';
     }
+  }
+
+  /* Revisi Data — link ke WA_UTAMA (PENGELOLA, bukan umkm.phone),
+     pesan pre-fill sebut nama UMKM biar Zen langsung tahu ini
+     laporan soal usaha yang mana. */
+  const revisiWa = document.getElementById('ud-revisi-wa');
+  if (revisiWa) {
+    const pesanRevisi = 'Halo, saya pemilik usaha ' + u.name + ' mau update informasi di SIMBAH';
+    revisiWa.href = 'https://wa.me/' + WA_UTAMA + '?text=' + encodeURIComponent(pesanRevisi);
   }
 
   /* Pindah ke halaman detail */

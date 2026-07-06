@@ -5,125 +5,209 @@
   <!-- Homepage -->
   <url>
     <loc>https://simbahngemplak.vercel.app/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Lapak Warga (Daftar UMKM) -->
+  <url>
+    <loc>https://simbahngemplak.vercel.app/umkm/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- UMKM Pages (Static HTML) -->
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/plandemic-space.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/plandemic-space/cover.webp</image:loc>
+      <image:title>Plandemic Space</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/heri-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/heri-bibit/cover.webp</image:loc>
+      <image:title>Heri Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/bibit-tanaman-buah-terdekat.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/bibit-tanaman-buah-terdekat/cover.webp</image:loc>
+      <image:title>Bibit Tanaman Buah Terdekat</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/rahman-grosir-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/rahman-grosir-bibit/cover.webp</image:loc>
+      <image:title>Rahman Grosir Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/jamil-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/jamil-bibit/cover.webp</image:loc>
+      <image:title>Jamil Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/jamil-arya-tani.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/jamil-arya-tani/cover.webp</image:loc>
+      <image:title>Jamil Arya Tani</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/naza-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/naza-bibit/cover.webp</image:loc>
+      <image:title>Naza Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/alfarizie-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/alfarizie-bibit/cover.webp</image:loc>
+      <image:title>Alfarizie Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/ardelia-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/ardelia-bibit/cover.webp</image:loc>
+      <image:title>Ardelia Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/martin-bibit-jaya.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/martin-bibit-jaya/cover.webp</image:loc>
+      <image:title>Martin Bibit Jaya</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/trijaya-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/trijaya-bibit/cover.webp</image:loc>
+      <image:title>Trijaya Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/samuji-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/samuji-bibit/cover.webp</image:loc>
+      <image:title>Samuji Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/bibit-cabai-alip-sihmanto.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/bibit-cabai-alip-sihmanto/cover.webp</image:loc>
+      <image:title>Bibit Cabai Alip Sihmanto</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/muhtar-bibit-unggul.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/muhtar-bibit-unggul/cover.webp</image:loc>
+      <image:title>Muhtar Bibit Unggul</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/primatani-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/primatani-bibit/cover.webp</image:loc>
+      <image:title>PRIMATANI BIBIT</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/khanza-bibit.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/khanza-bibit/cover.webp</image:loc>
+      <image:title>Khanza Bibit</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/isron-furniture.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/isron-furniture/cover.webp</image:loc>
+      <image:title>Isron Furniture</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/dombaku.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/dombaku/cover.webp</image:loc>
+      <image:title>Dombaku</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://simbahngemplak.vercel.app/umkm/sapu-jagad-fruits.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://simbahngemplak.vercel.app/img/umkm/sapu-jagad-fruits/cover.webp</image:loc>
+      <image:title>Sapu Jagad Fruits</image:title>
+    </image:image>
   </url>
 
 </urlset>

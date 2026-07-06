@@ -21,6 +21,7 @@ const path = require('path');
 
 // ===== KONSTANTA =====
 const DOMAIN = 'https://simbahngemplak.vercel.app';
+const WA_UTAMA = '6282241439784'; // sama dengan WA_UTAMA di js/script.js
 const DATA_PATH = './data/umkm.json';
 const OUTPUT_DIR = './umkm';
 const SITEMAP_PATH = './sitemap.xml';
@@ -45,10 +46,10 @@ function slugify(name) {
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
 
@@ -240,6 +241,15 @@ ${faqHTML}
           ${terkaitHTML}
         </div>` : '';
 
+  // Revisi Data — low-key, link ke WA_UTAMA (pengelola), bukan umkm.phone
+  const pesanRevisi = encodeURIComponent(`Halo, saya pemilik usaha ${umkm.name} mau update informasi di SIMBAH`);
+  const revisiSectionHTML = `
+        <div class="ud-revisi">
+          <div class="ud-revisi-ttl">Ini usahamu?</div>
+          <div class="ud-revisi-desc">Kalau ada data yang salah atau mau diupdate, kabari pengelola — gratis, kapan aja.</div>
+          <a class="ud-revisi-link" href="https://wa.me/${WA_UTAMA}?text=${pesanRevisi}" target="_blank" rel="noopener">Hubungi Pengelola &rarr;</a>
+        </div>`;
+
   const taglineHTML = umkm.tagline 
     ? `<div class="ud-tagline">${escapeHtml(umkm.tagline)}</div>`
     : '';
@@ -393,6 +403,8 @@ ${sosmedHTML}
 
 ${terkaitSectionHTML}
 
+${revisiSectionHTML}
+
       </div>
     </div>
 
@@ -412,11 +424,18 @@ function updateSitemap(umkmList) {
   
   const umkmEntries = umkmList.map(u => {
     const slug = slugify(u.name);
+    const imageBlock = u.cover
+      ? `
+    <image:image>
+      <image:loc>${DOMAIN}/${u.cover}</image:loc>
+      <image:title>${escapeHtml(u.name)}</image:title>
+    </image:image>`
+      : '';
     return `  <url>
     <loc>${DOMAIN}/umkm/${slug}.html</loc>
     <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.8</priority>${imageBlock}
   </url>`;
   }).join('\n');
 
@@ -430,6 +449,14 @@ function updateSitemap(umkmList) {
     <lastmod>${now}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Lapak Warga (Daftar UMKM) -->
+  <url>
+    <loc>${DOMAIN}/umkm/</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- UMKM Pages (Static HTML) -->
@@ -467,7 +494,8 @@ function generateIndex(umkmList) {
       ? '⭐ ' + escapeHtml(u.rating)
       : '<span class="ug-new">Baru</span>';
 
-    return `        <div class="ugcard" onclick="window.location.href='/umkm/${slugify(u.name)}.html'">
+    return `        <div class="ugcard" style="position:relative">
+          <a href="/umkm/${slugify(u.name)}.html" aria-label="${escapeHtml(u.name)}" style="position:absolute; inset:0; z-index:1"></a>
           <div class="ug-img">
             ${thumbHtml}
             <div class="ug-badge">${escapeHtml(u.cat)}</div>
@@ -476,7 +504,7 @@ function generateIndex(umkmList) {
             <div class="ug-name">${escapeHtml(u.name)}</div>
             <div class="ug-cat">${escapeHtml(u.cat)}</div>
             <div class="ug-rating">${ratingHtml}</div>
-            ${phoneLink}
+            ${phoneLink.replace('class="ug-wa"', 'class="ug-wa" style="position:relative; z-index:2"').replace('class="ug-wa-empty"', 'class="ug-wa-empty" style="position:relative; z-index:2"')}
           </div>
         </div>`;
   }).join('\n');

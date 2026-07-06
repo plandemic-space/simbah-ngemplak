@@ -2068,6 +2068,39 @@ body {
 .terkait-info  { flex: 1; min-width: 0; }
 .terkait-name  { font-size: 13px; font-weight: 600; color: var(--tx); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .terkait-cat   { font-size: 11px; color: var(--tx3); margin-top: 1px; }
+
+/* Revisi Data — sengaja kalem, BUKAN tombol solid seperti .cta-wa.
+   Ini ditujukan ke pemilik usaha (kasus jarang), bukan pengunjung
+   biasa — kalau desainnya semenonjol CTA WhatsApp utama, malah
+   bikin bingung mana yang harus diklik orang kebanyakan. */
+.ud-revisi {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--iv3);
+  border-radius: var(--r);
+  background: var(--iv2);
+  text-align: center;
+}
+.ud-revisi-ttl {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx2);
+  margin-bottom: 3px;
+}
+.ud-revisi-desc {
+  font-size: 12px;
+  color: var(--tx3);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.ud-revisi-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gr);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ud-revisi-link:active { color: var(--gr2); }
 .terkait-arr   { font-size: 18px; color: var(--tx3); flex-shrink: 0; line-height: 1; }
 
 
