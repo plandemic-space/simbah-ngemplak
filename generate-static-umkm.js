@@ -346,7 +346,7 @@ ${faqHTML}
     <div class="ud-logo-strip">
       <div class="ud-logo-box">${escapeHtml(umkm.emoji)}</div>
       <div class="ud-name-group">
-        <h1 class="ud-bname">${escapeHtml(umkm.name)}</h1>
+        <div class="ud-bname">${escapeHtml(umkm.name)}</div>
         <div class="ud-bcat">${escapeHtml(umkm.cat)}</div>
         ${taglineHTML}
       </div>
@@ -424,18 +424,16 @@ function updateSitemap(umkmList) {
   
   const umkmEntries = umkmList.map(u => {
     const slug = slugify(u.name);
-    const imageBlock = u.cover
-      ? `
+    const imageTag = u.cover ? `
     <image:image>
       <image:loc>${DOMAIN}/${u.cover}</image:loc>
       <image:title>${escapeHtml(u.name)}</image:title>
-    </image:image>`
-      : '';
+    </image:image>` : '';
     return `  <url>
     <loc>${DOMAIN}/umkm/${slug}.html</loc>
     <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>${imageBlock}
+    <priority>0.8</priority>${imageTag}
   </url>`;
   }).join('\n');
 
